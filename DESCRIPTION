@@ -1,0 +1,13 @@
+Package: MTA
+Title: Multiscalar territorial analysis (HyperAtlas typology)
+Version: 0.1
+Author: Nicolas Lambert <nicolas.lambert@ums-riate.fr>, Ronan Ysebaert
+    <ronan.ysebaert@ums-riate.fr>
+Description: This package build a multiscalar typology based on 3 defferent
+    contexts.
+Maintainer: Nicolas Lambert <nicolas.lambert@ums-riate.fr>
+Depends:
+    rgeos,reshape2
+License: GPL (>= 2.0)
+LazyData: true
+Encoding: UTF-8

@@ -4,32 +4,47 @@
 \alias{localDev}
 \title{Local deviation}
 \usage{
-localDev(spdf, id, stock1, stock2, distance)
+localDev(spdf, x, spdfid = NULL, xid = NULL, var1, var2, order = NULL,
+  dist = NULL, mat = NULL, type = "rel")
 }
 \arguments{
-\item{spdf}{Spatial polygon data frame}
+\item{spdf}{a SpatialPolygonsDataFrame.}
 
-\item{id}{Unique identifier of the data frame (character)}
+\item{x}{a data frame.}
 
-\item{stock1}{Numerator}
+\item{spdfid}{identifier field in spdf, default to the first column 
+of the spdf data frame. (optional)}
 
-\item{stock2}{Denominator}
+\item{xid}{identifier field in x, default to the first column 
+of x (optional)}
 
-\item{dist}{distance (in the units of the basemap) between centroids to 
-determinate the local context. 0 = contiguity.}
+\item{var1}{name of the numerator variable in x.}
+
+\item{var2}{name of the denominator variable in x.}
+
+\item{order}{contiguity order.}
+
+\item{dist}{distance defining the contiguity.}
+
+\item{mat}{use an extern distance matrix (road km, time...).}
+
+\item{type}{type of deviation; "rel" for relative deviation, "abs" for 
+absolute deviation.}
 }
 \value{
-dataframe
+A vector is returned.
 }
 \description{
-This function compute the medium deviation from two count data according to the MyperAtlas Methodolgy.
+This function compute the local deviation from two count 
+data according to the MyperAtlas Methodolgy.
 }
 \details{
-The spatial context shows which proximity relation will be the basis of the neighborhood’s definition for each elementary unit. That is usually “contiguity”, but it may also be a relationship based on distances since they have been introduced in the hyp file (units that are less than X kilometers far from), or time-distances. Then, each elementary unit value will be compared to the value of its neighborhood.
-}
-\examples{
-dev <-localDev(spdf=nuts2006,id="nuts3",stock1="gdp2008",stock2="popt2008",distance=0)
-head(dev)
-
+The spatial context shows which proximity relation will be 
+the basis of the neighborhood’s definition for each elementary unit. 
+That is usually “contiguity”, but it may also be a relationship based 
+on distances since they have been introduced in the hyp file 
+(units that are less than X kilometers far from), or time-distances. 
+Then, each elementary unit value will be compared to the value of its 
+neighborhood.
 }
 

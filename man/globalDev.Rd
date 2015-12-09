@@ -2,7 +2,7 @@
 % Please edit documentation in R/MTA.R
 \name{globalDev}
 \alias{globalDev}
-\title{Global deviation}
+\title{Global Deviation}
 \usage{
 globalDev(x, var1, var2, ref = NULL, type = "rel")
 }
@@ -39,14 +39,27 @@ has first been set to the value of the global area.
 \examples{
 library(cartography)
 x <- nuts3.df
-nuts3.df$gdevabs <- globalDev(x = x, var1 = "gdppps2008", var2 = "pop2008", type = "abs")
-nuts3.df$gdevrel <- globalDev(x = x, var1 = "gdppps2008", var2 = "pop2008", type = "rel")
-par(mar = c(0,0,0,0))
-choroLayer(spdf = nuts3.spdf, df = nuts3.df, var = "gdevrel", 
-           legend.pos = "topright", breaks = c(11,50,75,100,125,150,7000), 
-           col = carto.pal(pal1 = "blue.pal", 3, pal2 = "wine.pal", 3))
-propSymbolsLayer(spdf = nuts3.spdf, df = nuts3.df, var = "gdevabs", 
-                 col = "#ff000050",col2 = "#0000ff50", k = 0.001, 
+x$gdppps2008 <- x$gdppps2008 * 1000000
+x[substr(x = x$id, start = 1, stop = 2) == "DE", "pop2008"] <- NA
+x$gdevabs <- globalDev(x = x, 
+                       var1 = "gdppps2008", 
+                       var2 = "pop2008", 
+                       type = "abs")
+x$gdevrel <- globalDev(x = x, 
+                       var1 = "gdppps2008", 
+                       var2 = "pop2008", 
+                       type = "rel")
+par(mar = c(0,0,1.1,0))
+choroLayer(spdf = nuts3.spdf, df = x, var = "gdevrel", 
+           legend.pos = "topright", 
+           breaks = c(11,50,75,100,125,150,7000), 
+           col = carto.pal(pal1 = "blue.pal", n1 = 3, 
+                           pal2 = "wine.pal", n2 = 3))
+propSymbolsLayer(spdf = nuts3.spdf, df = x, var = "gdevabs", 
+                 legend.pos = "right",
+                 col = "#ff000050",col2 = "#0000ff50", 
+                 k = 0.001, legend.style = "e",
                  breakval = 0)
+layoutLayer(title = "Global Deviation")
 }
 

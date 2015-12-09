@@ -9,7 +9,7 @@ Authors@R: c(
         email = "nicolas.lambert@ums-riate.fr", role = c("aut")), 
       person("Ronan", "Ysebaert", 
         email = "ronan.ysebaert@ums-riate.fr", role = c("aut")))
-Description: Build a multiscalar typology based on 3 different contexts.
+Description: Build multiscalar territorial analysis based on various contexts.
 License: GPL-3
 URL: https://github.com/Groupe-ElementR/MTA/
 BugReports: https://github.com/Groupe-ElementR/MTA/issues/
@@ -20,6 +20,8 @@ Imports:
     rgeos,
     igraph
 Suggests:
-    cartography
+    cartography, 
+    knitr
+VignetteBuilder: knitr
 Encoding: UTF-8
 RoxygenNote: 5.0.1

@@ -155,6 +155,13 @@ mediumDev <- function(x, var1, var2, key, type = "rel"){
 #' @export
 localDev<-function(spdf, x, spdfid = NULL, xid = NULL, var1, var2, 
                    order = NULL, dist = NULL, mat = NULL, type = "rel"){
+  
+  if(is.null(order) == FALSE & is.null(dist) == FALSE){
+    stop("
+Define local deviation either by order or by dist, not by both.",
+         call. = FALSE)
+  }
+  
   # check ids
   if (is.null(spdfid)){spdfid <- names(spdf@data)[1]}
   if (is.null(xid)){xid <- names(x)[1]}
@@ -297,34 +304,65 @@ testNAdf <- function(x, var1, var2){
 # 
 # synthesis <- function(spdf,id,stock1,stock2,distance=0,key,threshold=100,superior=TRUE,map=FALSE){
 #   
-#   glodev <-globalDev(spdf=spdf,id=id,stock1=stock1,stock2=stock2)
-#   meddev <-mediumDev(spdf=spdf,id=id,stock1=stock1,stock2=stock2,key=key)
-#   locdev <-localDev(spdf=spdf,id=id,stock1=stock1,stock2=stock2,distance=0)
-#   
-#   typology <- spdf
-#   typology@data <- data.frame(typology@data[,c(id,stock1,stock2)])
-#   typology@data <- data.frame(typology@data,glodev[match(typology@data[,id], glodev[,id]),"globalRel"])
-#   typology@data <- data.frame(typology@data,meddev[match(typology@data[,id], meddev[,id]),"mediumRel"])
-#   typology@data <- data.frame(typology@data,locdev[match(typology@data[,id], locdev[,id]),"localRel"])
-#   colnames(typology@data)<-c(id,stock1,stock2,"global","medium","local")
-#   
-#   typology@data$tmp1<-0 ; typology@data$tmp2<-0 ; typology@data$tmp3<-0 ; typology@data$typo<-0
-#   
-#   if (superior==TRUE)
-#   {
-#     typology@data$tmp1[typology@data$global>=threshold]<-1
-#     typology@data$tmp2[typology@data$medium>=threshold]<-2
-#     typology@data$tmp3[typology@data$local>=threshold]<-4
-#   }
-#   
-#   if (superior==FALSE)
-#   {
-#     typology@data$tmp1[typology@data$global<=threshold]<-1
-#     typology@data$tmp2[typology@data$medium<=threshold]<-2
-#     typology@data$tmp3[typology@data$local<=threshold]<-4
-#   }
-#   
-#   typology@data$typo<-typology@data$tmp1+typology@data$tmp2+typology@data$tmp3
+synthesis <- function(spdf, x, spdfid = NULL, xid = NULL, 
+                      var1, var2, 
+                      ref = NULL, 
+                      key,
+                      order = 1, dist = NULL, mat = NULL, 
+                      threshold = 100, superior = FALSE){
+  
+  # check order & dist
+  if(is.null(order) == FALSE & is.null(dist) == FALSE){
+    stop("
+Define local deviation either by order or by dist, not by both.",
+         call. = FALSE)
+  }
+
+  # check ids
+  if (is.null(spdfid)){spdfid <- names(spdf@data)[1]}
+  if (is.null(xid)){xid <- names(x)[1]}
+  
+  x <- x[, c(xid, var1, var2, key)]
+  type = "rel"
+
+  x$r <- x[,var1] / x[,var2]
+  x$g <- globalDev(x = x, var1 = var1, var2 = var2, ref = ref, type = type)
+  x$m <- mediumDev(x = x, var1 = var1, var2 = var2, key = key, type = type)
+  x$l <- localDev(spdf = spdf, x = x, spdfid = spdfid, xid = xid, 
+                  var1 = var1, var2 = var2, order = order, dist = dist, 
+                  mat = mat, type = type)
+  x$tmp1 <- 0
+  x$tmp2 <- 0
+  x$tmp3 <- 0
+  if (superior == TRUE)
+  {
+    x[x$g >= threshold, "tmp1"] <- 1
+    x[x$m >= threshold, "tmp2"] <- 2
+    x[x$l >= threshold, "tmp3"] <- 4
+  }
+  if (superior == FALSE)
+  {
+    x[x$g <= threshold, "tmp1"] <- 1
+    x[x$m <= threshold, "tmp2"] <- 2
+    x[x$l <= threshold, "tmp3"] <- 4
+  }
+
+  x$t <- as.factor(x$tmp1+x$tmp2+x$tmp3)
+  colours <- c("#ffffff", "#fdc785","#ffffab","#fba9b0",
+                "#addea6","#ffa100","#fff226","#e30020")
+  colours <- colours[as.numeric(levels(x$t))+1]
+  cartography::typoLayer(spdf = spdf, df = x, spdfid = spdfid, dfid = xid, 
+                         var = "t", col = colours, 
+                         legend.pos = "n")
+
+  rVal<-c(" .   .   . ","[X]  .   . ",
+          " .  [X]  . ","[X] [X]  . ",
+          " .   .  [X]","[X]  .  [X]",
+          " .  [X] [X]","[X] [X] [X]")
+  cartography::legendTypo(col = colours, categ = rVal)
+  return(invisible(x))
+}
+    # typology@data$typo<-typology@data$tmp1+typology@data$tmp2+typology@data$tmp3
 #   typology@data$ratio <- typology@data[,stock1]/typology@data[,stock2]
 #   typology@data <- typology@data[,c(id,stock1,stock2,"ratio","global","medium","local","typo")]
 #   typology@data$typo<-as.factor(typology@data$typo)
@@ -354,9 +392,8 @@ testNAdf <- function(x, var1, var2){
 #     plot(mediumLayer,col="#FFFFFF00",lwd=1,add=T)
 #     
 #     title(main=paste("Multiscalar typology\n(",stock1," / ",stock2,")",sep=""),sub=paste("params: local deviation = ",mydist, " medium deviation = ",key),cex.sub=0.7)
-#     legend("topright",legend=rVal, fill=colours,bty="n",pt.cex=1,cex=0.7,title=paste("Deviation ",symbol," ",threshold,"\n[glo] [med] [loc]",sep=""))
+#     legend("topright",legend=rVal, fill=colours,bty="n",pt.cex=1,cex=0.7)
+#     ,title=paste("Deviation ",symbol," ",threshold,"\n[glo] [med] [loc]",sep=""))
 #   }
 #   
 #   return(typology)
-#   
-# }

@@ -1,10 +1,10 @@
 ---
-title: "Stewart Potentials: a Use Case"
+title: "MTA Explained"
 author: "Ronan Ysebaert, Nicolas Lambert, Timothée Giraud"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{MTA explained}
+  %\VignetteIndexEntry{MTA Explained}
   %\VignetteEngine{knitr::rmarkdown}
   \usepackage[utf8]{inputenc}
 ---

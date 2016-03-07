@@ -3,3 +3,4 @@
 export(globalDev)
 export(localDev)
 export(mediumDev)
+export(synthesis3)

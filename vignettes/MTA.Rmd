@@ -1,5 +1,5 @@
 ---
-title: "MTA Explained"
+title: "Multiscalar Territorial Analysis Explained"
 author: "Ronan Ysebaert, Nicolas Lambert, Timothée Giraud"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
@@ -9,4 +9,19 @@ vignette: >
   \usepackage[utf8]{inputenc}
 ---
 
-# HEY! HO! LET'S GO! 
+# Historic and conceptual background
+
+
+## Conceptual background
+The concept of Multiscalar Territorial Analysis (MTA) has been in a large extent set up by the [HyperCarte Research 
+Group] (http://hypercarte.imag.fr/index.html) and academic researches of Prof. Claude Grasland (University Paris Diderot). 
+
+The Hypercarte project aims among other at demonstrating the complexity behind the statistical comparison of territorial units (such as the NUTS nomenclature in Europe).
+
+The basic idea behind the MTA concept is that there is never a single and objective way to display a social phenomena on maps, but an infinity. It depends on the hypothesis made by the observator regarding the contacts that can exist between individuals across the space and the time, regarding the influence of institutions within their territory of authority or for monitoring territorial impacts of policy measures. 
+
+Dedicated methods have been developed in order to highlight in a simple way such situation (Grasland, 1997).  
+
+## The HyperCarte Group
+
+## Main outputs

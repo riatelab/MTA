@@ -42,7 +42,7 @@ localDev<-function(spdf, x, spdfid = NULL, xid = NULL, var1, var2,
   
   # Selecect spdf units
   spdf <- spdf[na.omit(match(x = x[,xid], table = spdf@data[,spdfid])),]
-  row.names(spdf) <- spdf@data[,xid]
+  # row.names(spdf) <- spdf@data[,xid]
   
   # contig dev
   if (!is.null(order)){

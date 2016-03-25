@@ -307,9 +307,9 @@ head(COM.df, n = 10)
 # 5.1 Spatial deviation
 # Deviation in relative term (100 = average of the neigbouring territorial units under the threshold of 5000 meters)
 COM.df$ldevrel <- localDev(spdf = COM.spdf, x = COM.df, spdfid = "id", xid = "DEPCOM",
-                            var1 = "num", var2 = "denom", dist = 5000,
+                            var1 = "num", var2 = "denom", dist = NULL, order = 1, 
                             type = "rel")
-
+head(COM.df)
 # Cartography - Relative deviation
 layoutLayer(title = "Spatial deviation (5 km) - Median income per consommation unit, 2012",
             sources = "Data sources : INSEE, 2016",

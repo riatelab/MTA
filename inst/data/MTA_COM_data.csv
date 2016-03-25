@@ -1,0 +1,151 @@
+DEPCOM;LIBCOM;EPT;LIB_EPT;DEP;num;denom;ratio
+75101;Paris 1er Arrondissement;T1;Paris;75;371675421;11535;32221,53628
+75102;Paris 2e Arrondissement;T1;Paris;75;459687284;16061;28621,3364
+75103;Paris 3e Arrondissement;T1;Paris;75;745173786;25007;29798,60783
+75104;Paris 4e Arrondissement;T1;Paris;75;597081674;19794;30164,78094
+75105;Paris 5e Arrondissement;T1;Paris;75;1202516511;37161;32359,63809
+75106;Paris 6e Arrondissement;T1;Paris;75;1052137681;26827;39219,35666
+75107;Paris 7e Arrondissement;T1;Paris;75;1539821052;36445;42250,54334
+75108;Paris 8e Arrondissement;T1;Paris;75;1131328042;27816;40671,84505
+75109;Paris 9e Arrondissement;T1;Paris;75;1380680496;43355;31845,93463
+75110;Paris 10e Arrondissement;T1;Paris;75;1590794628;67136;23695,10587
+75111;Paris 11e Arrondissement;T1;Paris;75;2717560814;107674;25238,78387
+75112;Paris 12e Arrondissement;T1;Paris;75;2655684065;100988;26297,02603
+75113;Paris 13e Arrondissement;T1;Paris;75;2785078563;122373;22758,93018
+75114;Paris 14e Arrondissement;T1;Paris;75;2391299453;89856;26612,57404
+75115;Paris 15e Arrondissement;T1;Paris;75;4838287404;160543;30137,01877
+75116;Paris 16e Arrondissement;T1;Paris;75;4346431203;111276;39059,91591
+75117;Paris 17e Arrondissement;T1;Paris;75;3411011776;117491;29032,11119
+75118;Paris 18e Arrondissement;T1;Paris;75;2673478244;134372;19896,09624
+75119;Paris 19e Arrondissement;T1;Paris;75;2373279589;129442;18334,69499
+75120;Paris 20e Arrondissement;T1;Paris;75;2714959318;137577;19734,10758
+91027;Athis-Mons;T12;Val de Bièvres - Seine Amond - Grand Orly;91;410490045;20130;20391,95455
+91326;Juvisy-sur-Orge;T12;Val de Bièvres - Seine Amond - Grand Orly;91;239246676;10731;22294,9097
+91432;Morangis;T12;Val de Bièvres - Seine Amond - Grand Orly;91;199771374;8201;24359,39203
+91479;Paray-Vieille-Poste;T12;Val de Bièvres - Seine Amond - Grand Orly;91;116767230;4985;23423,71715
+91589;Savigny-sur-Orge;T12;Val de Bièvres - Seine Amond - Grand Orly;91;591130110;24798;23837,81394
+91687;Viry-Châtillon;T12;Val de Bièvres - Seine Amond - Grand Orly;91;429112724;21128;20310,14407
+92002;Antony;T2;Sud Hauts-de-Seine;92;1164562715;41012;28395,65773
+92004;Asnières-sur-Seine;T5;Boucle Nord 92;92;1328466804;58012;22899,86217
+92007;Bagneux;T2;Sud Hauts-de-Seine;92;461358459;25824;17865,49175
+92009;Bois-Colombes;T5;Boucle Nord 92;92;511187880;18999;26906,04137
+92012;Boulogne-Billancourt;T3;Grand Paris Sud Ouest;92;2445935055;80033;30561,58154
+92014;Bourg-la-Reine;T2;Sud Hauts-de-Seine;92;406374777;13195;30797,63372
+92019;Châtenay-Malabry;T2;Sud Hauts-de-Seine;92;472148291;20563;22961,06069
+92020;Châtillon;T2;Sud Hauts-de-Seine;92;616295198;23230;26530,14197
+92022;Chaville;T3;Grand Paris Sud Ouest;92;395062562;13696;28845,10529
+92023;Clamart;T2;Sud Hauts-de-Seine;92;903287625;35020;25793,47873
+92024;Clichy;T5;Boucle Nord 92;92;719327471;40531;17747,58755
+92025;Colombes;T5;Boucle Nord 92;92;1144219027;56433;20275,70795
+92026;Courbevoie;T4;La Défense;92;1638405558;57963;28266,40371
+92032;Fontenay-aux-Roses;T2;Sud Hauts-de-Seine;92;379632912;15098;25144,58286
+92033;Garches;T4;La Défense;92;422239198;12517;33733,25861
+92035;La Garenne-Colombes;T4;La Défense;92;545310656;19308;28242,7313
+92036;Gennevilliers;T5;Boucle Nord 92;92;437315137;28244;15483,47037
+92040;Issy-les-Moulineaux;T3;Grand Paris Sud Ouest;92;1279413062;44072;29030,06585
+92044;Levallois-Perret;T4;La Défense;92;1272834983;43179;29478,10239
+92046;Malakoff;T2;Sud Hauts-de-Seine;92;446430475;20237;22060,11143
+92047;Marnes-la-Coquette;T3;Grand Paris Sud Ouest;92;47734444;1060;45032,49434
+92048;Meudon;T3;Grand Paris Sud Ouest;92;851826030;31078;27409,29371
+92049;Montrouge;T2;Sud Hauts-de-Seine;92;844077332;32856;25690,20368
+92050;Nanterre;T4;La Défense;92;1064151042;57555;18489,28924
+92051;Neuilly-sur-Seine;T4;La Défense;92;1826691767;42167;43320,41091
+92060;Le Plessis-Robinson;T2;Sud Hauts-de-Seine;92;507298151;19039;26645,20988
+92062;Puteaux;T4;La Défense;92;771153917;30631;25175,6037
+92063;Rueil-Malmaison;T4;La Défense;92;1573940254;52952;29723,90569
+92064;Saint-Cloud;T4;La Défense;92;713088063;19459;36645,66848
+92071;Sceaux;T2;Sud Hauts-de-Seine;92;427449793;12695;33670,7202
+92072;Sèvres;T3;Grand Paris Sud Ouest;92;456910666;15199;30061,88999
+92073;Suresnes;T4;La Défense;92;835356718;30760;27157,24051
+92075;Vanves;T3;Grand Paris Sud Ouest;92;489796095;18285;26786,7703
+92076;Vaucresson;T4;La Défense;92;226384659;5908;38318,32414
+92077;Ville-d'Avray;T3;Grand Paris Sud Ouest;92;271674958;7714;35218,42857
+92078;Villeneuve-la-Garenne;T5;Boucle Nord 92;92;247374271;15146;16332,64697
+93001;Aubervilliers;T6;Plaine Commune;93;603223151;45418;13281,58772
+93005;Aulnay-sous-Bois;T7;Territoire des aéroports;93;859121910;51321;16740,16309
+93006;Bagnolet;T8;Est Ensemble;93;375813697;23665;15880,57034
+93007;Le Blanc-Mesnil;T7;Territoire des aéroports;93;522316216;33528;15578,50799
+93008;Bobigny;T8;Est Ensemble;93;441290841;31436;14037,7542
+93010;Bondy;T8;Est Ensemble;93;525430337;32826;16006,52949
+93013;Le Bourget;T7;Territoire des aéroports;93;156109019;9462;16498,52241
+93014;Clichy-sous-Bois;T9;Grand-Paris Est;93;217017377;16969;12789,04927
+93015;Coubron;T9;Grand-Paris Est;93;77001191;3045;25287,74745
+93027;La Courneuve;T6;Plaine Commune;93;321749782;24519;13122,46756
+93029;Drancy;T7;Territoire des aéroports;93;727761467;43905;16575,82205
+93030;Dugny;T7;Territoire des aéroports;93;101141996;6541;15462,77266
+93031;Épinay-sur-Seine;T6;Plaine Commune;93;502973152;32890;15292,58595
+93032;Gagny;T9;Grand-Paris Est;93;544740523;26112;20861,69282
+93033;Gournay-sur-Marne;T9;Grand-Paris Est;93;123188466;4472;27546,61583
+93039;L'Île-Saint-Denis;T6;Plaine Commune;93;70214765;4750;14782,05579
+93045;Les Lilas;T8;Est Ensemble;93;334935721;15666;21379,78559
+93046;Livry-Gargan;T9;Grand-Paris Est;93;571371847;27910;20471,94006
+93047;Montfermeil;T9;Grand-Paris Est;93;282608667;15671;18033,863
+93048;Montreuil;T8;Est Ensemble;93;1203078714;68555;17549,10238
+93049;Neuilly-Plaisance;T9;Grand-Paris Est;93;315633506;13617;23179,37181
+93050;Neuilly-sur-Marne;T9;Grand-Paris Est;93;421229186;22016;19132,86637
+93051;Noisy-le-Grand;T9;Grand-Paris Est;93;851203036;41951;20290,4111
+93053;Noisy-le-Sec;T8;Est Ensemble;93;426827222;26453;16135,30496
+93055;Pantin;T8;Est Ensemble;93;562598891;36435;15441,16621
+93057;Les Pavillons-sous-Bois;T9;Grand-Paris Est;93;288837768;14041;20571,02543
+93059;Pierrefitte-sur-Seine;T6;Plaine Commune;93;250994897;17750;14140,55758
+93061;Le Pré-Saint-Gervais;T8;Est Ensemble;93;200304178;11348;17651,05552
+93062;Le Raincy;T9;Grand-Paris Est;93;262234653;9881;26539,28276
+93063;Romainville;T8;Est Ensemble;93;276205401;16632;16606,86634
+93064;Rosny-sous-Bois;T9;Grand-Paris Est;93;541552506;27817;19468,40083
+93066;Saint-Denis;T6;Plaine Commune;93;919916797;63946;14385,838
+93070;Saint-Ouen;T6;Plaine Commune;93;504520214;31279;16129,67851
+93071;Sevran;T7;Territoire des aéroports;93;474310560;29948;15837,80419
+93072;Stains;T6;Plaine Commune;93;301852381;21022;14358,88027
+93073;Tremblay-en-France;T7;Territoire des aéroports;93;442262494;22586;19581,26689
+93074;Vaujours;T9;Grand-Paris Est;93;95476242;4316;22121,46478
+93077;Villemomble;T9;Grand-Paris Est;93;413540438;19930;20749,64566
+93078;Villepinte;T7;Territoire des aéroports;93;381798148;21606;17670,93159
+93079;Villetaneuse;T6;Plaine Commune;93;109624862;7521;14575,83593
+94001;Ablon-sur-Seine;T12;Val de Bièvres - Seine Amond - Grand Orly;94;81738747;3614;22617,25152
+94002;Alfortville;T11;Plaine Centrale - Haut Val-de-Marne - Plateau Briard;94;553082510;29328;18858,51439
+94003;Arcueil;T12;Val de Bièvres - Seine Amond - Grand Orly;94;268791885;13128;20474,70178
+94004;Boissy-Saint-Léger;T11;Plaine Centrale - Haut Val-de-Marne - Plateau Briard;94;192452836;10218;18834,68741
+94011;Bonneuil-sur-Marne;T11;Plaine Centrale - Haut Val-de-Marne - Plateau Briard;94;173632197;10185;17047,83476
+94015;Bry-sur-Marne;T10;Association des Communes de l'Est Parisien;94;299834039;10582;28334,34502
+94016;Cachan;T12;Val de Bièvres - Seine Amond - Grand Orly;94;395139956;17714;22306,64762
+94017;Champigny-sur-Marne;T10;Association des Communes de l'Est Parisien;94;946010368;50653;18676,29495
+94018;Charenton-le-Pont;T10;Association des Communes de l'Est Parisien;94;546431256;20681;26421,8972
+94019;Chennevières-sur-Marne;T11;Plaine Centrale - Haut Val-de-Marne - Plateau Briard;94;265310155;12625;21014,66574
+94021;Chevilly-Larue;T12;Val de Bièvres - Seine Amond - Grand Orly;94;246449941;11916;20682,27098
+94022;Choisy-le-Roi;T12;Val de Bièvres - Seine Amond - Grand Orly;94;515223150;27288;18880,94217
+94028;Créteil;T11;Plaine Centrale - Haut Val-de-Marne - Plateau Briard;94;1046278818;56312;18580,03299
+94033;Fontenay-sous-Bois;T10;Association des Communes de l'Est Parisien;94;774021713;34694;22309,95887
+94034;Fresnes;T12;Val de Bièvres - Seine Amond - Grand Orly;94;347182934;15856;21895,99735
+94037;Gentilly;T12;Val de Bièvres - Seine Amond - Grand Orly;94;210766113;11155;18894,31762
+94038;L'Haÿ-les-Roses;T12;Val de Bièvres - Seine Amond - Grand Orly;94;450474766;20075;22439,58984
+94041;Ivry-sur-Seine;T12;Val de Bièvres - Seine Amond - Grand Orly;94;663393591;38240;17348,15876
+94042;Joinville-le-Pont;T10;Association des Communes de l'Est Parisien;94;308930974;12458;24797,79852
+94043;Le Kremlin-Bicêtre;T12;Val de Bièvres - Seine Amond - Grand Orly;94;340766943;16169;21075,32581
+94044;Limeil-Brévannes;T11;Plaine Centrale - Haut Val-de-Marne - Plateau Briard;94;301760735;14385;20977,45812
+94046;Maisons-Alfort;T10;Association des Communes de l'Est Parisien;94;879597175;37370;23537,52141
+94047;Mandres-les-Roses;T11;Plaine Centrale - Haut Val-de-Marne - Plateau Briard;94;76515089;2924;26167,95109
+94048;Marolles-en-Brie;T11;Plaine Centrale - Haut Val-de-Marne - Plateau Briard;94;94410547;3117;30288,91466
+94052;Nogent-sur-Marne;T10;Association des Communes de l'Est Parisien;94;654362103;22163;29524,9787
+94053;Noiseau;T11;Plaine Centrale - Haut Val-de-Marne - Plateau Briard;94;80410772;3059;26286,62046
+94054;Orly;T12;Val de Bièvres - Seine Amond - Grand Orly;94;247769250;14291;17337,43265
+94055;Ormesson-sur-Marne;T11;Plaine Centrale - Haut Val-de-Marne - Plateau Briard;94;175487557;6739;26040,59311
+94056;Périgny;T11;Plaine Centrale - Haut Val-de-Marne - Plateau Briard;94;43392894;1666;26046,15486
+94058;Le Perreux-sur-Marne;T10;Association des Communes de l'Est Parisien;94;621328786;22421;27711,91231
+94059;Le Plessis-Trévise;T11;Plaine Centrale - Haut Val-de-Marne - Plateau Briard;94;297437164;12589;23626,75066
+94060;La Queue-en-Brie;T11;Plaine Centrale - Haut Val-de-Marne - Plateau Briard;94;168262440;7464;22543,19936
+94065;Rungis;T12;Val de Bièvres - Seine Amond - Grand Orly;94;105410205;3779;27893,6769
+94067;Saint-Mandé;T10;Association des Communes de l'Est Parisien;94;450656202;14406;31282,53519
+94068;Saint-Maur-des-Fossés;T10;Association des Communes de l'Est Parisien;94;1486850629;52507;28317,18874
+94069;Saint-Maurice;T10;Association des Communes de l'Est Parisien;94;233097964;9214;25298,2379
+94070;Santeny;T11;Plaine Centrale - Haut Val-de-Marne - Plateau Briard;94;67198821;2292;29318,85733
+94071;Sucy-en-Brie;T11;Plaine Centrale - Haut Val-de-Marne - Plateau Briard;94;430350430;17150;25093,31953
+94073;Thiais;T12;Val de Bièvres - Seine Amond - Grand Orly;94;408030349;18687;21834,98416
+94074;Valenton;T12;Val de Bièvres - Seine Amond - Grand Orly;94;125664774;7942;15822,81214
+94075;Villecresnes;T11;Plaine Centrale - Haut Val-de-Marne - Plateau Briard;94;159373676;6245;25520,20432
+94076;Villejuif;T12;Val de Bièvres - Seine Amond - Grand Orly;94;667934597;35129;19013,76632
+94077;Villeneuve-le-Roi;T12;Val de Bièvres - Seine Amond - Grand Orly;94;256605929;12965;19792,20432
+94078;Villeneuve-Saint-Georges;T12;Val de Bièvres - Seine Amond - Grand Orly;94;326819122;21125;15470,72767
+94079;Villiers-sur-Marne;T10;Association des Communes de l'Est Parisien;94;392134081;18851;20801,76548
+94080;Vincennes;T10;Association des Communes de l'Est Parisien;94;1005088359;33339;30147,52569
+94081;Vitry-sur-Seine;T12;Val de Bièvres - Seine Amond - Grand Orly;94;981828376;55330;17744,95529
+95018;Argenteuil;T5;Boucle Nord 92;95;1173027954;67254;17441,75743

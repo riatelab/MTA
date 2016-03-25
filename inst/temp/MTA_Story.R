@@ -77,24 +77,56 @@ library(RColorBrewer)
 # Working folder
 setwd("C:/Users/Ronan/Desktop/MTA_dataset")
 # Data upload
-MTA.df <- read.csv( "MTA_IRIS_data.csv",header=TRUE,sep=";",dec=".",encoding="utf-8",)
-MTA.spdf <- rgdal::readOGR(dsn="MTA_IRIS_geom.shp", layer = "MTA_IRIS_geom")
+IRIS.df <- read.csv( "MTA_IRIS_data.csv",header=TRUE,sep=";",dec=".",encoding="utf-8",)
+IRIS.spdf <- rgdal::readOGR(dsn="MTA_IRIS_geom.shp", layer = "MTA_IRIS_geom")
 # Calculation of the targeted indicator for the analysis (ratio = numerator / denominator)
-MTA.df$num<-MTA.df$P12_NPER_RP_LOCHLMV
-MTA.df$denom<-MTA.df$P12_NPER_RP
+IRIS.df$num<-IRIS.df$P12_NPER_RP_LOCHLMV
+IRIS.df$denom<-IRIS.df$P12_NPER_RP
 coeff<-100
-MTA.df$ratio<-MTA.df$num/MTA.df$denom*coeff
-MTA.df$DEP<-as.factor(MTA.df$DEP)
+IRIS.df$ratio<-IRIS.df$num/IRIS.df$denom*coeff
+IRIS.df$DEP<-as.factor(IRIS.df$DEP)
 
 
 # 1. Territorial zonings visualisation
 # Join SpatialDataFrame & DataFrame
-MTA.spdf@data <- data.frame(MTA.spdf@data, MTA.df[match(MTA.spdf@data[,"DCOMIRIS"], MTA.df$CODE_IRIS),c("DEPCOM","EPT","DEP")])
+IRIS.spdf@data <- data.frame(IRIS.spdf@data, IRIS.df[match(IRIS.spdf@data[,"DCOMIRIS"], IRIS.df$CODE_IRIS),c("DEPCOM","EPT","DEP")])
 # Territorial zonings aggregation
-buff<-gBuffer(MTA.spdf, byid=TRUE, id=NULL, width=0.0001, quadsegs=0.0001, capStyle="ROUND",joinStyle="ROUND", mitreLimit=0.00001)
-COM.spdf<-gUnaryUnion(buff,id = MTA.spdf@data$DEPCOM)
-EPT.spdf<-gUnaryUnion(buff,id = MTA.spdf@data$EPT)
-DEP.spdf<-gUnaryUnion(buff,id = MTA.spdf@data$DEP)
+buff<-gBuffer(IRIS.spdf, byid=TRUE, id=NULL, width=0.0001, quadsegs=0.0001, capStyle="ROUND",joinStyle="ROUND", mitreLimit=0.00001)
+
+# Communes - Layer & data aggregation
+COM.spdf<-gUnaryUnion(buff,id = IRIS.spdf@data$DEPCOM)
+COM<-data.frame(id=sapply(slot(COM.spdf, "polygons"), slot, "ID"))
+row.names(COM)<-COM$id
+COM.spdf<-SpatialPolygonsDataFrame(COM.spdf, COM)
+
+writeOGR(COM.spdf,
+         dsn = "MTA_communes.shp",
+         layer = "MTA_communes",
+         driver = "ESRI Shapefile")
+
+# Numerator and denominator aggregation
+COM.df <- aggregate(IRIS.df[,c(10:11)], by = list(DEPCOM = IRIS.df$DEPCOM), sum, simplify=TRUE)
+# Join communes names
+ComNames.df<-c("DEPCOM","LIBCOM")
+ComNames.df<-IRIS.df[,ComNames.df]
+COM.df <- data.frame(COM.df, "LIBCOM"=ComNames.df[match(COM.df$DEPCOM,ComNames.df$DEPCOM),c("LIBCOM")])
+COM.df$ratio <- COM.df$num/COM.df$denom*coeff
+
+
+head(EPT.spdf@data)
+# EPT & Départements
+EPT.spdf<-gUnaryUnion(buff,id = IRIS.spdf@data$EPT)
+
+EPT<-data.frame(id=sapply(slot(EPT.spdf, "polygons"), slot, "ID"))
+row.names(EPT)<-EPT$id
+EPT.spdf<-SpatialPolygonsDataFrame(EPT.spdf, EPT)
+
+writeOGR(EPT.spdf,
+         dsn = "MTA_EPT.shp",
+         layer = "MTA_EPT",
+         driver = "ESRI Shapefile")
+
+
 # Cartography
 layoutLayer(title = "Territorial zonings available for Multiscalar Territorial Analysis",
             sources = "Data source : INSEE, IGN, 2016",
@@ -105,8 +137,8 @@ layoutLayer(title = "Territorial zonings available for Multiscalar Territorial A
             coltitle = "white",
             bg = "#FFFFFF",
             south = FALSE,
-            extent = MTA.spdf)
-plot(MTA.spdf,border="#bdbdbd",lwd=0.1, col="#FCC732", add=T)
+            extent = IRIS.spdf)
+plot(IRIS.spdf,border="#bdbdbd",lwd=0.1, col="#FCC732", add=T)
 plot(COM.spdf,border="#969696",lwd=0.25,add=T)
 plot(EPT.spdf,border="#252525",lwd=0.5,add=T)
 plot(DEP.spdf,border="#FFFFFF",lwd=1,add=T)
@@ -122,23 +154,27 @@ from the lowest to the higher geographical level",
 
 # 2. Numerator mapping
 # Layout Plot
+par(mfrow = c(1,2), mar = c(0,0,1.2,0))
 layoutLayer(title = "Numerator - Permanent residences in public housing unit (HLM), 2012",
             sources = "Data source : INSEE, 2016",
             author = "Author : RIATE, 2016",
             scale = 5,
-            frame = TRUE,
+            frame = FALSE,
             col = "black",
             coltitle = "white",
             bg = "#FFFFFF",
-            south = FALSE,
-            extent = MTA.spdf)
+            extent = IRIS.spdf)
+
+# mat = matrix(c(1:2), 1, 2)
+# layout(mat)
+
 # Plot IRIS
-plot(MTA.spdf, col = "grey75",border = "grey20",lwd=0.2, add=TRUE)
+plot(IRIS.spdf, col = "grey75",border = "grey20",lwd=0.2, add=T)
 # Plot symbols
-propSymbolsLayer(spdf = MTA.spdf, df = MTA.df,
+propSymbolsLayer(spdf = IRIS.spdf, df = IRIS.df,
                  var = "num", 
                  symbols = "circle", col =  "#F6533A",
-                 fixmax = max(MTA.df$num),
+                 fixmax = max(IRIS.df$num),
                  inches = 0.1,
                  border = "#25252570",
                  legend.pos = "right",
@@ -152,19 +188,18 @@ layoutLayer(title = "Denominator - Permanent residences, 2012",
             sources = "Source des données : INSEE, 2016",
             author = "Réalisation : RIATE, 2016",
             scale = 5,
-            frame = TRUE,
+            frame = FALSE,
             col = "black",
             coltitle = "white",
             bg = "#FFFFFF",
-            south = FALSE,
-            extent = MTA.spdf)
+            extent = IRIS.spdf)
 # Plot IRIS
-plot(MTA.spdf, col = "grey75",border = "grey20",lwd=0.2, add=TRUE)
+plot(IRIS.spdf, col = "grey75",border = "grey20",lwd=0.2, add=TRUE)
 # Plot symbols
-propSymbolsLayer(spdf = MTA.spdf, df = MTA.df,
+propSymbolsLayer(spdf = IRIS.spdf, df = IRIS.df,
                  var = "denom", 
                  symbols = "circle", col =  "#515FAA",
-                 fixmax = max(MTA.df$denom),
+                 fixmax = max(IRIS.df$denom),
                  border = "#25252570",
                  inches = 0.1,
                  legend.pos = "right",
@@ -182,13 +217,13 @@ layoutLayer(title = "Numerator / Denominator - Share of public housing in perman
             coltitle = "white",
             bg = "#FFFFFF",
             south = FALSE,
-            extent = MTA.spdf)
+            extent = IRIS.spdf)
 # Plot carto
 # Delete NAs in the dataset
-choroLayer(spdf = MTA.spdf,
-           df = MTA.df,
+choroLayer(spdf = IRIS.spdf,
+           df = IRIS.df,
            var = "ratio",
-           breaks = c(min(MTA.df$ratio,na.rm=TRUE),10,20,30,40,50,60,70,80,90,max(MTA.df$ratio,na.rm=TRUE)), 
+           breaks = c(min(IRIS.df$ratio,na.rm=TRUE),10,20,30,40,50,60,70,80,90,max(IRIS.df$ratio,na.rm=TRUE)), 
            col = carto.pal(pal1 = "turquoise.pal", n1 = 10),
            border = NA,
            add = TRUE,
@@ -203,7 +238,7 @@ plot(EPT.spdf,border="#000000",lwd=0.5,add=T)
 
 # 4.1 Global deviation - Relative deviation
 # Deviation in relative term (100 = average of the study area)
-MTA.df$gdevrel <- globalDev(x = MTA.df, 
+IRIS.df$gdevrel <- globalDev(x = IRIS.df, 
                             var1 = "num", 
                             var2 = "denom", 
                             type = "rel")
@@ -218,15 +253,15 @@ layoutLayer(title = "Global deviation - Share of public housing in permanent res
             coltitle = "white",
             bg = "#FFFFFF",
             south = FALSE,
-            extent = MTA.spdf)
+            extent = IRIS.spdf)
 
-choroLayer(spdf = MTA.spdf, df = MTA.df, var = "gdevrel",
+choroLayer(spdf = IRIS.spdf, df = IRIS.df, var = "gdevrel",
            add = TRUE,
            border = NA,
            legend.pos = "topleft",
            legend.title.txt = "Deviation to the global context (Métropole du Grand Paris)",
            legend.nodata = "Unpopulated area",
-           breaks = c(min(MTA.df$gdevrel,na.rm=TRUE),50,75,100,125,150,max(MTA.df$gdevrel,na.rm=TRUE)), 
+           breaks = c(min(IRIS.df$gdevrel,na.rm=TRUE),50,75,100,125,150,max(IRIS.df$gdevrel,na.rm=TRUE)), 
             col = carto.pal(pal1 = "blue.pal", n1 = 3, 
                             pal2 = "wine.pal", n2 = 3))
 plot(COM.spdf,border="#000000",lwd=0.25,add=T)
@@ -235,21 +270,21 @@ plot(EPT.spdf,border="#f0f0f0",lwd=0.5,add=T)
 # 4.2 Global plot and indexes
 library(ineq)
 # Lorenz Curve
-Lc <- Lc (MTA.df$num, n=MTA.df$denom)
+Lc <- Lc (IRIS.df$num, n=IRIS.df$denom)
 plot(Lc,
      ylab = "proportion of numerator",
      xlab = "proportion of denominator")
 
 # Inequality indexes
-Gini<-ineq(MTA.df$ratio)
-Coeff.Var<-var.coeff(MTA.df$ratio, square = FALSE, na.rm = TRUE)
+Gini<-ineq(IRIS.df$ratio)
+Coeff.Var<-var.coeff(IRIS.df$ratio, square = FALSE, na.rm = TRUE)
 Gini
 Coeff.Var
 
 
 #4.3 Global deviation, redistribution
 # Deviation in absolute term
-MTA.df$gdevabs <- globalDev(x = MTA.df, 
+IRIS.df$gdevabs <- globalDev(x = IRIS.df, 
                             var1 = "num", 
                             var2 = "denom", 
                             type = "abs")
@@ -264,9 +299,9 @@ layoutLayer(title = "Global redistribution - Share of public housing in permanen
             coltitle = "white",
             bg = "#FFFFFF",
             south = FALSE,
-            extent = MTA.spdf)
-plot(MTA.spdf, col = "grey70",border = NA, add=TRUE)
-propSymbolsLayer(spdf = MTA.spdf, df = MTA.df, var = "gdevabs", 
+            extent = IRIS.spdf)
+plot(IRIS.spdf, col = "grey70",border = NA, add=TRUE)
+propSymbolsLayer(spdf = IRIS.spdf, df = IRIS.df, var = "gdevabs", 
                 legend.pos = "right",
                 legend.title.txt = "Redistribution (inhabitants)",
                 col = "#ff0000",col2 = "#0000ff",
@@ -276,10 +311,44 @@ propSymbolsLayer(spdf = MTA.spdf, df = MTA.df, var = "gdevabs",
                 breakval = 0)
 plot(EPT.spdf,border="#f0f0f0",lwd=0.5,add=T)
 
+# 4.4 Global deviation in Communes of Grand Paris / Threshold = 20 %
+
+# Deviation in relative term (100 = threshod of 20 % of social household)
+MTACom.df$gdevrel <- globalDev(x = MTACom.df, 
+                            var1 = "num", 
+                            var2 = "denom", 
+                            type = "rel",
+                            ref = 0.2)
+
+# Cartography
+layoutLayer(title = "Global deviation (communes) - Share of public housing in permanent residences, 2012",
+            sources = "Data sources : INSEE, 2016",
+            author = "Author : RIATE, 2016",
+            scale = 5,
+            frame = TRUE,
+            col = "black",
+            coltitle = "white",
+            bg = "#FFFFFF",
+            south = FALSE,
+            extent = IRIS.spdf)
+
+choroLayer(spdf = COM.spdf, df = MTACom.df, var = "gdevrel",
+           add = TRUE,
+           border = NA,
+           legend.pos = "topleft",
+           legend.title.txt = "Deviation to the threshold of 20 % (Required threshold by communes)",
+           legend.nodata = "Unpopulated area",
+           breaks = c(min(MTACom.df$gdevrel,na.rm=TRUE),50,75,100,125,150,max(MTACom.df$gdevrel,na.rm=TRUE)), 
+           col = carto.pal(pal1 = "blue.pal", n1 = 3, 
+                           pal2 = "wine.pal", n2 = 3))
+plot(COM.spdf,border="#000000",lwd=0.25,add=T)
+plot(EPT.spdf,border="#f0f0f0",lwd=0.5,add=T)
+
+
 
 # 5.1 Territorial deviation
 # Deviation in relative term (100 = average of the territorial level)
-MTA.df$mdevrel <- mediumDev(x = MTA.df, var1 = "num", var2 = "denom", 
+IRIS.df$mdevrel <- mediumDev(x = IRIS.df, var1 = "num", var2 = "denom", 
                             type = "rel", key = "EPT")
 
 # Cartography - Relative deviation
@@ -292,29 +361,29 @@ layoutLayer(title = "Territorial deviation - Share of public housing in permanen
             coltitle = "white",
             bg = "#FFFFFF",
             south = FALSE,
-            extent = MTA.spdf)
+            extent = IRIS.spdf)
 
-choroLayer(spdf = MTA.spdf, df = MTA.df, var = "mdevrel",
+choroLayer(spdf = IRIS.spdf, df = IRIS.df, var = "mdevrel",
            add = TRUE,
            border = NA,
            legend.pos = "topleft",
            legend.title.txt = "Deviation to the territorial context (Établissements Publics Territoriaux)",
            legend.nodata = "Unpopulated area",
-           breaks = c(min(MTA.df$mdevrel,na.rm=TRUE),50,75,100,125,150,max(MTA.df$mdevrel,na.rm=TRUE)), 
+           breaks = c(min(IRIS.df$mdevrel,na.rm=TRUE),50,75,100,125,150,max(IRIS.df$mdevrel,na.rm=TRUE)), 
            col = carto.pal(pal1 = "blue.pal", n1 = 3, 
                            pal2 = "wine.pal", n2 = 3))
 plot(COM.spdf,border="#000000",lwd=0.25,add=T)
 plot(EPT.spdf,border="#f0f0f0",lwd=0.5,add=T)
 
 # 5.2 Territorial plot
-n<-print(nlevels(MTA.df$EPT)) 
+n<-print(nlevels(IRIS.df$EPT)) 
 col<-brewer.pal(n, "Paired")
 
 par(cex.lab=1)
 par(cex.axis=0.75)
 par(mar=c(12,5,1,1))
 
-boxplot(MTA.df$mdevrel ~ MTA.df$LIB_EPT,
+boxplot(IRIS.df$mdevrel ~ IRIS.df$LIB_EPT,
         col = col,
         ylab = "Territorial deviation",
         varwidth = TRUE,
@@ -324,7 +393,7 @@ boxplot(MTA.df$mdevrel ~ MTA.df$LIB_EPT,
 
 # 5.3 Territorial redistribution
 # Deviation in absolute term
-MTA.df$mdevabs <- mediumDev(x = MTA.df, var1 = "num", var2 = "denom", 
+IRIS.df$mdevabs <- mediumDev(x = IRIS.df, var1 = "num", var2 = "denom", 
                             type = "abs", key = "EPT")
 
 # Cartography - Absolute deviation
@@ -337,9 +406,9 @@ layoutLayer(title = "Territorial redistribution - Share of public housing in per
             coltitle = "white",
             bg = "#FFFFFF",
             south = FALSE,
-            extent = MTA.spdf)
-plot(MTA.spdf, col = "grey70",border = NA, add=TRUE)
-propSymbolsLayer(spdf = MTA.spdf, df = MTA.df, var = "mdevabs", 
+            extent = IRIS.spdf)
+plot(IRIS.spdf, col = "grey70",border = NA, add=TRUE)
+propSymbolsLayer(spdf = IRIS.spdf, df = IRIS.df, var = "mdevabs", 
                  legend.pos = "right",
                  legend.title.txt = "Redistribution (inhabitants)",
                  col = "#ff0000",col2 = "#0000ff",
@@ -352,7 +421,7 @@ plot(EPT.spdf,border="#f0f0f0",lwd=0.5,add=T)
 
 # 6.1 Spatial deviation
 # Deviation in relative term (100 = average of the neigbouring territorial units under the threshold of 5000 meters)
-MTA.df$ldevrel <- localDev(spdf = MTA.spdf, x = MTA.df, spdfid = "DCOMIRIS", xid = "CODE_IRIS",
+IRIS.df$ldevrel <- localDev(spdf = IRIS.spdf, x = IRIS.df, spdfid = "DCOMIRIS", xid = "CODE_IRIS",
                            var1 = "num", var2 = "denom", dist = 5000,
                            type = "rel")
 
@@ -366,15 +435,15 @@ layoutLayer(title = "Spatial deviation (5 km) - Share of public housing in perma
             coltitle = "white",
             bg = "#FFFFFF",
             south = FALSE,
-            extent = MTA.spdf)
+            extent = IRIS.spdf)
 
-choroLayer(spdf = MTA.spdf, df = MTA.df, var = "ldevrel",
+choroLayer(spdf = IRIS.spdf, df = IRIS.df, var = "ldevrel",
            add = TRUE,
            border = NA,
            legend.pos = "topleft",
            legend.title.txt = "Deviation to the spatial context (IRIS located at less than 5 km)",
            legend.nodata = "Unpopulated area",
-           breaks = c(min(MTA.df$ldevrel,na.rm=TRUE),50,75,100,125,150,max(MTA.df$ldevrel,na.rm=TRUE)), 
+           breaks = c(min(IRIS.df$ldevrel,na.rm=TRUE),50,75,100,125,150,max(IRIS.df$ldevrel,na.rm=TRUE)), 
            col = carto.pal(pal1 = "blue.pal", n1 = 3, 
                            pal2 = "wine.pal", n2 = 3))
 plot(COM.spdf,border="#000000",lwd=0.25,add=T)
@@ -384,13 +453,13 @@ plot(EPT.spdf,border="#f0f0f0",lwd=0.5,add=T)
 # 6.2 Spatial plot
 
 # Spatial autocorrelation
-spat.aut<-lm(MTA.df$ldevrel ~ MTA.df$gdevrel)
+spat.aut<-lm(IRIS.df$ldevrel ~ IRIS.df$gdevrel)
 summary.lm(spat.aut)
 Intercept(spat.aut)
 names(summary(spat.aut))$coefficients
 summary(spat.aut)$coefficients
 
-plot(MTA.df$gdevrel,MTA.df$ldevrel,
+plot(IRIS.df$gdevrel,IRIS.df$ldevrel,
      ylab = "Spatial deviation",
      xlab = "Global deviation",
      pch = 20,
@@ -398,7 +467,7 @@ plot(MTA.df$gdevrel,MTA.df$ldevrel,
 abline(spat.aut, col = "red", lwd =2)
 
 legend("topleft",
-       legend = levels(MTA.df$EPT),
+       legend = levels(IRIS.df$EPT),
        pch = 20,
        col = col,
        cex = 0.5,
@@ -408,7 +477,7 @@ legend("topleft",
 
 #6.3 Spatial redistribution 
 #Deviation in absolute term
-MTA.df$ldevabs <- localDev(spdf = MTA.spdf, x = MTA.df, spdfid = "DCOMIRIS", xid = "CODE_IRIS",
+IRIS.df$ldevabs <- localDev(spdf = IRIS.spdf, x = IRIS.df, spdfid = "DCOMIRIS", xid = "CODE_IRIS",
                            var1 = "num", var2 = "denom", dist = 5000,
                            type = "abs")
 
@@ -422,9 +491,9 @@ layoutLayer(title = "Spatial redistribution (5 km) - Share of public housing in 
             coltitle = "white",
             bg = "#FFFFFF",
             south = FALSE,
-            extent = MTA.spdf)
-plot(MTA.spdf, col = "grey70",border = NA, add=TRUE)
-propSymbolsLayer(spdf = MTA.spdf, df = MTA.df, var = "ldevabs", 
+            extent = IRIS.spdf)
+plot(IRIS.spdf, col = "grey70",border = NA, add=TRUE)
+propSymbolsLayer(spdf = IRIS.spdf, df = IRIS.df, var = "ldevabs", 
                  legend.pos = "right",
                  legend.title.txt = "Redistribution (inhabitants)",
                  col = "#ff0000",col2 = "#0000ff",
@@ -438,10 +507,10 @@ plot(EPT.spdf,border="#f0f0f0",lwd=0.5,add=T)
 
 # 7.1 Synthesis (3 contexts, above 130 %)
 # Avoid divided by 0 in the denominator
-MTA.synthesis.df <- MTA.df[!is.na(MTA.df$ratio),]
+IRIS.synthesis.df <- IRIS.df[!is.na(IRIS.df$ratio),]
 
 # Deviation in relative term (100 = average of the neigbouring territorial units under the threshold of 5000 meters)
-MTA.synthesis.df <- synthesis3(spdf = MTA.spdf, x = MTA.synthesis.df, spdfid = "DCOMIRIS", xid = "CODE_IRIS",
+IRIS.synthesis.df <- synthesis3(spdf = IRIS.spdf, x = IRIS.synthesis.df, spdfid = "DCOMIRIS", xid = "CODE_IRIS",
                            var1 = "num", var2 = "denom", key = "EPT", dist = 5000, order = NULL, mat = NULL,
                            threshold = 130, superior = TRUE)
 
@@ -456,12 +525,12 @@ layoutLayer(title = "Synthesis / 3 contexts - Share of public housing in permane
             coltitle = "white",
             bg = "#FFFFFF",
             south = FALSE,
-            extent = MTA.spdf)
+            extent = IRIS.spdf)
 
 # Colours Typology and legend layout
 colours <- c("#f0f0f0", "#fdc785","#ffffab","#fba9b0",
              "#addea6","#ffa100","#fff226","#e30020")
-colours <- colours[as.numeric(levels(MTA.synthesis.df$synthesis3))+1]
+colours <- colours[as.numeric(levels(IRIS.synthesis.df$synthesis3))+1]
 
 rVal<-c(" .   .   . ","[X]  .   . ",
         " .  [X]  . ","[X] [X]  . ",
@@ -469,7 +538,7 @@ rVal<-c(" .   .   . ","[X]  .   . ",
         " .  [X] [X]","[X] [X] [X]")
 
 # Display the typology map 
-typoLayer(spdf = MTA.spdf, df = MTA.synthesis.df, var = "synthesis3",
+typoLayer(spdf = IRIS.spdf, df = IRIS.synthesis.df, var = "synthesis3",
           add = TRUE, 
           border = NA, 
           col = colours,
@@ -485,10 +554,10 @@ plot(EPT.spdf,border="#252525",lwd=0.5,add=T)
 
 # 7.2 Synthesis (3 contexts, under 50 %)
 # Avoid divided by 0 in the denominator
-MTA.synthesis.df <- MTA.df[!is.na(MTA.df$ratio),]
+IRIS.synthesis.df <- IRIS.df[!is.na(IRIS.df$ratio),]
 
 # Deviation in relative term (100 = average of the neigbouring territorial units under the threshold of 5000 meters)
-MTA.synthesis.df <- synthesis3(spdf = MTA.spdf, x = MTA.synthesis.df, spdfid = "DCOMIRIS", xid = "CODE_IRIS",
+IRIS.synthesis.df <- synthesis3(spdf = IRIS.spdf, x = IRIS.synthesis.df, spdfid = "DCOMIRIS", xid = "CODE_IRIS",
                                var1 = "num", var2 = "denom", key = "EPT", dist = 5000, order = NULL, mat = NULL,
                                threshold = 50, superior = FALSE)
 
@@ -503,12 +572,12 @@ layoutLayer(title = "Synthesis / 3 contexts - Share of public housing in permane
             coltitle = "white",
             bg = "#FFFFFF",
             south = FALSE,
-            extent = MTA.spdf)
+            extent = IRIS.spdf)
 
 # Colours Typology and legend layout
 colours <- c("#f0f0f0", "#fdc785","#ffffab","#fba9b0",
              "#addea6","#ffa100","#fff226","#e30020")
-colours <- colours[as.numeric(levels(MTA.synthesis.df$synthesis3))+1]
+colours <- colours[as.numeric(levels(IRIS.synthesis.df$synthesis3))+1]
 
 rVal<-c(" .   .   . ","[X]  .   . ",
         " .  [X]  . ","[X] [X]  . ",
@@ -516,7 +585,7 @@ rVal<-c(" .   .   . ","[X]  .   . ",
         " .  [X] [X]","[X] [X] [X]")
 
 # Display the typology map 
-typoLayer(spdf = MTA.spdf, df = MTA.synthesis.df, var = "synthesis3",
+typoLayer(spdf = IRIS.spdf, df = IRIS.synthesis.df, var = "synthesis3",
           add = TRUE, 
           border = NA, 
           col = colours,
@@ -531,5 +600,32 @@ plot(EPT.spdf,border="#252525",lwd=0.5,add=T)
 
 
  
+y<- sample(10, 100, rep=T)
+x <- rnorm(100)
 
+par(mfrow=c(1,1)) # open an object
+plot(x,y) # First plot
+title("Default plot")
+
+plot(x,y, axes = FALSE) # Second plot
+title("Without any axis")
+
+plot(x,y, axes = FALSE) # Third plot
+axis(1)
+title("X-axis added, but as is")
+
+plot(x,y, axes = FALSE) # Fourth plot
+axis(2)
+title("Y-axis added, but as is")
+
+yticks <- seq(5, 12, 1)
+plot(x,y, axes = FALSE) # Fifth plot
+axis(2, at = yticks, labels = yticks, col.axis="red", las=2)
+title("Manipulated Y-axis")
+
+xticks <- seq(0, 3, .5)
+plot(x,y, axes = FALSE) # Sixth plot
+axis(2, at = yticks, labels = yticks, col.axis="red", las=2)
+axis(1, at = xticks, labels = xticks, col.axis="blue", las=2, tck=-.01)
+title("Manipulated Y and X axes")
 

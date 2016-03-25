@@ -12,12 +12,13 @@ Main functions :
 \item{\code{\link{globalDev}}: deviation between a regional ratio and a ratio 
 of reference.}
 \item{\code{\link{mediumDev}}: deviation between a regional ratio and ratios 
-of an aggregated level}
-\item{\code{\link{localDev}}}
+of an aggregated level.}
+\item{\code{\link{localDev}}}: deviation between regional ratios and local 
+ratios.
 }
 }
 \references{
-A Great Paper Made With Love,
-\emph{and in English}, 201*
+RONNNNNAAAAAANNNNN, A Great Paper Made With Love,
+\emph{and in English}, 2023
 }
 

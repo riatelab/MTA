@@ -12,30 +12,33 @@
 #' absolute deviation.
 #' @return A vector is returned.
 #' @examples 
-#' library(cartography)
-#' x <- nuts3.df
-#' x$gdppps2008 <- x$gdppps2008 * 1000000
-#' x$gdevabs <- globalDev(x = x, 
-#'                        var1 = "gdppps2008", 
-#'                        var2 = "pop2008", 
-#'                        type = "abs")
-#' x$gdevrel <- globalDev(x = x, 
-#'                        var1 = "gdppps2008", 
-#'                        var2 = "pop2008", 
-#'                        type = "rel")
-#' par(mar = c(0,0,1.2,0))
-#' choroLayer(spdf = nuts3.spdf, df = x, var = "gdevrel", 
-#'            legend.pos = "topright", 
-#'            breaks = c(11,50,75,100,125,150,7000), border = NA,
-#'            col = carto.pal(pal1 = "blue.pal", n1 = 3, 
-#'                            pal2 = "wine.pal", n2 = 3))
-#' propSymbolsLayer(spdf = nuts3.spdf, df = x, var = "gdevabs", 
-#'                  legend.pos = "right",legend.values.rnd = -5,
-#'                  col = "#ff000050",col2 = "#0000ff50", 
-#'                  legend.style = "c", inches = 0.1,
-#'                  breakval = 0)
-#' plot(rgeos::gUnaryUnion(nuts0.spdf), add = TRUE)
-#' layoutLayer(title = "Global Deviation")
+#' data("GrandParisMetropole")
+#' com$gdevabs <- globalDev(x = com,
+#'                          var1 = "INC",
+#'                          var2 = "TH",
+#'                          type = "abs")
+#' com$gdevrel <- globalDev(x = com,
+#'                          var1 = "INC",
+#'                          var2 = "TH",
+#'                          type = "rel")
+#' 
+#' if(require('cartography')){
+#'   par(mar = c(0,0,1.2,0))
+#'   bks <- c(min(com$gdevrel),50,75,100,125,150,max(com$gdevrel))
+#'   choroLayer(spdf = com.spdf, df = com, var = "gdevrel",
+#'              legend.pos = "topright",
+#'              breaks = bks, border = NA,
+#'              col = carto.pal(pal1 = "blue.pal", n1 = 3,
+#'                              pal2 = "wine.pal", n2 = 3))
+#'   
+#'   propSymbolsLayer(spdf = com.spdf, df = com, var = "gdevabs",
+#'                    legend.pos = "right",legend.values.rnd = -5,
+#'                    col = "#ff000050",col2 = "#0000ff50",
+#'                    legend.style = "c", inches = 0.1,
+#'                    breakval = 0)
+#'   plot(ept.spdf, add=TRUE)
+#'   layoutLayer(title = "Global Deviation")
+#' }
 #' @export
 globalDev <- function(x, var1, var2, ref = NULL, type = "rel"){
   # test for NAs

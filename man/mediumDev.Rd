@@ -28,28 +28,33 @@ Each elementary unit value will be compared to the value of the upper level
 it belongs to.
 }
 \examples{
-library(cartography)
-x <- nuts3.df
-x$gdppps2008 <- x$gdppps2008 * 1000000
-x$key <- substr(x = x$id, start = 1, stop = 3)
-x$mdevabs <- mediumDev(x = x, var1 = "gdppps2008", var2 = "pop2008",
-                       type = "abs", key = "key")
-x$mdevrel <- mediumDev(x = x, var1 = "gdppps2008",
-                       var2 = "pop2008",
-                       type = "rel", key = "key")
-par(mar = c(0,0,1.2,0))
-plot(nuts0.spdf[nuts0.spdf$id \%in\% c("BE", "NL", "LU", "DE", "FR"),], 
-     border = NA)
-choroLayer(spdf = nuts3.spdf, df = x, var = "mdevrel",
-           legend.pos = "left", 
-           breaks = c(min(x$mdevrel),50,75,100,125,150,max(x$mdevrel)),
-           col = carto.pal(pal1 = "blue.pal", 3, pal2 = "wine.pal", 3),
-           border = NA, legend.frame = TRUE, add=TRUE)
-plot(nuts1.spdf, add=TRUE)
-propSymbolsLayer(spdf = nuts3.spdf, df = x, var = "mdevabs", l
-                 egend.pos = "topleft",
-                 col = "#ff000050",col2 = "#0000ff50", inches = 0.1,
-                 breakval = 0, legend.values.rnd = -5, legend.frame = TRUE)
-layoutLayer(title = "Medium Deviation (NUTS1)")
+data("GrandParisMetropole")
+com$mdevabs <- mediumDev(x = com, 
+                         var1 = "INC", 
+                         var2 = "TH",
+                         key = "EPT", 
+                         type = "abs")
+com$mdevrel <- mediumDev(x = com, 
+                         var1 = "INC", 
+                         var2 = "TH",
+                         key = "EPT", 
+                         type = "rel")
+
+if(require('cartography')){
+  par(mar = c(0,0,1.2,0))
+  bks <- c(min(com$mdevrel),75,100,125,150,max(com$mdevrel))
+  choroLayer(spdf = com.spdf, df = com, var = "mdevrel",
+             legend.pos = "topright",
+             breaks = bks, border = NA,
+             col = carto.pal(pal1 = "blue.pal", n1 = 3,
+                             pal2 = "wine.pal", n2 = 3))
+  propSymbolsLayer(spdf = com.spdf, df = com, var = "mdevabs",
+                   legend.pos = "right",legend.values.rnd = -5,
+                   col = "#ff000050",col2 = "#0000ff50",
+                   legend.style = "c", inches = 0.1,
+                   breakval = 0)
+  plot(ept.spdf, add=TRUE)
+  layoutLayer(title = "Medium Deviation")
+}
 }
 

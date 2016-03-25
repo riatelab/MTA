@@ -20,6 +20,7 @@
 #' @param type type of deviation; "rel" for relative deviation, "abs" for 
 #' absolute deviation.
 #' @return A vector is returned.
+#' @import sp
 #' @export
 #' 
 localDev<-function(spdf, x, spdfid = NULL, xid = NULL, var1, var2, 

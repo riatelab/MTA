@@ -1,4 +1,4 @@
-#' @title Medium Deviation
+#' @title Territorial Deviation
 #' @name mediumDev
 #' @description This function computes the deviation between regional ratios 
 #' and ratios of an aggregated level.

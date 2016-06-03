@@ -1,4 +1,4 @@
-#' @title Local Deviation
+#' @title Spatial Deviation
 #' @name localDev
 #' @description This function computes the deviation between regional ratios and 
 #' local ratios. Local ratios are defined either by a contiguity order or by a 

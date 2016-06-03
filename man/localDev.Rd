@@ -2,7 +2,7 @@
 % Please edit documentation in R/localDev.R
 \name{localDev}
 \alias{localDev}
-\title{Local Deviation}
+\title{Spatial Deviation}
 \usage{
 localDev(spdf, x, spdfid = NULL, xid = NULL, var1, var2, order = NULL,
   dist = NULL, mat = NULL, type = "rel")

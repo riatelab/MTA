@@ -1,6 +1,6 @@
 #' @title Multiscalar typology
 #' @name synthesis3
-#' @details This function compute a multiscalar typology according to the three relative 
+#' @description This function compute a multiscalar typology according to the three relative 
 #' deviations (global, territorial, spatial). The elementary units are classified
 #' in eight classes according to their three relative positions.
 #' @param spdf Spatial polygon data frame.
@@ -10,7 +10,7 @@
 #' @param xid identifier field in x, default to the first column 
 #' of x (optional).
 #' @param var1 name of the numerator variable in x.
-#' @param var1 name of the denominator variable in x. 
+#' @param var2 name of the denominator variable in x. 
 #' @param ref distance (in the units of the basemap) between centroids to determinate the local context. 0 = contiguity.
 #' @param key Aggregation key for the territorial deviation. 
 #' @param order contiguity order (dist and mat are not used).
@@ -20,7 +20,7 @@
 #' @param threshold defined to build the typology (100 is considered as the average).
 #' @param superior deviation values must be greater than threshold when criterion is true,
 #' it must be lower than threshold when criterion is false.  
-#' @export A dataframe including the ratio, the 3 relative deviations, their position according to the 
+#' @return A dataframe including the ratio, the 3 relative deviations, their position according to the 
 #' threshold and superior parameters, the resulting typology 8 classes and a proposal of colours for displaying territorial 
 #' units on maps is returned.
 #' @examples 

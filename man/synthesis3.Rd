@@ -9,38 +9,62 @@ synthesis3(spdf, x, spdfid = NULL, xid = NULL, var1, var2, ref = NULL,
   superior = FALSE)
 }
 \arguments{
-\item{spdf}{Spatial polygon data frame}
+\item{spdf}{Spatial polygon data frame.}
 
-\item{x}{h}
+\item{x}{a dataframe.}
 
-\item{spdfid}{g}
+\item{spdfid}{identifier field in spdf, default to the first column 
+of the spdf data frame (optional).}
 
-\item{xid}{dhd}
+\item{xid}{identifier field in x, default to the first column 
+of x (optional).}
 
-\item{var1}{Numerator}
+\item{var1}{name of the numerator variable in x.}
 
-\item{var2}{Denominator}
+\item{var2}{name of the denominator variable in x.}
 
 \item{ref}{distance (in the units of the basemap) between centroids to determinate the local context. 0 = contiguity.}
 
-\item{key}{Aggregation ky for the medium deviatiopn}
+\item{key}{Aggregation key for the territorial deviation.}
 
-\item{order}{Threshold of typology}
+\item{order}{contiguity order (dist and mat are not used).}
 
-\item{dist}{If true, the criterium is "gretter than". If false, the criterium is "lower than"}
+\item{dist}{distance defining the contiguity (order is not used).}
 
-\item{mat}{If true, the typology is ploted}
+\item{mat}{a distance matrix (road distance, travel time...). Row and column 
+names must fit xid identifiers.}
 
-\item{threshold}{fh}
+\item{threshold}{defined to build the typology (100 is considered as the average).}
 
-\item{superior}{hdfsh}
+\item{superior}{deviation values must be greater than threshold when criterion is true,
+it must be lower than threshold when criterion is false.}
+}
+\value{
+A dataframe including the ratio, the 3 relative deviations, their position according to the 
+threshold and superior parameters, the resulting typology 8 classes and a proposal of colours for displaying territorial 
+units on maps is returned.
 }
 \description{
 This function compute a multiscalar typology according to the three relative 
-positions about contexts (global, medium, local). The elementary units are classified
- in eight classes according to their three relative positions.
+deviations (global, territorial, spatial). The elementary units are classified
+in eight classes according to their three relative positions.
 }
-\details{
-xxx
+\examples{
+data("GrandParisMetropole")
+synthesis <- synthesis3(spdf = com.spdf,
+                        x = com,
+                        spdfid = "DEPCOM",
+                        xid = "DEPCOM",
+                        var1 = "INC",
+                        var2 = "TH",
+                        dist = NULL,
+                        key = "EPT",
+                        order = 1,
+                        mat = NULL,
+                        threshold = 125,
+                        superior = TRUE)
+
+if(require('cartography')){
+}
 }
 

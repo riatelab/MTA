@@ -2,7 +2,7 @@
 % Please edit documentation in R/mediumDev.R
 \name{mediumDev}
 \alias{mediumDev}
-\title{Medium Deviation}
+\title{Territorial Deviation}
 \usage{
 mediumDev(x, var1, var2, key, type = "rel")
 }

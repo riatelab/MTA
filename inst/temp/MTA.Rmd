@@ -6,10 +6,10 @@ output:
   html_document:
     theme: united
     toc: yes
-  pdf_document:
-    toc: yes
 vignette: |
-  %\VignetteIndexEntry{MTA Explained} %\VignetteEngine{knitr::rmarkdown} \usepackage[utf8]{inputenc}
+  %\VignetteIndexEntry{MTA Explained} 
+  %\VignetteEngine{knitr::rmarkdown} 
+  \usepackage[utf8]{inputenc}
 ---
 
 # Conceptual background

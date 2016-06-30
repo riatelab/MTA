@@ -25,6 +25,7 @@ distanceMat <- function(spdf){
   return(x)  
 }
 
+
 #' @title Local Divergence
 #' @name locmat
 #' @description This function compute a the local divergence

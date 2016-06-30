@@ -4,7 +4,7 @@
 \alias{mediumDev}
 \title{Territorial Deviation}
 \usage{
-mediumDev(x, var1, var2, key, type = "rel")
+mediumDev(x, var1, var2, type = "rel", key)
 }
 \arguments{
 \item{x}{a data frame.}
@@ -13,10 +13,10 @@ mediumDev(x, var1, var2, key, type = "rel")
 
 \item{var2}{name of the denominator variable in x.}
 
-\item{key}{aggregation key field.}
-
 \item{type}{type of deviation; "rel" for relative deviation, "abs" for 
 absolute deviation.}
+
+\item{key}{aggregation key field.}
 }
 \value{
 A vector is returned.

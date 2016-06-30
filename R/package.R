@@ -82,3 +82,22 @@ NULL
 NULL
 
 
+#' @title Time Distance Matrix by Car between Communes
+#' @name cardist
+#' @description Travel time between Grand Paris Metropole communes' centroids by car, in minutes.\cr
+#' Row names and column names match the DEPCOM field in \link{com}.
+#' @references
+#' The matrix is computed using the osrm package (\url{https://cran.r-project.org/package=osrm}). \cr
+#' Data (c) OpenStreetMap contributors, ODbL 1.0. http://www.openstreetmap.org/copyright \cr
+#' Routes: OSRM. http://project-osrm.org/ \cr
+#' 
+#' @docType data
+#' @examples
+#' data(GrandParisMetropole)
+#' cardist[1:10,1:10]
+NULL
+
+
+
+
+

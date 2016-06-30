@@ -41,14 +41,14 @@
 #'   layoutLayer(title = "Medium Deviation")
 #' }
 #' @export
-mediumDev <- function(x, var1, var2, key, type = "rel"){
+mediumDev <- function(x, var1, var2, type = "rel", key){
   # test for NAs
   vtot <- row.names(x)
   x <- testNAdf(x = x, var1 = var1, var2 = var2)
   vpar <- row.names(x)
   
   # aggregate values by key
-  med <- aggregate(x[,c(var1, var2)], by = list(x[,key]), sum)
+  med <- stats::aggregate(x[,c(var1, var2)], by = list(x[,key]), sum)
   med$ratio <- med[,var1] / med[,var2]
   # merge x and aggregate data
   mediumDev <- data.frame(x[,c(var1,var2)], 

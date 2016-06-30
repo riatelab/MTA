@@ -7,40 +7,49 @@
 #' @param var1 name of the numerator variable in x.
 #' @param var2 name of the denominator variable in x.
 #' @param ref ratio of reference; if NULL, the ratio of reference is the one of 
-#' the whole study area (data.frame).
+#' the whole study area (\code{sum(var1) / sum(var2)}).
 #' @param type type of deviation; "rel" for relative deviation, "abs" for 
-#' absolute deviation.
+#' absolute deviation (see Details).
+#' @details 
+#' The relative global deviation is the ratio between var1/var2 and ref
+#' (\code{100 * (var1 / var2) / ref}). Values greater than 100 indicate that the 
+#' regional ratio is greater than the ratio of reference. Values lower than 100 
+#' indicate that the regional ratio is lower than the ratio of reference.\cr
+#' The absolute global deviation is the amount of numerator that could be moved 
+#' to obtain the ratio of reference on all regions. 
 #' @return A vector is returned.
-#' @examples 
+#' @examples
+#' # load data
 #' data("GrandParisMetropole")
-#' com$gdevabs <- globalDev(x = com,
-#'                          var1 = "INC",
-#'                          var2 = "TH",
-#'                          type = "abs")
-#' com$gdevrel <- globalDev(x = com,
-#'                          var1 = "INC",
-#'                          var2 = "TH",
-#'                          type = "rel")
+#' # compute absolute global deviation
+#' com$gdevabs <- globalDev(x = com, var1 = "INC", var2 = "TH", type = "abs")
+#' # compute relative global deviation
+#' com$gdevrel <- globalDev(x = com, var1 = "INC", var2 = "TH", type = "rel")
 #' 
+#' # Deviations maps
 #' if(require('cartography')){
+#'   # set graphical parameters
 #'   par(mar = c(0,0,1.2,0))
+#'   # set breaks
 #'   bks <- c(min(com$gdevrel),50,75,100,125,150,max(com$gdevrel))
+#'   # plot a choropleth map of the relative global deviation
 #'   choroLayer(spdf = com.spdf, df = com, var = "gdevrel",
 #'              legend.pos = "topright",
 #'              breaks = bks, border = NA,
 #'              col = carto.pal(pal1 = "blue.pal", n1 = 3,
 #'                              pal2 = "wine.pal", n2 = 3))
-#'   
+#'   # add symbols proportional to the absolute general deviation
 #'   propSymbolsLayer(spdf = com.spdf, df = com, var = "gdevabs",
 #'                    legend.pos = "right",legend.values.rnd = -5,
 #'                    col = "#ff000050",col2 = "#0000ff50",
 #'                    legend.style = "c", inches = 0.1,
 #'                    breakval = 0)
+#'   # add EPT boundaries
 #'   plot(ept.spdf, add=TRUE)
 #'   layoutLayer(title = "Global Deviation")
 #' }
 #' @export
-globalDev <- function(x, var1, var2, ref = NULL, type = "rel"){
+globalDev <- function(x, var1, var2, type = "rel", ref = NULL){
   # test for NAs
   vtot <- row.names(x)
   x <- testNAdf(x = x, var1 = var1, var2 = var2)

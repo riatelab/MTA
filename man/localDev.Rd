@@ -4,33 +4,35 @@
 \alias{localDev}
 \title{Spatial Deviation}
 \usage{
-localDev(spdf, x, spdfid = NULL, xid = NULL, var1, var2, order = NULL,
-  dist = NULL, mat = NULL, type = "rel")
+localDev(x, var1, var2, type = "rel", spdf, order = NULL, dist = NULL,
+  mat = NULL, spdfid = NULL, xid = NULL)
 }
 \arguments{
-\item{spdf}{a SpatialPolygonsDataFrame.}
-
 \item{x}{a data frame.}
-
-\item{spdfid}{identifier field in spdf, default to the first column 
-of the spdf data frame (optional).}
-
-\item{xid}{identifier field in x, default to the first column 
-of x (optional)}
 
 \item{var1}{name of the numerator variable in x.}
 
 \item{var2}{name of the denominator variable in x.}
 
-\item{order}{contiguity order (dist and mat are not used).}
-
-\item{dist}{distance defining the contiguity (order is not used).}
-
-\item{mat}{a distance matrix (road distance, travel time...). Row and column 
-names must fit xid identifiers.}
-
 \item{type}{type of deviation; "rel" for relative deviation, "abs" for 
 absolute deviation.}
+
+\item{spdf}{a SpatialPolygonsDataFrame that matches x data frame.}
+
+\item{order}{contiguity order.}
+
+\item{dist}{distance threshold defining the contiguity. The cartesian 
+distance between units is used by default 
+(see \code{\link{gDistance}}); use mat to apply different metric.}
+
+\item{mat}{a distance matrix (road distance, travel time...) between x units. 
+Row and column names must fit xid identifiers. (optional)}
+
+\item{spdfid}{identifier field in spdf, default to the first column 
+of the spdf data frame. (optional)}
+
+\item{xid}{identifier field in x, default to the first column 
+of x. (optional)}
 }
 \value{
 A vector is returned.

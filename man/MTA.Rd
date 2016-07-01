@@ -9,12 +9,12 @@
 Build multiscalar territorial analysis based on various contexts. \cr
 Main functions : 
 \itemize{
-\item{\code{\link{globalDev}}: deviation between a regional ratio and a ratio 
-of reference.}
-\item{\code{\link{mediumDev}}: deviation between a regional ratio and ratios 
-of an aggregated level.}
-\item{\code{\link{localDev}}}: deviation between regional ratios and local 
-ratios.
+\item{\code{\link{generalDev}}: deviation between regional ratios and a 
+ratio of reference.}
+\item{\code{\link{territorialDev}}: deviation between regional ratios and 
+ratios of an aggregated level.}
+\item{\code{\link{localDev}}}: deviation between regional ratios and ratios
+of neigborhing regions.
 }
 }
 \references{

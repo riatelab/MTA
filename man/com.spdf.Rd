@@ -4,20 +4,21 @@
 \name{com.spdf}
 \alias{com.spdf}
 \title{Grand Paris Metropole Communes SpatialPolygonsDataFrame}
-\description{
-SpatialPolygonsDataFrame of the Grand Paris Metropole communes.\cr 
-Fields: \cr
-\itemize{
-\item{DEPCOM: Commune identifiers}
+\format{\describe{
+\item{DEPCOM}{Commune identifiers}
+}}
+\source{
+Institut national de l’information géographique et forestière (IGN), GEOFLA® 
+2015 v2.1 Communes France Métropolitaine: \cr
+\url{http://professionnels.ign.fr/geofla}\cr
+Atelier parisien d'urbanisme, Grand Paris communal composition (2015-12-17):\cr
+\url{http://www.apur.org/article/composition-12-territoires-metropole-grand-paris}
 }
+\description{
+SpatialPolygonsDataFrame of the Grand Paris Metropole communes.\cr
 }
 \examples{
 data(GrandParisMetropole)
 sp::plot(com.spdf)
-}
-\references{
-\url{http://professionnels.ign.fr/geofla#tab-3} for communes.
-\url{http://www.apur.org/article/composition-12-territoires-metropole-grand-paris} 
-for Grand Paris communal composition.
 }
 

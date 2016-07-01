@@ -4,22 +4,20 @@
 \name{ept.spdf}
 \alias{ept.spdf}
 \title{Grand Paris Metropole EPTs SpatialPolygonsDataFrame}
-\description{
-SpatialPolygonsDataFrame Grand Paris Metropole EPTs. 
-EPTs (etablissements publics territoriaux) are groups of communes.\cr
-Fields: \cr
-\itemize{
-\item{EPT: EPT identifiers}
-\item{LIBEPT: EPT names}
+\format{\describe{
+\item{EPT}{EPT identifiers}
+\item{LIBEPT}{EPT names}
+}}
+\source{
+Atelier parisien d'urbanisme, Grand Paris communal composition (2015-12-17):\cr
+\url{http://www.apur.org/article/composition-12-territoires-metropole-grand-paris}
 }
+\description{
+SpatialPolygonsDataFrame of Grand Paris Metropole EPTs. 
+EPTs (Etablissements Publics Territoriaux) are groups of communes.\cr
 }
 \examples{
 data(GrandParisMetropole)
 sp::plot(ept.spdf)
-}
-\references{
-\url{http://professionnels.ign.fr/geofla#tab-3} for communes.
-\url{http://www.apur.org/article/composition-12-territoires-metropole-grand-paris} 
-for Grand Paris communal composition.
 }
 

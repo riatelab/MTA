@@ -3,7 +3,12 @@
 \docType{data}
 \name{cardist}
 \alias{cardist}
-\title{Time Distance Matrix by Car between Communes}
+\title{Time Distance Matrix Between Communes}
+\source{
+The matrix is computed using the osrm package (\url{https://cran.r-project.org/package=osrm}). \cr
+Data (c) OpenStreetMap contributors, ODbL 1.0. http://www.openstreetmap.org/copyright \cr
+Routes: OSRM. http://project-osrm.org/ \cr
+}
 \description{
 Travel time between Grand Paris Metropole communes' centroids by car, in minutes.\cr
 Row names and column names match the DEPCOM field in \link{com}.
@@ -11,10 +16,5 @@ Row names and column names match the DEPCOM field in \link{com}.
 \examples{
 data(GrandParisMetropole)
 cardist[1:10,1:10]
-}
-\references{
-The matrix is computed using the osrm package (\url{https://cran.r-project.org/package=osrm}). \cr
-Data (c) OpenStreetMap contributors, ODbL 1.0. http://www.openstreetmap.org/copyright \cr
-Routes: OSRM. http://project-osrm.org/ \cr
 }
 

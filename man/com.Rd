@@ -4,28 +4,27 @@
 \name{com}
 \alias{com}
 \title{Grand Paris Metropole Communes Data}
-\description{
-Data.frame of Grand Paris Metropole communes.\cr
-Fields: \cr
-\itemize{
-\item{DEPCOM: Commune identifiers}
-\item{LIBCOM: Commune names}
-\item{EPT: EPT identifiers of the commune}
-\item{LIBEPT: EPT names of the commune}
-\item{DEP: identifiers of the departement}
-\item{INC: Amount of income tax reference (in euros)}
-\item{TH: Number of tax households}
+\format{A data frame with 150 rows and 10 variables:
+\describe{
+\item{DEPCOM}{Commune identifiers}
+\item{LIBCOM}{Commune names}
+\item{EPT}{EPT identifiers of the commune}
+\item{LIBEPT}{EPT names of the commune}
+\item{DEP}{Identifiers of the departement}
+\item{INC}{Amount of income tax reference (in euros)}
+\item{TH}{Number of tax households}
+}}
+\source{
+Direction générale des finances publiques, income tax 2014 (2013 incomes):\cr
+\url{http://www.impots.gouv.fr/portal/dgi/public/statistiques.impot?espId=-4&pageId=stat_donnees_detaillees&sfid=4503}\cr
+Atelier parisien d'urbanisme, Grand Paris communal composition (2015-12-17):\cr
+\url{http://www.apur.org/article/composition-12-territoires-metropole-grand-paris}
 }
+\description{
+Data on the Grand Paris Metropole communes.
 }
 \examples{
 data(GrandParisMetropole)
 head(com)
-}
-\references{
-\url{http://professionnels.ign.fr/geofla#tab-3} for communes.
-\url{http://www.apur.org/article/composition-12-territoires-metropole-grand-paris} 
-for Grand Paris communal composition.
-\url{http://www.impots.gouv.fr/portal/dgi/public/statistiques.impot?espId=-4&pageId=stat_donnees_detaillees&sfid=4503} 
-for tax data.
 }
 

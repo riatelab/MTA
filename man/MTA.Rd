@@ -9,12 +9,15 @@
 Build multiscalar territorial analysis based on various contexts. \cr
 Main functions : 
 \itemize{
-\item{\code{\link{generalDev}}: deviation between regional ratios and a 
+\item{\code{\link{gdev}}: general deviation between regional ratios and a 
 ratio of reference.}
-\item{\code{\link{territorialDev}}: deviation between regional ratios and 
+\item{\code{\link{tdev}}: territorial deviation between regional ratios and 
 ratios of an aggregated level.}
-\item{\code{\link{localDev}}}: deviation between regional ratios and ratios
+\item{\code{\link{sdev}}}: spatial deviation between regional ratios and ratios
 of neigborhing regions.
+\item{\code{\link{mst}}}: multiscalar typology based on the three deviations.
+\item{\code{\link{mas}}}: multiscalar absolute synthesis, total amount of 
+redistributions based on the three deviations. 
 }
 }
 \references{

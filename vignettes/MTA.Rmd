@@ -1,15 +1,14 @@
 ---
 title: "Multiscalar Territorial Analysis - Historical and Conceptual Background"
-author: "Ronan Ysebaert, Nicolas Lambert, Timothée Giraud"
+author: "Ronan Ysebaert"
 date: '`r Sys.Date()`'
 output:
-  html_document:
-    theme: united
+  rmarkdown::html_vignette: 
     toc: yes
-vignette: |
-  %\VignetteIndexEntry{MTA Explained} 
+vignette: >
+  %\VignetteIndexEntry{MTA Historical and Conceptual Background} 
   %\VignetteEngine{knitr::rmarkdown} 
-  \usepackage[utf8]{inputenc}
+  %\VignetteEncoding{UTF-8}
 ---
 
 # Conceptual background
@@ -21,7 +20,7 @@ It is impossible to understand the origin of the implementation of the MTA packa
 ```{r fig.width=10,echo=FALSE}
 library(png)
 library(grid)
-img <- readPNG("C:/Users/Ronan/Desktop/MTA/data/figure_MTA1.png")
+img <- readPNG("./img/figure_MTA1.png")
 grid.raster(img)
 ```
 
@@ -36,7 +35,7 @@ The analysis of these two maps reveals several possibilities for measuring terri
 Nowadays, the need to measure territorial disparities at lower scales become more and more important. The historical planning issues managed at national level is in a large extent transferred to regions and local authorities. To act locally, these new territories of governance requires statistical evidences to understand the structure and the dynamics of their territories. As displayed below, a lot of urban agencies and experts financed by public fundings were recently created to provide local pictures of local dynamics (Metropole du Grand Paris, Metropole du Grand Lyon, Greater London, etc.). Here again, the need of territorial information is high.  
 
 ```{r fig.width=10,echo=FALSE}
-img <- readPNG("C:/Users/Ronan/Desktop/MTA/data/figure_MTA2.png")
+img <- readPNG("./img/figure_MTA2.png")
 grid.raster(img)
 ```
 
@@ -55,7 +54,7 @@ MTA methods have been developed in order to highlight in a simple way such situa
 The central hypothesis behind the MTA consists to consider that the meaning of a statistical indicator is always dependant of territorial context of reference. Taking a concrete example, knowing that the Gross Domestic Product in 2008 of Nord-Pas-de-Calais is 24 700 euros per capita provides few information itself. It is rather interesting to understand how this region stands as regard to the European Union average (22 800 euros, + 7,7 %), to its country of belonging (France, 30 400 euros, - 18 %) or as compared to its neighbouring regions (24 950 euros, - 1 %). The combination of these deviation measures allows to highlight regions in favourable situations, lagging regions and also to depict contractory situations (e.g. a rich region in a poor country, and vice-versa).
 
 ```{r fig.width=10,echo=FALSE}
-img <- readPNG("C:/Users/Ronan/Desktop/MTA/data/figure_MTA3.png")
+img <- readPNG("./img/figure_MTA3.png")
 grid.raster(img)
 ```
 

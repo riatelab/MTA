@@ -1,5 +1,5 @@
 #' @title General Deviation
-#' @name generalDev
+#' @name gdev
 #' @description This function computes the deviation between regional ratios 
 #' and a ratio of reference. 
 #' Each elementary unit's value will be compared to a global value.
@@ -22,9 +22,9 @@
 #' # load data
 #' data("GrandParisMetropole")
 #' # compute absolute global deviation
-#' com$gdevabs <- generalDev(x = com, var1 = "INC", var2 = "TH", type = "abs")
+#' com$gdevabs <- gdev(x = com, var1 = "INC", var2 = "TH", type = "abs")
 #' # compute relative global deviation
-#' com$gdevrel <- generalDev(x = com, var1 = "INC", var2 = "TH", type = "rel")
+#' com$gdevrel <- gdev(x = com, var1 = "INC", var2 = "TH", type = "rel")
 #' 
 #' # Deviations maps
 #' if(require('cartography')){
@@ -56,7 +56,7 @@
 #'               author = "MTA")
 #' }
 #' @export
-generalDev <- function(x, var1, var2, type = "rel", ref = NULL){
+gdev <- function(x, var1, var2, type = "rel", ref = NULL){
   # test for NAs
   vtot <- row.names(x)
   x <- testNAdf(x = x, var1 = var1, var2 = var2)

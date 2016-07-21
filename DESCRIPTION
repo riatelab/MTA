@@ -22,7 +22,8 @@ Imports:
     igraph
 Suggests:
     cartography, 
-    knitr
+    knitr,
+    rmarkdown
 VignetteBuilder: knitr
 Encoding: UTF-8
 RoxygenNote: 5.0.1

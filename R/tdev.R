@@ -1,5 +1,5 @@
 #' @title Territorial Deviation
-#' @name territorialDev
+#' @name tdev
 #' @description This function computes the deviation between regional ratios 
 #' and ratios of an aggregated level.
 #' Each elementary unit's value will be compared to the value of the aggregated 
@@ -23,10 +23,10 @@
 #' # load dat
 #' data("GrandParisMetropole")
 #' # compute absolute territorial deviation (EPT level)
-#' com$tdevabs <- territorialDev(x = com, var1 = "INC", var2 = "TH", type = "abs", 
+#' com$tdevabs <- tdev(x = com, var1 = "INC", var2 = "TH", type = "abs", 
 #'                               key = "EPT")
 #' # compute relative territorial deviation (EPT level)
-#' com$tdevrel <- territorialDev(x = com, var1 = "INC", var2 = "TH", type = "rel", 
+#' com$tdevrel <- tdev(x = com, var1 = "INC", var2 = "TH", type = "rel", 
 #'                               key = "EPT")
 #' 
 #' # map deviations
@@ -57,7 +57,7 @@
 #'               author = "MTA")
 #' }
 #' @export
-territorialDev <- function(x, var1, var2, type = "rel", key){
+tdev <- function(x, var1, var2, type = "rel", key){
   # test for NAs
   vtot <- row.names(x)
   x <- testNAdf(x = x, var1 = var1, var2 = var2)

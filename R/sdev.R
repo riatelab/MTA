@@ -1,5 +1,5 @@
 #' @title Spatial Deviation
-#' @name spatialDev
+#' @name sdev
 #' @description This function computes the deviation between regional ratios and 
 #' local ratios. Local ratios are defined either by a contiguity order or by a 
 #' distance measure between regions.
@@ -36,21 +36,21 @@
 #' data("GrandParisMetropole")
 #' # compute absolute spatial deviation in a neighborhood defined by a contiguity 
 #' # order of 2.
-#' com$sdevabs <- spatialDev(x = com, var1 = "INC", var2 = "TH", 
+#' com$sdevabs <- sdev(x = com, var1 = "INC", var2 = "TH", 
 #'                           type = "abs", spdf = com.spdf, order = 2)
 #' 
 #' # compute relative spatial deviation in a neighborhood defined within a distance 
 #' # of 5km between communes' centroids 
-#' com$sdevrel <- spatialDev(x = com, var1 = "INC", var2 = "TH", type = "rel", 
+#' com$sdevrel <- sdev(x = com, var1 = "INC", var2 = "TH", type = "rel", 
 #'                           spdf = com.spdf, dist = 5000)
 #' 
 #' # compute absolute spatial deviation in a neighborhood defined within a road 
-#' # travel time of 5 minutes by car
-#' com$scardevabs <- spatialDev(x = com, var1 = "INC", var2 = "TH", type = "abs", 
+#' # travel time of 10 minutes by car
+#' com$scardevabs <- sdev(x = com, var1 = "INC", var2 = "TH", type = "abs", 
 #'                              spdf = com.spdf, dist = 10, mat = cardist)
 #' # compute relative spatial deviation in a neighborhood defined within a road 
-#' # travel time of 5 minutes by car
-#' com$scardevrel <- spatialDev(x = com, var1 = "INC", var2 = "TH", type = "rel", 
+#' # travel time of 10 minutes by car
+#' com$scardevrel <- sdev(x = com, var1 = "INC", var2 = "TH", type = "rel", 
 #'                              spdf = com.spdf, dist = 10, mat = cardist)
 #' 
 #' # map deviations
@@ -82,7 +82,7 @@
 #'               author = "MTA")
 #' }
 #' @export
-spatialDev <- function(x, var1, var2, type = "rel", spdf,
+sdev <- function(x, var1, var2, type = "rel", spdf,
                      order = NULL, dist = NULL, mat = NULL, 
                      spdfid = NULL, xid = NULL){
   

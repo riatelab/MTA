@@ -15,8 +15,8 @@
 #' redistributions based on the three deviations. 
 #' }
 #' 
-#' @references YSEBAERT R. (et al.), 2011, HyperAtlas, un outil scientifique au 
-#' service du débat politique - Application à la politique de cohésion de l’Union Européenne, congrès CIST, Collège International des Sciences du Territoire (Paris).
+#' @references GRASLAND C., YSEBAERT R., ZANIN C., LAMBERT N., Spatial disparities in Europe  (Chapter 4)  
+#' in GLOERSEN E., DUBOIS A. (coord.), 2007, Regional disparities and cohesion: What Strategies for the future?, DG-IPOL – European Parliament.
 #' 
 #' @docType package
 NULL

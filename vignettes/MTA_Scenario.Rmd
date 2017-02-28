@@ -6,7 +6,7 @@ output:
   rmarkdown::html_vignette: 
     toc: yes
 vignette: >
-  %\VignetteIndexEntry{MTA Scenario - Income Inequalities in the Metropolis of Greater Paris} 
+  %\VignetteIndexEntry{Scenario - Income Inequalities in the Metropolis of Greater Paris} 
   %\VignetteEngine{knitr::rmarkdown} 
   %\VignetteEncoding{UTF-8}
 ---
@@ -224,16 +224,6 @@ in the Western part of Paris and its suburbs.
 
 
 
-
-------------------------------------------------
-
-*J'ai lu jusque là.*  Après je n'ai que bossé sur le code. 
-
-------------------------------------------------
-
-
-
-
 # 4. Intoducing the MTA Functions
 
 ## 4.1 General, territorial and spatial deviations
@@ -293,7 +283,6 @@ This part proposes some graphical outputs helping to have an idea regarding ineq
 The code below takes in entry the numerator (INC) and the denominator (TH) and returns the global deviation indicators (relative and absolute). These indicators are afterwards associated with the input SpatialDataFrame (com.spdf) for displaying on map this deviation. 
 
 ````{r gdevrel_plot, fig.width=7, fig.height=5, warning = FALSE, cache = TRUE}
-dev.off()
 # general relative deviation
 com$gdevrel <- gdev(x = com, 
                     var1 = "INC", 
@@ -313,8 +302,8 @@ com$gdevabsmil <- com$gdevabs / 1000000
 par(mar = c(0,0,1.2,0))
 
 # Plot territories
-plot(com.spdf, col = "grey70", border="#EDEDED",lwd=0.25)
-plot(ept.spdf,border="#1A1A19",lwd=1,add=T)
+plot(com.spdf, col = "grey70", border = "#EDEDED", lwd = 0.25)
+plot(ept.spdf, border = "#1A1A19", lwd = 1, add = TRUE)
 
 # Global deviation (relative and absolute) cartography
 propSymbolsChoroLayer(spdf = com.spdf, df = com,legend.var.values.rnd = 4,
@@ -332,10 +321,6 @@ propSymbolsChoroLayer(spdf = com.spdf, df = com,legend.var.values.rnd = 4,
                       legend.var.title.txt = "Redistribution (Million euros)",
                       legend.var2.title.txt = "Deviation to the global context (100 = Metropole du Grand Paris average)",
                       legend.var.style = "e")
-
-
-
-
 
 layoutLayer(title = "Global deviation - Tax income per households",
             sources = "GEOFLA® 2015 v2.1, Apur, impots.gouv.fr",
@@ -422,17 +407,17 @@ The code below takes in entry the numerator (INC) and the denominator (TH) and r
 
 # Territorial relative deviation calculation
 com$mdevrel <- tdev(x = com, 
-                         var1 = "INC", 
-                         var2 = "TH", 
-                         type = "rel",
-                         key = "LIBEPT")
+                    var1 = "INC", 
+                    var2 = "TH", 
+                    type = "rel",
+                    key = "LIBEPT")
 
 # Territorial absolute deviation calculation
 com$mdevabs <- tdev(x = com, 
-                         var1 = "INC", 
-                         var2 = "TH", 
-                         type = "abs",
-                         key = "LIBEPT")
+                    var1 = "INC", 
+                    var2 = "TH", 
+                    type = "abs",
+                    key = "LIBEPT")
 
 # Territorial deviation in million Euros
 com$mdevabsmil <- com$mdevabs / 1000000
@@ -453,7 +438,7 @@ layoutLayer(title = "Territorial deviation - Tax income per households, 2013",
 
 # Plot territories
 plot(com.spdf, col = "grey70", border="#EDEDED",lwd=0.25,add=T)
-plot(ept.spdf,border="#1A1A19",lwd=1,add=T)
+plot(ept.spdf, border = "#1A1A19", lwd = 1, add = T)
 
 # Territorial deviation (relative and absolute) cartography
 propSymbolsChoroLayer(spdf = com.spdf, df = com,
@@ -567,24 +552,24 @@ par(mar=c(2,4,0,0))
 
 # Spatial relative deviation calculation
 com$ldevrel <- sdev(spdf = com.spdf,
-                        x = com,
-                        spdfid = "DEPCOM",
-                        xid = "DEPCOM",
-                        var1 = "INC",
-                        var2 = "TH",
-                        order = 1,
-                        type = "rel")
+                    x = com,
+                    spdfid = "DEPCOM",
+                    xid = "DEPCOM",
+                    var1 = "INC",
+                    var2 = "TH",
+                    order = 1,
+                    type = "rel")
 
 
 # Spatial absolute deviation calculation
 com$ldevabs <- sdev(spdf = com.spdf,
-                        x = com,
-                        spdfid = "DEPCOM",
-                        xid = "DEPCOM",
-                        var1 = "INC",
-                        var2 = "TH",
-                        order = 1,
-                        type = "abs")
+                    x = com,
+                    spdfid = "DEPCOM",
+                    xid = "DEPCOM",
+                    var1 = "INC",
+                    var2 = "TH",
+                    order = 1,
+                    type = "abs")
 
 # Spatial deviation in million Euros
 com$ldevabsmil <- com$ldevabs / 1000000
@@ -746,10 +731,10 @@ abline(h=0, col = "red")
 ab.standard <- com[res.standard < -seuil.standard | res.standard > +seuil.standard,]
 
 for (i in 1:nrow(ab.standard)){
-# Take the territorial units listing below and above the threshold
-communes <- row.names(ab.standard)[i]
-# Plot the residual names
-text(com[communes,"ldevrel"],res.standard[communes],communes,cex =0.5, pos=4)
+  # Take the territorial units listing below and above the threshold
+  communes <- row.names(ab.standard)[i]
+  # Plot the residual names
+  text(com[communes,"ldevrel"],res.standard[communes],communes,cex =0.5, pos=4)
 }
 
 abline (v = seq(50,200,10), col = "gray70", lwd = 0.25, lty = 3)
@@ -789,17 +774,17 @@ dfSpa <- data.frame(dist = seq(0,35000,by=500), ineq = NA)
 
 # Calculation of spatial deviations in absolute terms for all the distances retained
 spat <- function(x){
-    ldevabs <- sdev(spdf = com.spdf,
-                      x = com,
-                      spdfid = "DEPCOM",
-                      xid = "DEPCOM",
-                      var1 = "INC",
-                      var2 = "TH",
-                      dist = x[1],
-                      type = "abs")
+  ldevabs <- sdev(spdf = com.spdf,
+                  x = com,
+                  spdfid = "DEPCOM",
+                  xid = "DEPCOM",
+                  var1 = "INC",
+                  var2 = "TH",
+                  dist = x[1],
+                  type = "abs")
   
   ldevabspos <- ldevabs[ldevabs>0]
-sum(ldevabspos)
+  sum(ldevabspos)
 }
 
 dfSpa$ineq <- apply(dfSpa, 1, spat)
@@ -814,17 +799,17 @@ dfOrder <- data.frame(order = seq(0,20,by=1), ineq = NA)
 
 # Calculation of spatial deviations in absolute terms for all the contiguities retained
 spat <- function(x){
-    ldevabs <- sdev(spdf = com.spdf,
-                      x = com,
-                      spdfid = "DEPCOM",
-                      xid = "DEPCOM",
-                      var1 = "INC",
-                      var2 = "TH",
-                      order = x[1],
-                      type = "abs")
+  ldevabs <- sdev(spdf = com.spdf,
+                  x = com,
+                  spdfid = "DEPCOM",
+                  xid = "DEPCOM",
+                  var1 = "INC",
+                  var2 = "TH",
+                  order = x[1],
+                  type = "abs")
   
   ldevabspos <- ldevabs[ldevabs>0]
-sum(ldevabspos)
+  sum(ldevabspos)
 }
 
 dfOrder$ineq <- apply(dfOrder, 1, spat)
@@ -842,14 +827,14 @@ abline (v = seq(0,22000,1000), col = "gray30", lwd = 0.25)
 abline (h = seq(0,35,5), col = "#488b37", lwd = 0.25)
 lines(dfSpa$dist ~ dfSpa$ineq,type='b',col='#488b37',lwd=0.25, lty = 1, pch = 20)
 title(xlab = "Mass of numerator to redistribute required to reach the equilibrium (million Euros)")
-title(ylab="Neighbourhood: Euclidian distance (km)")
+mtext("Neighbourhood: Euclidian distance (km)", col = "#488b37", side = 2,line = 2)
 
 # Adding plot 2 : contiguity
 plot.window(xlim=c(0,22500),ylim=c(0,20),xaxs="i", yaxs="i")
 axis(4, col ='#7a378b')
 abline (h = seq(0,20,5), col = "#7a378b", lwd = 0.25, lty = 1)
 lines(dfOrder$order~dfOrder$ineq,type='b',col='#7a378b',lwd=0.25, lty = 1, pch = 20)
-mtext("Neighbourhood: Contiguity order", side = 4)
+mtext("Neighbourhood: Contiguity order", side = 4, col = "#7a378b")
 
 #title for the graph
 title(main="Numerator redistribution as regards to spatial and contiguity parameters")
@@ -898,8 +883,8 @@ par(mar=c(2,4,0,0))
 
 # Compute the synthesis DataFrame (relative deviations)
 mst <- mst(spdf = com.spdf, x = com, spdfid = "DEPCOM", xid = "DEPCOM",
-                        var1 = "INC", var2 = "TH", dist = NULL, key = "EPT", order = 1,
-                        mat = NULL, threshold = 125, superior = TRUE) 
+           var1 = "INC", var2 = "TH", dist = NULL, key = "EPT", order = 1,
+           mat = NULL, threshold = 125, superior = TRUE) 
 
 # Plot layout
 par(mfrow = c(1,1), mar = c(0,0,1.2,0))       
@@ -914,22 +899,23 @@ layoutLayer(title = "Synthesis / 3 contexts - Tax income per households, 2013",
             south = FALSE,
             extent = com.spdf)
 
+# Colours Typology and legend layout
+colours <- c("#f0f0f0", "#fdc785","#ffffab","#fba9b0",
+             "#addea6","#ffa100","#fff226","#e30020")
+
+
 # Plot typology map 
 typoLayer(spdf = com.spdf, df = mst, var = "mst",
           add = TRUE, 
           border = "#D9D9D9",
-          lwd=0.25,
-          col = levels(mst$colours),
+          lwd=0.25,legend.values.order = 0:7, 
+          col = colours,
           legend.pos = "n")
 
 # Plot territorial level
 plot(ept.spdf,border="#252525",lwd=0.5,add=T)
 
 # Plot the legend
-# Colours Typology and legend layout
-colours <- c("#f0f0f0", "#fdc785","#ffffab","#fba9b0",
-             "#addea6","#ffa100","#fff226","#e30020")
-
 rVal<-c(" .   .   . ","[X]  .   . ",
         " .  [X]  . ","[X] [X]  . ",
         " .   .  [X]","[X]  .  [X]",
@@ -947,29 +933,27 @@ More precisely (extract of the tables below), 11 communes are characterised by a
 
 8 communes can be considered as "locally" advantaged (index above 125% only in a spatial context and/or in a spatial and a territorial context, coloured in green and yellow). These local poles of wealth are mainly located in the periphery of the MGP area (Le Raincy, Rungis, Coubron, etc), closed to poorer communes. 
 
-````{r synthesis125_class7, fig.width=7, fig.height=5, warning = FALSE, cache = TRUE, eval = FALSE}
+````{r synthesis125_class7, fig.width=7, fig.height=5, warning = FALSE, cache = TRUE, eval = TRUE}
 # Communes in favorable situation for the three contexts
-subset(mst, mst == 7, select = c(gdevrel, mdevrel, ldevrel, mst))
-
+subset(mst, mst == 7, select = c(gdevrel, tdevrel, sdevrel, mst))
 # Communes in favorable situation in a global context or in a global and in an territorial contexts
-subset(mst, mst == 1 | mst == 3, select = c(gdevrel, mdevrel, ldevrel, mst))
-
+subset(mst, mst == 1 | mst == 3, select = c(gdevrel, tdevrel, sdevrel, mst))
 # Communes in favorable situation in a spatial context or in a spatial and a territorial context 
-subset(mst,  mst == 4 | mst == 6, select = c(gdevrel, mdevrel, ldevrel, mst))
+subset(mst,  mst == 4 | mst == 6, select = c(gdevrel, tdevrel, sdevrel, mst))
 ````
 
 ### 8.1.2 Communes in lagging situation
 
 The second step consists in analysing the reverse situation: the communes in lagging situation for this indicator. Thus, the mst function takes '80' for the threshold argument and 'FALSE' for the superior argument. This typology will specify the communes situated below 20% of the average for the global and/or the territorial and/or the spatial contexts.  
 
-````{r synthesislow, fig.width=7, fig.height=5, warning = FALSE, cache = TRUE, eval = FALSE}
+````{r synthesislow, fig.width=7, fig.height=5, warning = FALSE, cache = TRUE, eval = TRUE}
 
 par(mar=c(2,4,0,0))
 
 # Compute the synthesis DataFrame (relative deviations)
 mst <- mst(spdf = com.spdf, x = com, spdfid = "DEPCOM", xid = "DEPCOM",
-                        var1 = "INC", var2 = "TH", dist = NULL, key = "EPT", order = 1,
-                        mat = NULL, threshold = 80, superior = FALSE) 
+           var1 = "INC", var2 = "TH", dist = NULL, key = "EPT", order = 1,
+           mat = NULL, threshold = 80, superior = FALSE) 
 
 # Plot layout
 par(mfrow = c(1,1), mar = c(0,0,1.2,0))
@@ -984,22 +968,23 @@ layoutLayer(title = "Synthesis / 3 contexts - Tax income per households, 2013",
             south = FALSE,
             extent = com.spdf)
 
+# Colours Typology and legend layout
+colours <- c("#f0f0f0", "#fdc785","#ffffab","#fba9b0",
+             "#addea6","#ffa100","#fff226","#e30020")
+
 # Plot typology map 
-typoLayer(spdf = com.spdf, df = mst, var = "colours",
+typoLayer(spdf = com.spdf, df = mst, var = "mst",
           add = TRUE, 
           border = "#D9D9D9",
           lwd=0.25,
-          col = levels(mst$colours),
+          col = colours,
+          legend.values.order = 0:7,
           legend.pos = "n")
 
 # Plot territorial level
 plot(ept.spdf,border="#252525",lwd=0.5,add=T)
 
 # Plot the legend
-# Colours Typology and legend layout
-colours <- c("#f0f0f0", "#fdc785","#ffffab","#fba9b0",
-             "#addea6","#ffa100","#fff226","#e30020")
-
 rVal<-c(" .   .   . ","[X]  .   . ",
         " .  [X]  . ","[X] [X]  . ",
         " .   .  [X]","[X]  .  [X]",
@@ -1018,16 +1003,16 @@ Most of the communes of Seine-Saint-Denis and Val-de-Marne are characterised by 
 
 4 communes are characterised by low indexes in a local context, but not in a global one. It corresponds to the communes located in the immediate neighourhood of the wealthiest communes of the MGP (classes 4 and 6, in green and yellow): Paris 15e arrondissement, Suresnes, Puteaux and in a less extent Malakoff. 
 
-````{r synthesis80_class7, fig.width=7, fig.height=5, warning = FALSE, cache = TRUE, eval = FALSE}
+````{r synthesis80_class7, fig.width=7, fig.height=5, warning = FALSE, cache = TRUE, eval = TRUE}
 
 # Communes in lagging situation for the three contexts
-subset(mst, mst == 7, select = c(gdevrel, mdevrel, ldevrel, mst))
+subset(mst, mst == 7, select = c(gdevrel, tdevrel, sdevrel, mst))
 
-# Communes in favorable situation in a global context or in a global and in an territorial contexts
-subset(mst, mst == 1 | mst == 3, select = c(gdevrel, mdevrel, ldevrel, mst))
+# Communes in lagging situation in a global context or in a global and in an territorial contexts
+subset(mst, mst == 1 | mst == 3, select = c(gdevrel, tdevrel, sdevrel, mst))
 
-# Communes in favorable situation in a spatial context or in a spatial and a territorial context 
-subset(mst,  mst == 4 | mst == 6, select = c(gdevrel, mdevrel, ldevrel, mst))
+# Communes in lagging situation in a spatial context or in a spatial and a territorial context 
+subset(mst,  mst == 4 | mst == 6, select = c(gdevrel, tdevrel, sdevrel, mst))
 ````
 
 
@@ -1035,12 +1020,12 @@ subset(mst,  mst == 4 | mst == 6, select = c(gdevrel, mdevrel, ldevrel, mst))
 
 The synthesisAbs function takes in entry all requested parameters to compute the three deviations, as specified above. It returns a dataframe summarizing the values of absolute deviations, e.g. how much should be retributed from the poorest to the wealthiest territorial units to ensure a perfect equilibrium of the ratio for the three contexts. Results are expressed both in absolute values (mass of numerator, amount of tax reference in Euros in this case) and as a share of the numerator (x % of the numerator that should be redistributed).  
 
-````{r synthesisabs, fig.width=7, fig.height=5, warning = FALSE, cache = TRUE, eval = FALSE}
+````{r synthesisabs, fig.width=7, fig.height=5, warning = FALSE, cache = TRUE, eval = TRUE}
 
 # Compute the synthesis DataFrame (absolute deviations)
 mas(spdf = com.spdf, x = com, spdfid = "DEPCOM", xid = "DEPCOM",
-                        var1 = "INC", var2 = "TH", dist = NULL, key = "EPT", order = 1,
-                        mat = NULL) 
+    var1 = "INC", var2 = "TH", dist = NULL, key = "EPT", order = 1,
+    mat = NULL) 
 ````
 
 For the MGP area, it is 22 billion Euros that should be redistributed from the communes in favorable situation to the communes in lagging situation. It corresponds to 16.3 % of the total mass of income declared to the taxes. If a policy option consists in ensuring a reequilibrium at an intermediate territorial level, such as the Etablissements Publics Territoriaux, it is 15 billion Euros that should be transfered (11.6 % of the income mass). If a solution chosen consists in limiting territorial discontinuities in a local context (avoid local poles of wealth or of poverty), it is 10 billion Euros that should be redistribued (7.9 % of the income mass). Ensuring an equilibrium of income in these three territorial contexts are obvioulsy not credible policy options, but it gives some references to monitor the magnitude of territorial inequalities existing in a given study area.   
@@ -1062,5 +1047,3 @@ That being said, MTA analysis provide a useful methodological base to explore se
 * Simulation of policy options: it is quite frequent that indicators constitute a basis for implementing policy measures to reduce territorial disparities. The case of the regional policy of the EU is a good example taking into account that most of the funding goes to regions below the statistical threshold of 75 % of the average of the European Union for the GDP per capita criteria at NUTS2 level. The functionalities of the MTA package allow in that perspective to simulate quickly the consequences of the use of several alternatives for guiding the funds allocation.
 
 * Highlight contradictions: the fact that MTA functionalities are based on 3 possible measures of territorial inequalities (general, territorial, spatial deviations) leads the analyst or the policy maker to think about several theories regarding the governance of territorial inequalities. A territorial unit situated in a lagging situation at general level and in a favourable situation at local level must not be considered in the same way than a territorial unit characterised by a lagging situation both at general and local levels.   
-
-

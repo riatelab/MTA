@@ -20,7 +20,7 @@
 #' moved to obtain the ratio of the aggregated level on all belonging units. 
 #' @return A vector is returned.
 #' @examples
-#' # load dat
+#' # load data
 #' data("GrandParisMetropole")
 #' # compute absolute territorial deviation (EPT level)
 #' com$tdevabs <- tdev(x = com, var1 = "INC", var2 = "TH", type = "abs", 
@@ -40,12 +40,12 @@
 #'                     pal2 = "wine.pal", n2 = 3)
 #'   # plot a choropleth map of the relative territorial deviation
 #'   choroLayer(spdf = com.spdf, df = com, var = "tdevrel",
-#'              legend.pos = "topright",
+#'              legend.pos = "topleft",
 #'              breaks = bks, border = NA,
 #'              col = cols)
 #'   # add symbols proportional to the absolute territorial deviation
 #'   propSymbolsLayer(spdf = com.spdf, df = com, var = "tdevabs",
-#'                    legend.pos = "right",legend.values.rnd = -5,
+#'                    legend.pos = "left",legend.values.rnd = -5,
 #'                    col = "#ff000050",col2 = "#0000ff50",
 #'                    legend.style = "c", inches = 0.2,
 #'                    breakval = 0)

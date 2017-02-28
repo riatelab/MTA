@@ -17,4 +17,3 @@ Row names and column names match the DEPCOM field in \link{com}.
 data(GrandParisMetropole)
 cardist[1:10,1:10]
 }
-

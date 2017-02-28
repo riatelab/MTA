@@ -712,7 +712,7 @@ The output of the linear model of spatial autocorrelation reveals that the hypot
 
 More empirically, the chart can also be used to examine the situation of outliers and exceptional units out of the cloud of points. The code below takes in entry the statistical residuals of the spatial autocorrelation calculated in the previous section. Then the residuals are standardised. The code returns a plot displaying the standardised residuals according to the value of the local deviation. Exceptional values (calculated using the T-Student value) are labeled on the resulting plot. 
 
-````{r spat_autocorr_residuals_plot, fig.width=7, fig.height=5, warning = FALSE, cache = TRUE, fig.align = 'center'}
+````{r spat_autocor_res_plt, fig.width=7, fig.height=5, warning = FALSE, cache = TRUE, fig.align = 'center'}
 
 par(cex.lab=1)
 par(cex.axis=0.75)

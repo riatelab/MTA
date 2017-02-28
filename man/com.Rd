@@ -27,4 +27,3 @@ Data on the Grand Paris Metropole communes.
 data(GrandParisMetropole)
 head(com)
 }
-

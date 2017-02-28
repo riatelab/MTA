@@ -20,4 +20,3 @@ EPTs (Etablissements Publics Territoriaux) are groups of communes.\cr
 data(GrandParisMetropole)
 sp::plot(ept.spdf)
 }
-

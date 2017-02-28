@@ -21,4 +21,3 @@ SpatialPolygonsDataFrame of the Grand Paris Metropole communes.\cr
 data(GrandParisMetropole)
 sp::plot(com.spdf)
 }
-

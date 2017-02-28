@@ -15,8 +15,8 @@
 #' redistributions based on the three deviations. 
 #' }
 #' 
-#' @references RONNNNNAAAAAANNNNN, A Great Paper Made With Love,
-#' \emph{and in English}, 2023
+#' @references YSEBAERT R. (et al.), 2011, HyperAtlas, un outil scientifique au 
+#' service du débat politique - Application à la politique de cohésion de l’Union Européenne, congrès CIST, Collège International des Sciences du Territoire (Paris).
 #' 
 #' @docType package
 NULL

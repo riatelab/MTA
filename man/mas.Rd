@@ -58,4 +58,3 @@ redistr <- mas(spdf = com.spdf,
                        mat = NULL)
 redistr
 }
-

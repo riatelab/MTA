@@ -41,12 +41,13 @@
 #'              breaks = bks, border = NA,
 #'              col = cols)
 #'   # add symbols proportional to the absolute general deviation
-#'   propSymbolsLayer(spdf = com.spdf, df = com, var = "gdevabs",
-#'                    legend.pos = "left",legend.values.rnd = -2,
-#'                    legend.title.txt = "Absolute Deviation",
-#'                    col = "#ff000050",col2 = "#0000ff50",
-#'                    legend.style = "e", inches = 0.2,
-#'                    breakval = 0)
+#'   com$sign <- ifelse(test = com$gdevabs<0, yes = "negative", no = "positive")
+#'   propSymbolsTypoLayer(spdf = com.spdf, df = com, var = "gdevabs",var2 = "sign",
+#'                        legend.var.pos = "left",legend.values.rnd = -2, 
+#'                        legend.var2.values.order = c("positive", "negative"),
+#'                        legend.var.title.txt = "Absolute Deviation",
+#'                        col = c("#ff000050","#0000ff50"),legend.var2.pos = "n",
+#'                        legend.var.style = "e", inches = 0.2)
 #'   # add EPT boundaries
 #'   plot(ept.spdf, add=TRUE)
 #'   # add a layout

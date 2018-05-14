@@ -55,6 +55,7 @@
 #' 
 #' # map deviations
 #' if(require('cartography')){
+#'   library(sp)
 #'   # set graphical parameters
 #'   par(mar = c(0,0,1.2,0))
 #'   # set breaks

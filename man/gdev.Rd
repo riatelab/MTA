@@ -45,6 +45,7 @@ com$gdevrel <- gdev(x = com, var1 = "INC", var2 = "TH", type = "rel")
 
 # Deviations maps
 if(require('cartography')){
+  library(sp)
   # set graphical parameters
   par(mar = c(0,0,1.2,0))
   # set breaks

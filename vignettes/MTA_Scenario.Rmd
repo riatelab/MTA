@@ -43,6 +43,7 @@ We use 2 additional and complementary packages in this vignette: **cartography**
 # load packages
 library(MTA)
 library(cartography)
+library(sp)
 library(ineq)
 library(reshape2)
 

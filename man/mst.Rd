@@ -76,6 +76,7 @@ synthesis <- mst(spdf = com.spdf,
                         superior = TRUE)
 
 if(require('cartography')){
+  library(sp)
   par(mar = c(0,0,1.2,0))
   typoLayer(spdf = com.spdf, df = synthesis, var = "mst",
             border = "#D9D9D9",legend.values.order = 0:7, 

@@ -64,7 +64,7 @@ The originality of the methodology proposed by the HyperCarte research group is 
 ## Teams involvled in the HyperCarte Research Group
 The HyperCarte Research Group was founded in 1996 and has provided the main conceptual outputs proposed in this MTA package. It groups 4 research teams from Paris (RIATE and Géographie-cités) and Grenoble (STeamer and Mescal):
 
-* **[UMS RIATE (UMS 2414)](http://www.ums-riate.fr/Webriate/ "UMS RIATE Website")**: a team of engineers/geographers specialised in spatial analysis, cartography, tools development and database processing in the thematic field of European spatial planning. It is the team who as created the MTA package and is in charge of its maintenance. 
+* **[UMS RIATE (UMS 2414)](http://riate.cnrs.fr "UMS RIATE Website")**: a team of engineers/geographers specialised in spatial analysis, cartography, tools development and database processing in the thematic field of European spatial planning. It is the team who as created the MTA package and is in charge of its maintenance. 
 
 * **[UMR Géographie-cités (UMR 8504)](http://www.parisgeo.cnrs.fr/ "Geographie-cités Website")**: a team of researchers/geographers in the field of spatial analysis in the field of social phenomena.
 

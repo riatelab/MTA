@@ -72,7 +72,7 @@ propSymbolsTypoLayer(com, var = "tdevabs",var2 = "sign",
 plot(st_geometry(ept), add=TRUE)
 # add a layout
 layoutLayer(title = "Territorial Deviation (reference : EPT)",
-            sources = "GEOFLAÂ® 2015 v2.1, Apur, impots.gouv.fr",
+            sources = "GEOFLA® 2015 v2.1, Apur, impots.gouv.fr",
             north = TRUE, scale = 5, tabtitle = TRUE, frame = FALSE, theme = "red.pal",
             author = "MTA")
 }

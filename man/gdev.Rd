@@ -71,7 +71,7 @@ propSymbolsTypoLayer(x = com, var = "gdevabs",var2 = "sign",
 plot(st_geometry(ept), add=TRUE)
 # add a layout
 layoutLayer(title = "General Deviation (reference: Grand Paris Metropole)",
-            sources = "GEOFLAÂ® 2015 v2.1, Apur, impots.gouv.fr",
+            sources = "GEOFLA® 2015 v2.1, Apur, impots.gouv.fr",
             north = TRUE, scale = 5, tabtitle = TRUE, frame = FALSE, theme = "red.pal",
             author = "MTA")
 }

@@ -77,7 +77,7 @@ synthesis <- mapmst(x = com, var1 = "INC", var2 = "TH", key = "EPT",
                     order = 1,threshold = 125, superior = TRUE)
 # add a layout and adapted legend
 layoutLayer(title = "Multiscalar synthesis - Income per household 2013",
-            sources = "GEOFLAÂ® 2015 v2.1, Apur, impots.gouv.fr",
+            sources = "GEOFLA® 2015 v2.1, Apur, impots.gouv.fr",
             north = TRUE, scale = 5, tabtitle = TRUE, frame = FALSE, theme = "red.pal",
             author = "MTA
 100: Deviation average
@@ -95,7 +95,7 @@ synthesis <- mapmst(x = com, var1 = "INC", var2 = "TH", key = "EPT",
                     order = 1,threshold = 75, superior = FALSE)
 # add a layout
 layoutLayer(title = "Multiscalar synthesis - Income per household 2013",
-            sources = "GEOFLAÂ® 2015 v2.1, Apur, impots.gouv.fr",
+            sources = "GEOFLA® 2015 v2.1, Apur, impots.gouv.fr",
             north = TRUE, scale = 5, tabtitle = TRUE, frame = FALSE, theme = "red.pal",
             author = "MTA
 100: Deviation average

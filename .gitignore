@@ -5,3 +5,4 @@
 vignettes/*.html
 vignettes/*.pdf
 inst/doc
+vignettes/*_cache/

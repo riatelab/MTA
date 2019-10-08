@@ -93,7 +93,7 @@ propSymbolsTypoLayer(x = com, var = "scardevabs",var2 = "sign",
 plot(st_geometry(ept), add=TRUE)
 # add a layout
 layoutLayer(title = "Spatial Deviation (neighbourhoud : 10 minutes by car)",
-            sources = "GEOFLAÂ® 2015 v2.1, Apur, impots.gouv.fr",
+            sources = "GEOFLA® 2015 v2.1, Apur, impots.gouv.fr",
             north = TRUE, scale = 5, tabtitle = TRUE, frame = FALSE, theme = "red.pal",
             author = "MTA")
 }

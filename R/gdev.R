@@ -2,10 +2,11 @@
 #' @name gdev
 #' @description Compute the deviation of each territorial unit as regards  
 #' to all the study area (or a reference value). 
-#' @param x a dataframe, a sf object or a SpatialPolygonsDataFrame including var1 and var2.   
+#' @param x a data.frame, an sf object or a SpatialPolygonsDataFrame, including 
+#' var1 and var2.   
 #' @param var1 name of the numerator variable in x.
 #' @param var2 name of the denominator variable in x.
-#' @param ref ratio of reference; if empty, the ratio of reference is the one of 
+#' @param ref ratio of reference; if NULL, the ratio of reference is the one of 
 #' the whole study area (\code{sum(var1) / sum(var2)}).
 #' @param type type of deviation; "rel" for relative deviation, "abs" for 
 #' absolute deviation (see Details).
@@ -25,7 +26,7 @@
 #' data("GrandParisMetropole")
 #' 
 #' # compute absolute global deviation
-#' com$gdevabs <- gdev(x = com, var1 = "INC", var2 = "TH", type = "abs", ref = 30000)
+#' com$gdevabs <- gdev(x = com, var1 = "INC", var2 = "TH", type = "abs")
 #' # compute relative global deviation
 #' com$gdevrel <- gdev(x = com, var1 = "INC", var2 = "TH", type = "rel")
 #' 
@@ -59,22 +60,23 @@
 #'             north = TRUE, scale = 5, tabtitle = TRUE, frame = FALSE, theme = "red.pal",
 #'             author = "MTA")
 #' @export
-gdev <- function(x, var1, var2, type = "rel", ref){
+gdev <- function(x, var1, var2, type = "rel", ref = NULL){
   
   # convert to dataframe
-  if (unlist(class(x)[1]) == "sf"){
+  if (methods::is(x, "sf")){
     x <- st_set_geometry(x, NULL)
   }
-  if (unlist(class(x)[1]) == "SpatialPolygonsDataFrame"){
+  if (methods::is(x, "Spatial")){
     x <- x@data
   }
   
+  # test for NAs
   vtot <- row.names(x)
   x <- testNAdf(x = x, var1 = var1, var2 = var2)
   vpar <- row.names(x)
 
   # no ref value
-  if (missing(ref)){
+  if (is.null(ref)){
     ref <- sum(x[,var1]) / sum(x[,var2])
   }
   # relative deviation

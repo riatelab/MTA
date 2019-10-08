@@ -4,10 +4,11 @@
 \alias{gdev}
 \title{General Deviation}
 \usage{
-gdev(x, var1, var2, type = "rel", ref)
+gdev(x, var1, var2, type = "rel", ref = NULL)
 }
 \arguments{
-\item{x}{a dataframe, a sf object or a SpatialPolygonsDataFrame including var1 and var2.}
+\item{x}{a data.frame, an sf object or a SpatialPolygonsDataFrame, including 
+var1 and var2.}
 
 \item{var1}{name of the numerator variable in x.}
 
@@ -16,7 +17,7 @@ gdev(x, var1, var2, type = "rel", ref)
 \item{type}{type of deviation; "rel" for relative deviation, "abs" for 
 absolute deviation (see Details).}
 
-\item{ref}{ratio of reference; if empty, the ratio of reference is the one of 
+\item{ref}{ratio of reference; if NULL, the ratio of reference is the one of 
 the whole study area (\code{sum(var1) / sum(var2)}).}
 }
 \value{
@@ -41,7 +42,7 @@ library(cartography)
 data("GrandParisMetropole")
 
 # compute absolute global deviation
-com$gdevabs <- gdev(x = com, var1 = "INC", var2 = "TH", type = "abs", ref = 30000)
+com$gdevabs <- gdev(x = com, var1 = "INC", var2 = "TH", type = "abs")
 # compute relative global deviation
 com$gdevrel <- gdev(x = com, var1 = "INC", var2 = "TH", type = "rel")
 

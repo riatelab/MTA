@@ -6,7 +6,7 @@
 #' var1 and var2.   
 #' @param var1 name of the numerator variable in x.
 #' @param var2 name of the denominator variable in x.
-#' @param ref ratio of reference; if NULL, the ratio of reference is the one of 
+#' @param ref ratio of reference; if missing, the ratio of reference is the one of 
 #' the whole study area (\code{sum(var1) / sum(var2)}).
 #' @param type type of deviation; "rel" for relative deviation, "abs" for 
 #' absolute deviation (see Details).
@@ -60,7 +60,7 @@
 #'             north = TRUE, scale = 5, tabtitle = TRUE, frame = FALSE, theme = "red.pal",
 #'             author = "MTA")
 #' @export
-gdev <- function(x, var1, var2, type = "rel", ref = NULL){
+gdev <- function(x, var1, var2, type = "rel", ref){
   
   # convert to dataframe
   if (methods::is(x, "sf")){
@@ -76,7 +76,7 @@ gdev <- function(x, var1, var2, type = "rel", ref = NULL){
   vpar <- row.names(x)
 
   # no ref value
-  if (is.null(ref)){
+  if (missing(ref)){
     ref <- sum(x[,var1]) / sum(x[,var2])
   }
   # relative deviation

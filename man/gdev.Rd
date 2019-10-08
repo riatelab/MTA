@@ -4,7 +4,7 @@
 \alias{gdev}
 \title{General Deviation}
 \usage{
-gdev(x, var1, var2, type = "rel", ref = NULL)
+gdev(x, var1, var2, type = "rel", ref)
 }
 \arguments{
 \item{x}{a data.frame, an sf object or a SpatialPolygonsDataFrame, including 
@@ -17,7 +17,7 @@ var1 and var2.}
 \item{type}{type of deviation; "rel" for relative deviation, "abs" for 
 absolute deviation (see Details).}
 
-\item{ref}{ratio of reference; if NULL, the ratio of reference is the one of 
+\item{ref}{ratio of reference; if missing, the ratio of reference is the one of 
 the whole study area (\code{sum(var1) / sum(var2)}).}
 }
 \value{

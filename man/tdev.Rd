@@ -7,8 +7,8 @@
 tdev(x, var1, var2, type = "rel", key)
 }
 \arguments{
-\item{x}{a dataframe, a sf object or a SpatialPolygonsDataFrame including var1
-and var2, and an aggregation key field (territorial belonging).}
+\item{x}{a dataframe, an sf object or a SpatialPolygonsDataFrame including 
+var1 and var2, and an aggregation key field (territorial belonging).}
 
 \item{var1}{name of the numerator variable in x.}
 
@@ -17,7 +17,8 @@ and var2, and an aggregation key field (territorial belonging).}
 \item{type}{type of deviation; "rel" for relative deviation, "abs" for 
 absolute deviation (see Details).}
 
-\item{key}{aggregation key field for measuring the deviation (intermediate territorial level).}
+\item{key}{aggregation key field for measuring the deviation (intermediate 
+territorial level).}
 }
 \value{
 A vector is returned.
@@ -42,9 +43,11 @@ library(cartography)
 data("GrandParisMetropole")
 
 # compute absolute territorial deviation (EPT level)
-com$tdevabs <- tdev(x = com, var1 = "INC", var2 = "TH", type = "abs", key = "EPT")
+com$tdevabs <- tdev(x = com, var1 = "INC", var2 = "TH", type = "abs", 
+                    key = "EPT")
 # compute relative territorial deviation (EPT level)
-com$tdevrel <- tdev(x = com, var1 = "INC", var2 = "TH", type = "rel", key = "EPT")
+com$tdevrel <- tdev(x = com, var1 = "INC", var2 = "TH", type = "rel", 
+                    key = "EPT")
 
 # map deviations
 # set graphical parameters
@@ -61,12 +64,12 @@ choroLayer(x = com, var = "tdevrel",
            legend.title.txt = "Relative Deviation\\n(100 = territorial average)",
            col = cols)
 # add symbols proportional to the absolute territorial deviation
-com$sign <- ifelse(test = com$tdevabs<0, yes = "negative", no = "positive")
-propSymbolsTypoLayer(com, var = "tdevabs",var2 = "sign",
-                     legend.var.pos = "left",legend.values.rnd = -2,
+com$sign <- ifelse(test = com$tdevabs < 0, yes = "negative", no = "positive")
+propSymbolsTypoLayer(com, var = "tdevabs", var2 = "sign",
+                     legend.var.pos = "left", legend.values.rnd = -2,
                      legend.var2.values.order = c("positive", "negative"),
                      legend.var.title.txt = "Absolute Deviation\\n(Income redistribution)",
-                     col = c("#ff000050","#0000ff50"),legend.var2.pos = "n",
+                     col = c("#ff000050","#0000ff50"), legend.var2.pos = "n",
                      legend.var.style = "e", inches = 0.2)
 # add EPT boundaries
 plot(st_geometry(ept), add=TRUE)

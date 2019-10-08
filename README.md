@@ -22,7 +22,7 @@ install.packages("MTA")
 
 * Development version on GitHub
 ```{r}
-require(devtools)
+require(remotes)
 install_github("riatelab/MTA")
 ```
 

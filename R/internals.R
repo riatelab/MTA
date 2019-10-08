@@ -33,7 +33,7 @@ distanceMat <- function(x, xid){
   class(x) <- setdiff(class(x),"units")
   return(x)  
 }
-
+?setdiff
 
 
 #' @title Local Divergence
@@ -47,13 +47,13 @@ distanceMat <- function(x, xid){
 #' @return A vector of divergence is outputed
 #' @noRd
 ### BE CAREFUL / CHANGE
-locmat <-function(mat, x, var1, var2, type){
-  if (unlist(class(x)[1]) == "sf"){
-    x <- st_set_geometry(x, NULL)
-  }
-  if (unlist(class(x)[1]) == "SpatialPolygonsDataFrame"){
-    x <- x@data
-  }
+locmat <- function(mat, x, var1, var2, type){
+  # if (unlist(class(x)[1]) == "sf"){
+  #   x <- st_set_geometry(x, NULL)
+  # }
+  # if (unlist(class(x)[1]) == "SpatialPolygonsDataFrame"){
+  #   x <- x@data
+  # }
   mvar1 <- mat * x[,var1]
   mvar2 <- mat * x[,var2]
   if (type == "rel"){

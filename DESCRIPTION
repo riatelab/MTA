@@ -15,6 +15,7 @@ LazyData: true
 Depends:
     R (>= 3.5)
 Imports:
+    methods,
     stats,
     sp,
     igraph,

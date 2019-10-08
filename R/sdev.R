@@ -83,7 +83,7 @@ sdev <- function(x, var1, var2, type = "rel", xid,
                  order, dist, mat){
   
   # convert to sf object
-  if (unlist(class(x)[1]) == "SpatialPolygonsDataFrame"){
+  if (methods::is(x, "Spatial")){
     x <- st_as_sf(x)
   }
   

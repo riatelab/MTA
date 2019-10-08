@@ -370,7 +370,7 @@ plot(Lc(com$INC, com$TH),
 )
 
 # Inequality indexes (Gini, standard deviation and cofficient of variation)
-Gini(com$INC, com$TH)
+Gini(com$ratio)
 sd(com$ratio, na.rm=TRUE)
 sd(com$ratio, na.rm = TRUE)/mean(com$ratio, na.rm = TRUE) * 100
 ````

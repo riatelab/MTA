@@ -6,18 +6,19 @@
 \alias{MTA-package}
 \title{Multiscalar Territorial Analysis}
 \description{
-Build multiscalar territorial analysis based on various contexts. \cr
+Build multiscalar territorial analysis based on various contexts for a given ratio defined by a numerator and a denominator.\cr
 Main functions : 
 \itemize{
-\item{\code{\link{gdev}}: general deviation between regional ratios and a 
-ratio of reference.}
-\item{\code{\link{tdev}}: territorial deviation between regional ratios and 
-ratios of an aggregated level.}
-\item{\code{\link{sdev}}}: spatial deviation between regional ratios and ratios
-of neigborhing regions.
+\item{\code{\link{gdev}}: general deviation of each territorial unit as regards  
+to all the study area (or a reference value).}
+\item{\code{\link{tdev}}: territorial deviation of each territorial unit as regards  
+to an intermediate territorial level of reference.}
+\item{\code{\link{sdev}}}: spatial deviation of each territorial unit as regards  
+to its geographical neighbourhood.
 \item{\code{\link{mst}}}: multiscalar typology based on the three deviations.
 \item{\code{\link{mas}}}: multiscalar absolute synthesis, total amount of 
 redistributions based on the three deviations. 
+\item{\code{\link{mapmst}}}: multiscalar typology map. 
 }
 }
 \references{

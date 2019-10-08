@@ -11,6 +11,7 @@
 - sdev: spatial deviation between regional ratios and ratios of neigborhing regions.  
 - mst: multiscalar typology based on the three deviations.  
 - mas: multiscalar absolute synthesis, total amount of redistributions based on the three deviations.  
+- mapmst : map multiscalar typology synthesis according to the three deviations. 
 
 ## Installation
 

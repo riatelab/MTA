@@ -1,18 +1,19 @@
 #' @title Multiscalar Territorial Analysis
 #' @name MTA
 #' @description 
-#' Build multiscalar territorial analysis based on various contexts. \cr
+#' Build multiscalar territorial analysis based on various contexts for a given ratio defined by a numerator and a denominator.\cr
 #' Main functions : 
 #' \itemize{
-#' \item{\code{\link{gdev}}: general deviation between regional ratios and a 
-#' ratio of reference.}
-#' \item{\code{\link{tdev}}: territorial deviation between regional ratios and 
-#' ratios of an aggregated level.}
-#' \item{\code{\link{sdev}}}: spatial deviation between regional ratios and ratios
-#' of neigborhing regions.
+#' \item{\code{\link{gdev}}: general deviation of each territorial unit as regards  
+#' to all the study area (or a reference value).}
+#' \item{\code{\link{tdev}}: territorial deviation of each territorial unit as regards  
+#' to an intermediate territorial level of reference.}
+#' \item{\code{\link{sdev}}}: spatial deviation of each territorial unit as regards  
+#' to its geographical neighbourhood.
 #' \item{\code{\link{mst}}}: multiscalar typology based on the three deviations.
 #' \item{\code{\link{mas}}}: multiscalar absolute synthesis, total amount of 
 #' redistributions based on the three deviations. 
+#' \item{\code{\link{mapmst}}}: multiscalar typology map. 
 #' }
 #' 
 #' @references GRASLAND C., YSEBAERT R., ZANIN C., LAMBERT N., Spatial disparities in Europe  (Chapter 4)  
@@ -22,29 +23,10 @@
 NULL
 
 
-#' @title Grand Paris Metropole Communes SpatialPolygonsDataFrame
-#' @name com.spdf
-#' @description SpatialPolygonsDataFrame of the Grand Paris Metropole communes.\cr 
-#' @format 
-#' \describe{
-#' \item{DEPCOM}{Commune identifiers}
-#' }
-#' @source 
-#' Institut national de l’information géographique et forestière (IGN), GEOFLA® 
-#' 2015 v2.1 Communes France Métropolitaine: \cr
-#' \url{http://professionnels.ign.fr/geofla}\cr
-#' Atelier parisien d'urbanisme, Grand Paris communal composition (2015-12-17):\cr
-#' \url{http://www.apur.org/article/composition-12-territoires-metropole-grand-paris}
-#' @docType data
-#' @examples
-#' data(GrandParisMetropole)
-#' sp::plot(com.spdf)
-NULL
 
-
-#' @title Grand Paris Metropole EPTs SpatialPolygonsDataFrame
-#' @name ept.spdf
-#' @description SpatialPolygonsDataFrame of Grand Paris Metropole EPTs. 
+#' @title Grand Paris Metropole EPTs
+#' @name ept
+#' @description sf object. Grand Paris Metropole EPTs. 
 #' EPTs (Etablissements Publics Territoriaux) are groups of communes.\cr
 #' @format 
 #' \describe{
@@ -56,13 +38,14 @@ NULL
 #' \url{http://www.apur.org/article/composition-12-territoires-metropole-grand-paris}
 #' @docType data
 #' @examples
+#' library(sf)
 #' data(GrandParisMetropole)
-#' sp::plot(ept.spdf)
+#' plot(st_geometry(ept))
 NULL
 
 #' @title Grand Paris Metropole Communes Data
 #' @name com
-#' @description Data on the Grand Paris Metropole communes.
+#' @description Data on the Grand Paris Metropole communes, included in a sf object. 
 #' @format A data frame with 150 rows and 10 variables:
 #' \describe{
 #' \item{DEPCOM}{Commune identifiers}
@@ -72,6 +55,7 @@ NULL
 #' \item{DEP}{Identifiers of the departement}
 #' \item{INC}{Amount of income tax reference (in euros)}
 #' \item{TH}{Number of tax households}
+#' \item{geometry}{Commune geometry}
 #' }
 #' @source
 #' Direction générale des finances publiques, income tax 2014 (2013 incomes):\cr

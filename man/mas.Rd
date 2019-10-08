@@ -4,11 +4,12 @@
 \alias{mas}
 \title{Multiscalar Absolute Synthesis}
 \usage{
-mas(x, var1, var2, ref = NULL, key, spdf, order = NULL, dist = NULL,
-  mat = NULL, spdfid = NULL, xid = NULL)
+mas(x, xid, var1, var2, ref, key, order, dist, mat)
 }
 \arguments{
-\item{x}{a data frame.}
+\item{x}{a sf object or a SpatialPolygonsDataFrame including var1 and var2.}
+
+\item{xid}{identifier field in x (to be used for importing a personal distance matrix). Default to the first column.}
 
 \item{var1}{name of the numerator variable in x.}
 
@@ -17,24 +18,16 @@ mas(x, var1, var2, ref = NULL, key, spdf, order = NULL, dist = NULL,
 \item{ref}{ratio of reference; if NULL, the ratio of reference is the one of 
 the whole study area (\code{sum(var1) / sum(var2)}).}
 
-\item{key}{aggregation key field.}
-
-\item{spdf}{a SpatialPolygonsDataFrame that matches x data frame.}
+\item{key}{aggregation key field for measuring the deviation (intermediate territorial level).}
 
 \item{order}{contiguity order.}
 
 \item{dist}{distance threshold defining the contiguity. The cartesian 
 distance between units centroids is used by default 
-(see \code{\link{gDistance}}); use mat to apply different metrics.}
+(see \code{\link{st_distance}}); use mat to apply different metrics.}
 
 \item{mat}{a distance matrix (road distance, travel time...) between x units. 
 Row and column names must fit xid identifiers. (optional)}
-
-\item{spdfid}{identifier field in spdf, default to the first column 
-of the spdf data frame. (optional)}
-
-\item{xid}{identifier field in x, default to the first column 
-of x. (optional)}
 }
 \value{
 A dataframe including the mass of numerator to redistribue to reach a perfect equilibrium 
@@ -46,15 +39,6 @@ deviations (global, territorial, spatial).
 }
 \examples{
 data("GrandParisMetropole")
-redistr <- mas(spdf = com.spdf,
-                       x = com,
-                       spdfid = "DEPCOM",
-                       xid = "DEPCOM",
-                       var1 = "INC",
-                       var2 = "TH",
-                       order = 2,
-                       key = "EPT",
-                       dist = NULL,
-                       mat = NULL)
+redistr <- mas(x = com, var1 = "INC", var2 = "TH", dist = 5000, key = "EPT")
 redistr
 }

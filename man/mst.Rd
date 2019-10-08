@@ -2,13 +2,13 @@
 % Please edit documentation in R/mst.R
 \name{mst}
 \alias{mst}
-\title{Multiscalar Typology}
+\title{MultiScalar Typology}
 \usage{
-mst(x, var1, var2, ref = NULL, key, spdf, order = NULL, dist = NULL,
-  mat = NULL, spdfid = NULL, xid = NULL, threshold, superior = FALSE)
+mst(x, var1, var2, ref, key, order, dist, mat, xid, threshold,
+  superior = FALSE)
 }
 \arguments{
-\item{x}{a dataframe.}
+\item{x}{a sf object or a SpatialPolygonsDataFrame including var1 and var2.}
 
 \item{var1}{name of the numerator variable in x.}
 
@@ -17,24 +17,18 @@ mst(x, var1, var2, ref = NULL, key, spdf, order = NULL, dist = NULL,
 \item{ref}{ratio of reference; if NULL, the ratio of reference is the one of 
 the whole study area (\code{sum(var1) / sum(var2)}).}
 
-\item{key}{aggregation key field.}
-
-\item{spdf}{a SpatialPolygonsDataFrame that matches x data frame.}
+\item{key}{aggregation key field for measuring the deviation (intermediate territorial level).}
 
 \item{order}{contiguity order.}
 
 \item{dist}{distance threshold defining the contiguity. The cartesian 
 distance between units centroids is used by default 
-(see \code{\link{gDistance}}); use mat to apply different metrics.}
+; use mat to apply different metrics.}
 
 \item{mat}{a distance matrix (road distance, travel time...) between x units. 
 Row and column names must fit xid identifiers. (optional)}
 
-\item{spdfid}{identifier field in spdf, default to the first column 
-of the spdf data frame. (optional)}
-
-\item{xid}{identifier field in x, default to the first column 
-of x. (optional)}
+\item{xid}{identifier field in x (to be used for importing a personal distance matrix). Default to the first column.}
 
 \item{threshold}{defined to build the typology (100 is considered as the average).}
 
@@ -42,9 +36,9 @@ of x. (optional)}
 deviation values must be lower than threshold.}
 }
 \value{
-A dataframe including the initial dataset, the ratio, the 3 relative 
-deviations (G, T and S) and the resulting typology. 
-\itemize{Typology (which deviation is over/under the threshold):
+A dataframe including the ratio (var1/var2), the 3 relative 
+deviations (G, T and S) and the resulting ordered typology (0 to 7). 
+\itemize{Typology (which deviation is above/under the threshold):
 \item{0: none}
 \item{1: G }
 \item{2: T}
@@ -56,56 +50,22 @@ deviations (G, T and S) and the resulting typology.
 }
 }
 \description{
-This function compute a multiscalar typology according to the three relative 
+Compute a multiscalar typology according to the three relative 
 deviations (general: G, territorial: T and spatial: S). The elementary units are classified
 in eight classes according to their three relative positions.
 }
 \examples{
-data("GrandParisMetropole")
-synthesis <- mst(spdf = com.spdf,
-                        x = com,
-                        spdfid = "DEPCOM",
-                        xid = "DEPCOM",
-                        var1 = "INC",
-                        var2 = "TH",
-                        dist = NULL,
-                        key = "EPT",
-                        order = 1,
-                        mat = NULL,
-                        threshold = 125,
-                        superior = TRUE)
+# Multiscalar typology - Wealthiest territories  
+row.names(com) <- com$LIBCOM
+synthesis <- mst (x = com, var1 = "INC", var2 = "TH", key = "EPT",
+                  order = 1,threshold = 125, superior = TRUE)
+# Territories avbove 150\% for the 3 deviations 
+subset(synthesis, mst == 7, select = c(ratio, gdevrel, tdevrel, sdevrel, mst))
 
-if(require('cartography')){
-  library(sp)
-  par(mar = c(0,0,1.2,0))
-  typoLayer(spdf = com.spdf, df = synthesis, var = "mst",
-            border = "#D9D9D9",legend.values.order = 0:7, 
-            col = c("#f0f0f0", "#fdc785","#ffffab","#fba9b0",
-                    "#addea6","#ffa100","#fff226","#e30020"),
-            lwd = 0.25,
-            legend.pos = "n")
-  
-  plot(ept.spdf,add=TRUE)
-  
-  colours <- c("#f0f0f0", "#fdc785","#ffffab","#fba9b0",
-               "#addea6","#ffa100","#fff226","#e30020")
-  
-  rVal<-c(" .     .   . ",
-          "[X]   .   . ",
-          " .   [X]  . ",
-          "[X] [X]  . ",
-          " .    .   [X]",
-          "[X]  .   [X]",
-          " .   [X] [X]",
-          "[X] [X] [X]")
-  
-  legendTypo(col = colours, categ = rVal,
-             title.txt = "General, territorial and spatial\\ndeviations above 125 \%
-             \\n       G T S",
-             nodata = FALSE)
-  
-  layoutLayer(title = "Multiscalar Typology",
-              sources = "GEOFLA® 2015 v2.1, Apur, impots.gouv.fr",
-              author = "MTA")
-}
+
+# Multiscalar typology - Poorest territories
+synthesis <- mst (x = com, var1 = "INC", var2 = "TH", key = "EPT",
+                  order = 1,threshold = 75, superior = FALSE)
+# Territories below 75 \% for the three deviations
+subset(synthesis, mst == 7, select = c(ratio, gdevrel, tdevrel, sdevrel, mst))
 }

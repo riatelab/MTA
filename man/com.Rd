@@ -13,6 +13,7 @@
 \item{DEP}{Identifiers of the departement}
 \item{INC}{Amount of income tax reference (in euros)}
 \item{TH}{Number of tax households}
+\item{geometry}{Commune geometry}
 }}
 \source{
 Direction générale des finances publiques, income tax 2014 (2013 incomes):\cr
@@ -21,7 +22,7 @@ Atelier parisien d'urbanisme, Grand Paris communal composition (2015-12-17):\cr
 \url{http://www.apur.org/article/composition-12-territoires-metropole-grand-paris}
 }
 \description{
-Data on the Grand Paris Metropole communes.
+Data on the Grand Paris Metropole communes, included in a sf object.
 }
 \examples{
 data(GrandParisMetropole)

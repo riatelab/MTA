@@ -4,10 +4,10 @@
 \alias{gdev}
 \title{General Deviation}
 \usage{
-gdev(x, var1, var2, type = "rel", ref = NULL)
+gdev(x, var1, var2, type = "rel", ref)
 }
 \arguments{
-\item{x}{a data frame.}
+\item{x}{a dataframe, a sf object or a SpatialPolygonsDataFrame including var1 and var2.}
 
 \item{var1}{name of the numerator variable in x.}
 
@@ -16,16 +16,15 @@ gdev(x, var1, var2, type = "rel", ref = NULL)
 \item{type}{type of deviation; "rel" for relative deviation, "abs" for 
 absolute deviation (see Details).}
 
-\item{ref}{ratio of reference; if NULL, the ratio of reference is the one of 
+\item{ref}{ratio of reference; if empty, the ratio of reference is the one of 
 the whole study area (\code{sum(var1) / sum(var2)}).}
 }
 \value{
 A vector is returned.
 }
 \description{
-This function computes the deviation between regional ratios 
-and a ratio of reference. 
-Each elementary unit's value will be compared to a global value.
+Compute the deviation of each territorial unit as regards  
+to all the study area (or a reference value).
 }
 \details{
 The relative global deviation is the ratio between var1/var2 and ref
@@ -33,45 +32,46 @@ The relative global deviation is the ratio between var1/var2 and ref
 unit ratio is greater than the ratio of reference. Values lower than 100 
 indicate that the unit ratio is lower than the ratio of reference.\cr
 The absolute global deviation is the amount of numerator that could be moved 
-to obtain the ratio of reference on all units.
+to obtain the ratio of reference on all units. (\code{(var1 - (ref * var2)}).
 }
 \examples{
+library(sf)
+library(cartography)
 # load data
 data("GrandParisMetropole")
+
 # compute absolute global deviation
-com$gdevabs <- gdev(x = com, var1 = "INC", var2 = "TH", type = "abs")
+com$gdevabs <- gdev(x = com, var1 = "INC", var2 = "TH", type = "abs", ref = 30000)
 # compute relative global deviation
 com$gdevrel <- gdev(x = com, var1 = "INC", var2 = "TH", type = "rel")
 
 # Deviations maps
-if(require('cartography')){
-  library(sp)
-  # set graphical parameters
-  par(mar = c(0,0,1.2,0))
-  # set breaks
-  bks <- c(min(com$gdevrel),50,75,100,125,150,max(com$gdevrel))
-  cols <- carto.pal(pal1 = "blue.pal", n1 = 3,
-                    pal2 = "wine.pal", n2 = 3)
-  # plot a choropleth map of the relative global deviation
-  choroLayer(spdf = com.spdf, df = com, var = "gdevrel",
-             legend.pos = "topleft",
-             legend.title.txt = "Relative Deviation",
-             breaks = bks, border = NA,
-             col = cols)
-  # add symbols proportional to the absolute general deviation
-  com$sign <- ifelse(test = com$gdevabs<0, yes = "negative", no = "positive")
-  propSymbolsTypoLayer(spdf = com.spdf, df = com, var = "gdevabs",var2 = "sign",
-                       legend.var.pos = "left",legend.values.rnd = -2, 
-                       legend.var2.values.order = c("positive", "negative"),
-                       legend.var.title.txt = "Absolute Deviation",
-                       col = c("#ff000050","#0000ff50"),legend.var2.pos = "n",
-                       legend.var.style = "e", inches = 0.2)
-  # add EPT boundaries
-  plot(ept.spdf, add=TRUE)
-  # add a layout
-  layoutLayer(title = "General Deviation (reference: Grand Paris Metropole)",
-              sources = "GEOFLA® 2015 v2.1, Apur, impots.gouv.fr", 
-              north = TRUE,
-              author = "MTA")
-}
+# set graphical parameters
+par(mar = c(0,0,1.2,0))
+# set breaks
+bks <- c(min(com$gdevrel),50,75,100,125,150,max(com$gdevrel))
+# set color palette
+cols <- carto.pal(pal1 = "blue.pal", n1 = 3,
+                  pal2 = "wine.pal", n2 = 3)
+# plot a choropleth map of the relative global deviation
+choroLayer(x = com, var = "gdevrel",
+           legend.pos = "topleft",
+           legend.title.txt = "Relative Deviation\\n(100 = general average)",
+           breaks = bks, border = NA,
+           col = cols)
+# add symbols proportional to the absolute general deviation
+com$sign <- ifelse(test = com$gdevabs<0, yes = "negative", no = "positive")
+propSymbolsTypoLayer(x = com, var = "gdevabs",var2 = "sign",
+                     legend.var.pos = "left",legend.values.rnd = -2,
+                     legend.var2.values.order = c("positive", "negative"),
+                     legend.var.title.txt = "Absolute Deviation\\n(Income redistribution)",
+                     col = c("#ff000050","#0000ff50"),legend.var2.pos = "n",
+                     legend.var.style = "e", inches = 0.2)
+# add EPT boundaries
+plot(st_geometry(ept), add=TRUE)
+# add a layout
+layoutLayer(title = "General Deviation (reference: Grand Paris Metropole)",
+            sources = "GEOFLAÂ® 2015 v2.1, Apur, impots.gouv.fr",
+            north = TRUE, scale = 5, tabtitle = TRUE, frame = FALSE, theme = "red.pal",
+            author = "MTA")
 }

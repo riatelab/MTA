@@ -3,7 +3,7 @@
 #' @description Compute the deviation of each territorial unit as regards  
 #' to its geographical neighbourhood. Neighbourhood is defined either
 #' by contiguity order, by a distance value or by a personal matrix (travel time...) 
-#' @param x a sf object or a SpatialPolygonsDataFrame including var1 and var2. 
+#' @param x an sf object or a SpatialPolygonsDataFrame including var1 and var2. 
 #' @param var1 name of the numerator variable in x.
 #' @param var2 name of the denominator variable in x.
 #' @param order contiguity order.

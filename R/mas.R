@@ -2,11 +2,12 @@
 #' @name mas
 #' @description This function sums the total amount of redistributions according to the three absolute 
 #' deviations (global, territorial, spatial). 
-#' @param x a sf object or a SpatialPolygonsDataFrame including var1 and var2.
-#' @param xid identifier field in x (to be used for importing a personal distance matrix). Default to the first column. 
+#' @param x an sf object or a SpatialPolygonsDataFrame including var1 and var2.
+#' @param xid identifier field in x (to be used for importing a personal distance 
+#' matrix). Default to the first column. 
 #' @param var1 name of the numerator variable in x.
 #' @param var2 name of the denominator variable in x.
-#' @param ref ratio of reference; if NULL, the ratio of reference is the one of 
+#' @param ref ratio of reference; if missing, the ratio of reference is the one of 
 #' the whole study area (\code{sum(var1) / sum(var2)}).
 #' @param key aggregation key field for measuring the deviation (intermediate territorial level).
 #' @param order contiguity order.
@@ -24,9 +25,8 @@
 #' redistr
 
 mas <- function(x, xid, var1, var2, ref, key, order, dist, mat){
-  
   # convert to sf object
-  if (unlist(class(x)[1]) == "SpatialPolygonsDataFrame"){
+  if (methods::is(x, "Spatial")){
     x <- st_as_sf(x)
   }
   

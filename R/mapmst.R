@@ -3,11 +3,11 @@
 #' @description Map the multiscalar typology according to the three relative 
 #' deviations (general: G, territorial: T and spatial: S). The elementary units are classified
 #' in eight classes according to their three relative positions and they are maped with appropriate colors. 
-#' @param x a sf object or a SpatialPolygonsDataFrame including var1 and var2.
+#' @param x an sf object or a SpatialPolygonsDataFrame including var1 and var2.
 #' @param xid identifier field in x (to be used for importing a personal distance matrix). Default to the first column. 
 #' @param var1 name of the numerator variable in x.
 #' @param var2 name of the denominator variable in x.
-#' @param ref ratio of reference; if NULL, the ratio of reference is the one of 
+#' @param ref ratio of reference; if missing, the ratio of reference is the one of 
 #' the whole study area (\code{sum(var1) / sum(var2)}).
 #' @param key aggregation key field for measuring the deviation (intermediate territorial level).
 #' @param order contiguity order.
@@ -41,7 +41,6 @@
 #' library(sf)
 #' library(cartography)
 #' data("GrandParisMetropole")
-#' 
 #' # Map wealthiest territories
 #' synthesis <- mapmst(x = com, var1 = "INC", var2 = "TH", key = "EPT",
 #'                     order = 1,threshold = 125, superior = TRUE)
@@ -55,7 +54,7 @@
 #' T: Situation as compared to the territorial context (EPT of belonging)
 #' S: Sitation as compared to the neigbourhood context (contiguity order 1)")
 #' # add label territorial objects above 125% for all the deviations
-#' labelLayer(x = synthesis[ which(synthesis$mst == 7),], txt = "LIBCOM", cex = 0.6, 
+#' labelLayer(x = synthesis[synthesis$mst == 7, ], txt = "LIBCOM", cex = 0.6, 
 #'            halo = TRUE, overlap = FALSE)
 #' 
 #' 
@@ -74,7 +73,7 @@
 #' S: Sitation as compared to the neigbourhood context (contiguity order 1)")
 #' 
 #' # add labels for territorial objects under 75 % for all the deviations
-#' labelLayer(x = synthesis[ which(synthesis$mst == 7),], txt = "LIBCOM", cex = 0.6,
+#' labelLayer(x = synthesis[synthesis$mst == 7, ], txt = "LIBCOM", cex = 0.6,
 #'            halo = TRUE)
 #' @importFrom cartography typoLayer legendTypo
 #' @export
@@ -82,9 +81,8 @@ mapmst <- function(x, var1, var2, ref, key, order, dist, mat, xid, threshold,
                    superior = FALSE, colNA = "white", border = "grey80", 
                    lwd = 0.2, upborder = "black", uplwd = "1", add = FALSE){
   
-  
   # convert to sf object
-  if (unlist(class(x)[1]) == "SpatialPolygonsDataFrame"){
+  if (methods::is(x, "Spatial")){
     x <- st_as_sf(x)
   }
   
@@ -93,7 +91,8 @@ mapmst <- function(x, var1, var2, ref, key, order, dist, mat, xid, threshold,
   
   # a dataframe with all the deviations and typology value
   mst <- mst(x = x, var1 = var1, var2 = var2, ref = ref, key = key, dist = dist,
-             mat = mat, xid = xid, order = order, threshold = threshold, superior = superior)
+             mat = mat, xid = xid, order = order, threshold = threshold, 
+             superior = superior)
   
   # Fix adapted colors for the typology
   colvec <- c("#f0f0f0", "#fdc785","#ffffab","#fba9b0",
@@ -103,9 +102,6 @@ mapmst <- function(x, var1, var2, ref, key, order, dist, mat, xid, threshold,
   x <- merge(x = x, y = coldf, by.x = "mst", by.y = "mst", all.x = TRUE)
   
   x <- x[order(factor(x$col)), ]
-  # x <- x %>%
-  #   arrange(mst) %>%   # rearrange the df in the order we want (1,2,3,4,5)
-  #   mutate(col = factor(col, unique(col))) # this line reorders the factor in the same order
   cols <- levels(x$col)
   
   # Map mst values
@@ -113,22 +109,20 @@ mapmst <- function(x, var1, var2, ref, key, order, dist, mat, xid, threshold,
             col = cols, lwd = lwd, legend.pos = "n", add = add, colNA = colNA)
   
   # Plot intermediate level geometries
-  #aggreg <- x %>% group_by_at(key) %>% summarize()
-  # x <- com
-# x <- com
-# key <- "EPT"
   . <- split(x = x,f = x[[key]])
   . <- lapply(., st_union) 
   . <- do.call(c, .) 
   aggreg <- st_cast(.)
   
   
-  plot(st_geometry(aggreg), col = NA,  lwd = uplwd, border = upborder, add = TRUE)
+  plot(st_geometry(aggreg), col = NA,  lwd = uplwd, border = upborder, 
+       add = TRUE)
   
   # Fill automatically the legend (text)
-  deviation <- NULL
-  if (superior == TRUE) { deviation <- "above"}
-  if (superior == FALSE) { deviation <- "under"}
+  deviation <- "under"
+  if (superior) { 
+    deviation <- "above"
+  }
   
   # Create reading grid
   rVal<-c(" .     .     . ",
@@ -143,7 +137,8 @@ mapmst <- function(x, var1, var2, ref, key, order, dist, mat, xid, threshold,
   # Plot legend
   legendTypo(col = colvec, categ = rVal,
              title.txt = paste0("General, territorial and spatial\ndeviations ",
-             deviation, " ", threshold," %\n\n           G   T   S"),
+                                deviation, " ", threshold,
+                                " %\n\n        G   T   S"),
              nodata = FALSE)
   return(x)
 }

@@ -7,7 +7,7 @@
 #' @param xid identifier field in x (to be used for importing a personal distance matrix). Default to the first column. 
 #' @param var1 name of the numerator variable in x.
 #' @param var2 name of the denominator variable in x.
-#' @param ref ratio of reference; if NULL, the ratio of reference is the one of 
+#' @param ref ratio of reference; if missing, the ratio of reference is the one of 
 #' the whole study area (\code{sum(var1) / sum(var2)}).
 #' @param key aggregation key field for measuring the deviation (intermediate territorial level).
 #' @param order contiguity order.
@@ -32,19 +32,20 @@
 #' \item{7: G, T and S}
 #' }
 #' @examples
+#' # load data
+#' data("GrandParisMetropole")
 #' # Multiscalar typology - Wealthiest territories  
 #' row.names(com) <- com$LIBCOM
-#' synthesis <- mst (x = com, var1 = "INC", var2 = "TH", key = "EPT",
-#'                   order = 1,threshold = 125, superior = TRUE)
-#' # Territories avbove 150% for the 3 deviations 
-#' subset(synthesis, mst == 7, select = c(ratio, gdevrel, tdevrel, sdevrel, mst))
-#' 
+#' synthesis <- mst(x = com, var1 = "INC", var2 = "TH", key = "EPT",
+#'                  order = 1, threshold = 125, superior = TRUE)
+#' # Territories avbove 125% for the 3 deviations 
+#' synthesis[synthesis$mst == 7, ]
 #' 
 #' # Multiscalar typology - Poorest territories
 #' synthesis <- mst (x = com, var1 = "INC", var2 = "TH", key = "EPT",
-#'                   order = 1,threshold = 75, superior = FALSE)
+#'                   order = 1, threshold = 75, superior = FALSE)
 #' # Territories below 75 % for the three deviations
-#' subset(synthesis, mst == 7, select = c(ratio, gdevrel, tdevrel, sdevrel, mst))
+#' synthesis[synthesis$mst == 7, ]
 #' @export
 mst <- function(x, var1, var2, ref, key, order, dist, mat, xid, threshold, 
                 superior = FALSE){

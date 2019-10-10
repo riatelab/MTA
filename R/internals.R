@@ -33,7 +33,6 @@ distanceMat <- function(x, xid){
   class(x) <- setdiff(class(x),"units")
   return(x)  
 }
-?setdiff
 
 
 #' @title Local Divergence

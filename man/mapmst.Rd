@@ -9,7 +9,7 @@ mapmst(x, var1, var2, ref, key, order, dist, mat, xid, threshold,
   upborder = "black", uplwd = "1", add = FALSE)
 }
 \arguments{
-\item{x}{a sf object or a SpatialPolygonsDataFrame including var1 and var2.}
+\item{x}{an sf object or a SpatialPolygonsDataFrame including var1 and var2.}
 
 \item{var1}{name of the numerator variable in x.}
 
@@ -71,7 +71,6 @@ in eight classes according to their three relative positions and they are maped 
 library(sf)
 library(cartography)
 data("GrandParisMetropole")
-
 # Map wealthiest territories
 synthesis <- mapmst(x = com, var1 = "INC", var2 = "TH", key = "EPT",
                     order = 1,threshold = 125, superior = TRUE)
@@ -85,7 +84,7 @@ G: Situation as compared to the global context (Grand Paris Area)
 T: Situation as compared to the territorial context (EPT of belonging)
 S: Sitation as compared to the neigbourhood context (contiguity order 1)")
 # add label territorial objects above 125\% for all the deviations
-labelLayer(x = synthesis[ which(synthesis$mst == 7),], txt = "LIBCOM", cex = 0.6, 
+labelLayer(x = synthesis[synthesis$mst == 7, ], txt = "LIBCOM", cex = 0.6, 
            halo = TRUE, overlap = FALSE)
 
 
@@ -104,6 +103,6 @@ T: Situation as compared to the territorial context (EPT of belonging)
 S: Sitation as compared to the neigbourhood context (contiguity order 1)")
 
 # add labels for territorial objects under 75 \% for all the deviations
-labelLayer(x = synthesis[ which(synthesis$mst == 7),], txt = "LIBCOM", cex = 0.6,
+labelLayer(x = synthesis[synthesis$mst == 7, ], txt = "LIBCOM", cex = 0.6,
            halo = TRUE)
 }

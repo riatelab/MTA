@@ -7,15 +7,16 @@
 mas(x, xid, var1, var2, ref, key, order, dist, mat)
 }
 \arguments{
-\item{x}{a sf object or a SpatialPolygonsDataFrame including var1 and var2.}
+\item{x}{an sf object or a SpatialPolygonsDataFrame including var1 and var2.}
 
-\item{xid}{identifier field in x (to be used for importing a personal distance matrix). Default to the first column.}
+\item{xid}{identifier field in x (to be used for importing a personal distance 
+matrix). Default to the first column.}
 
 \item{var1}{name of the numerator variable in x.}
 
 \item{var2}{name of the denominator variable in x.}
 
-\item{ref}{ratio of reference; if NULL, the ratio of reference is the one of 
+\item{ref}{ratio of reference; if missing, the ratio of reference is the one of 
 the whole study area (\code{sum(var1) / sum(var2)}).}
 
 \item{key}{aggregation key field for measuring the deviation (intermediate territorial level).}

@@ -55,17 +55,18 @@ deviations (general: G, territorial: T and spatial: S). The elementary units are
 in eight classes according to their three relative positions.
 }
 \examples{
+# load data
+data("GrandParisMetropole")
 # Multiscalar typology - Wealthiest territories  
 row.names(com) <- com$LIBCOM
-synthesis <- mst (x = com, var1 = "INC", var2 = "TH", key = "EPT",
-                  order = 1,threshold = 125, superior = TRUE)
-# Territories avbove 150\% for the 3 deviations 
-subset(synthesis, mst == 7, select = c(ratio, gdevrel, tdevrel, sdevrel, mst))
-
+synthesis <- mst(x = com, var1 = "INC", var2 = "TH", key = "EPT",
+                 order = 1, threshold = 125, superior = TRUE)
+# Territories avbove 125\% for the 3 deviations 
+synthesis[synthesis$mst == 7, ]
 
 # Multiscalar typology - Poorest territories
 synthesis <- mst (x = com, var1 = "INC", var2 = "TH", key = "EPT",
-                  order = 1,threshold = 75, superior = FALSE)
+                  order = 1, threshold = 75, superior = FALSE)
 # Territories below 75 \% for the three deviations
-subset(synthesis, mst == 7, select = c(ratio, gdevrel, tdevrel, sdevrel, mst))
+synthesis[synthesis$mst == 7, ]
 }

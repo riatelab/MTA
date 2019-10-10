@@ -7,7 +7,7 @@
 sdev(x, var1, var2, type = "rel", xid, order, dist, mat)
 }
 \arguments{
-\item{x}{a sf object or a SpatialPolygonsDataFrame including var1 and var2.}
+\item{x}{an sf object or a SpatialPolygonsDataFrame including var1 and var2.}
 
 \item{var1}{name of the numerator variable in x.}
 

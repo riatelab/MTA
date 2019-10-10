@@ -1,26 +1,23 @@
+
 language: r
+sudo: required
+dist: xenial
+cache:
+  - packages
 r:
   - release
   - devel
-
-cache: packages
-
-sudo: required
-
-dist: trusty
-
-before_install:
-  - sudo add-apt-repository ppa:ubuntugis/ubuntugis-unstable --yes
-  - sudo apt-get --yes --force-yes update -qq
-  - sudo apt-get install --yes libudunits2-dev libproj-dev libgeos-dev libgdal-dev
-  - sudo ldconfig 
-
+  - oldrel
+addons:
+  apt:
+    packages:
+     - libgdal-dev
+     - libproj-dev 
+     - libgeos-dev
+     - libudunits2-dev 
 warnings_are_errors: true
-
 r_packages:
+  - knitr
+  - rmarkdown
   - devtools
   - sp
-  - rgdal
-  - rgeos
-  - roxygen2
-  - rmarkdown

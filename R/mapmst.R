@@ -52,7 +52,7 @@
 #' 100: Deviation average
 #' G: Situation as compared to the global context (Grand Paris Area)
 #' T: Situation as compared to the territorial context (EPT of belonging)
-#' S: Sitation as compared to the neigbourhood context (contiguity order 1)")
+#' S: Situation as compared to the neigbourhood context (contiguity order 1)")
 #' # add label territorial objects above 125% for all the deviations
 #' labelLayer(x = synthesis[synthesis$mst == 7, ], txt = "LIBCOM", cex = 0.6, 
 #'            halo = TRUE, overlap = FALSE)
@@ -70,7 +70,7 @@
 #' 100: Deviation average
 #' G: Situation as compared to the global context (Grand Paris Area) 
 #' T: Situation as compared to the territorial context (EPT of belonging) 
-#' S: Sitation as compared to the neigbourhood context (contiguity order 1)")
+#' S: Situation as compared to the neigbourhood context (contiguity order 1)")
 #' 
 #' # add labels for territorial objects under 75 % for all the deviations
 #' labelLayer(x = synthesis[synthesis$mst == 7, ], txt = "LIBCOM", cex = 0.6,

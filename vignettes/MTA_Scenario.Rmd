@@ -39,7 +39,7 @@ This vignette proposes some concrete ouptuts for improving the knowledge on inco
 
 * cardist is a matrix including the a time distance matrix between communes computed using osrm package (see ?cardist). 
 
-We use 2 additional and complementary packages in this vignette: **cartography** for thematic mapping purposes and **ineq** for computing inequality indexes and Lorenz Curve Plot.
+We use 2 additional and complementary packages in this vignette: `cartography` for thematic mapping purposes and `ineq` for computing inequality indexes and Lorenz Curve Plot.
 
 ````{r input, fig.width=7, fig.height=5, warning = FALSE, cache = FALSE}
 # load packages
@@ -960,7 +960,7 @@ For the MGP area, it is 22 billion Euros that should be redistributed from the c
 
 # 9. Conclusion and perspectives
 
-The functionalities provided by the MTA package is especially useful to enhance territorial inequalities in several perspectives. This example, applied to the Metropole du Grand Paris provides some interesting insights to understand challenges raised by income inequalities in this new governance structure at the scale of the Parisian metropolitan area. Inputs provided by this vignette are quite simples and aims at using all the functionalities of the MTA package, by suggesting some adapted graphical representations derived mainly from the Cartography package. We consider also that it provides useful inputs for territorial monitoring and observation - a necessary step before policy decision making (which solutions for reducing income inequalities in a given area?)
+The functionalities provided by the MTA package is especially useful to enhance territorial inequalities in several perspectives. This example, applied to the Metropole du Grand Paris provides some interesting insights to understand challenges raised by income inequalities in this new governance structure at the scale of the Parisian metropolitan area. Inputs provided by this vignette are quite simples and aims at using all the functionalities of the MTA package, by suggesting some adapted graphical representations derived mainly from the `cartography` package. We consider also that it provides useful inputs for territorial monitoring and observation - a necessary step before policy decision making (which solutions for reducing income inequalities in a given area?)
 
 It is also important to remind that the aim of this vignette is not to provide a global picture of territorial inequalities existing in the MGP. To have this ambition, further analysis should be led for interrogating other dimensions of the inequalities, such as:
 

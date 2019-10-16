@@ -2,7 +2,7 @@
 % Please edit documentation in R/mapmst.R
 \name{mapmst}
 \alias{mapmst}
-\title{Map MultiScalar Typology}
+\title{Map Multiscalar Typology}
 \usage{
 mapmst(x, var1, var2, ref, key, order, dist, mat, xid, threshold,
   superior = FALSE, colNA = "white", border = "grey80", lwd = 0.2,
@@ -65,7 +65,7 @@ deviations (G, T and S) and the resulting ordered typology (0 to 7).
 \description{
 Map the multiscalar typology according to the three relative 
 deviations (general: G, territorial: T and spatial: S). The elementary units are classified
-in eight classes according to their three relative positions and they are maped with appropriate colors.
+in eight classes according to their three relative positions and they are mapped with appropriate colors.
 }
 \examples{
 library(sf)
@@ -76,7 +76,7 @@ synthesis <- mapmst(x = com, var1 = "INC", var2 = "TH", key = "EPT",
                     order = 1,threshold = 125, superior = TRUE)
 # add a layout and adapted legend
 layoutLayer(title = "Multiscalar synthesis - Income per household 2013",
-            sources = "GEOFLA® 2015 v2.1, Apur, impots.gouv.fr",
+            sources = "GEOFLAÂ® 2015 v2.1, Apur, impots.gouv.fr",
             north = TRUE, scale = 5, tabtitle = TRUE, frame = FALSE, theme = "red.pal",
             author = "MTA
 100: Deviation average
@@ -94,7 +94,7 @@ synthesis <- mapmst(x = com, var1 = "INC", var2 = "TH", key = "EPT",
                     order = 1,threshold = 75, superior = FALSE)
 # add a layout
 layoutLayer(title = "Multiscalar synthesis - Income per household 2013",
-            sources = "GEOFLA® 2015 v2.1, Apur, impots.gouv.fr",
+            sources = "GEOFLAÂ® 2015 v2.1, Apur, impots.gouv.fr",
             north = TRUE, scale = 5, tabtitle = TRUE, frame = FALSE, theme = "red.pal",
             author = "MTA
 100: Deviation average

@@ -1,4 +1,4 @@
-#' @title MultiScalar Typology
+#' @title Multiscalar Typology
 #' @name mst
 #' @description Compute a multiscalar typology according to the three relative 
 #' deviations (general: G, territorial: T and spatial: S). The elementary units are classified

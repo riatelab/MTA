@@ -33,17 +33,17 @@ A vector is returned.
 }
 \description{
 Compute the deviation of each territorial unit as regards  
-to its geographical neighbourhood. Neighbourhood is defined either
+to its geographical neighborhood. Neighborhood is defined either
 by contiguity order, by a distance value or by a personal matrix (travel time...)
 }
 \details{
 The relative spatial deviation is the ratio between var1/var2 and 
-var1/var2 in the specified neighbourhood. Values greater than 100 indicate 
-that the unit ratio is greater than the ratio in its neighbourhood. Values 
+var1/var2 in the specified neighborhood. Values greater than 100 indicate 
+that the unit ratio is greater than the ratio in its neighborhood. Values 
 lower than 100 indicate that the unit ratio is lower than the ratio in its 
-neighbourhood.\cr
+neighborhood.\cr
 The absolute spatial deviation is the amount of numerator that could be 
-moved to obtain the same ratio in all units of its neighbourhood.
+moved to obtain the same ratio in all units of its neighborhood.
 }
 \examples{
 library(sf)
@@ -51,19 +51,19 @@ library(cartography)
 # load data
 data("GrandParisMetropole")
 
-# compute absolute spatial deviation in a neighbourhood defined by a contiguity
+# compute absolute spatial deviation in a neighborhood defined by a contiguity
 # order of 2.
 com$sdevabs <- sdev(x = com, var1 = "INC", var2 = "TH", order =2, type = "abs")
 
-#compute relative spatial deviation in a neighbourhood defined within a distance
+#compute relative spatial deviation in a neighborhood defined within a distance
 # of 5km between communes' centroids
 com$sdevrel <- sdev(x = com, var1 = "INC", var2 = "TH", type = "rel", dist = 5000)
 
-# compute absolute spatial deviation in a neighbourhood defined within a road
+# compute absolute spatial deviation in a neighborhood defined within a road
 # travel time of 10 minutes by car
 com$scardevabs <- sdev(x = com, var1 = "INC", var2 = "TH", type = "abs", dist = 10, mat = cardist)
 
-# compute relative spatial deviation in a neighbourhood defined within a road
+# compute relative spatial deviation in a neighborhood defined within a road
 # travel time of 10 minutes by car
 com$scardevrel <- sdev(x = com, var1 = "INC", var2 = "TH", type = "rel", dist = 10, mat = cardist)
 
@@ -92,8 +92,8 @@ propSymbolsTypoLayer(x = com, var = "scardevabs",var2 = "sign",
 # add EPT boundaries
 plot(st_geometry(ept), add=TRUE)
 # add a layout
-layoutLayer(title = "Spatial Deviation (neighbourhoud : 10 minutes by car)",
-            sources = "GEOFLA® 2015 v2.1, Apur, impots.gouv.fr",
+layoutLayer(title = "Spatial Deviation (neighborhood : 10 minutes by car)",
+            sources = "GEOFLAÂ® 2015 v2.1, Apur, impots.gouv.fr",
             north = TRUE, scale = 5, tabtitle = TRUE, frame = FALSE, theme = "red.pal",
             author = "MTA")
 }

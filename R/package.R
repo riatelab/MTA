@@ -9,7 +9,7 @@
 #' \item{\code{\link{tdev}}: territorial deviation of each territorial unit as regards  
 #' to an intermediate territorial level of reference.}
 #' \item{\code{\link{sdev}}}: spatial deviation of each territorial unit as regards  
-#' to its geographical neighbourhood.
+#' to its geographical neighborhood.
 #' \item{\code{\link{mst}}}: multiscalar typology based on the three deviations.
 #' \item{\code{\link{mas}}}: multiscalar absolute synthesis, total amount of 
 #' redistributions based on the three deviations. 

@@ -2,7 +2,7 @@
 % Please edit documentation in R/mst.R
 \name{mst}
 \alias{mst}
-\title{MultiScalar Typology}
+\title{Multiscalar Typology}
 \usage{
 mst(x, var1, var2, ref, key, order, dist, mat, xid, threshold,
   superior = FALSE)

@@ -1,8 +1,8 @@
-#' @title Map MultiScalar Typology
+#' @title Map Multiscalar Typology
 #' @name mapmst
 #' @description Map the multiscalar typology according to the three relative 
 #' deviations (general: G, territorial: T and spatial: S). The elementary units are classified
-#' in eight classes according to their three relative positions and they are maped with appropriate colors. 
+#' in eight classes according to their three relative positions and they are mapped with appropriate colors. 
 #' @param x an sf object or a SpatialPolygonsDataFrame including var1 and var2.
 #' @param xid identifier field in x (to be used for importing a personal distance matrix). Default to the first column. 
 #' @param var1 name of the numerator variable in x.

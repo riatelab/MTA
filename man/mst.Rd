@@ -2,42 +2,26 @@
 % Please edit documentation in R/mst.R
 \name{mst}
 \alias{mst}
-\title{Multiscalar Typology}
+\title{Multiscalar Typology (3 deviations)}
 \usage{
-mst(x, var1, var2, ref, key, order, dist, mat, xid, threshold,
-  superior = FALSE)
+mst(x, gdevrel, tdevrel, sdevrel, threshold, superior = FALSE)
 }
 \arguments{
-\item{x}{a sf object or a SpatialPolygonsDataFrame including var1 and var2.}
+\item{x}{a sf object or a dataframe including gdev, tdev and sdev columns.}
 
-\item{var1}{name of the numerator variable in x.}
+\item{gdevrel}{name of the general relative deviation variable in x.}
 
-\item{var2}{name of the denominator variable in x.}
+\item{tdevrel}{name of the territorial relative deviation variable in x.}
 
-\item{ref}{ratio of reference; if missing, the ratio of reference is the one of 
-the whole study area (\code{sum(var1) / sum(var2)}).}
-
-\item{key}{aggregation key field for measuring the deviation (intermediate territorial level).}
-
-\item{order}{contiguity order.}
-
-\item{dist}{distance threshold defining the contiguity. The cartesian 
-distance between units centroids is used by default 
-; use mat to apply different metrics.}
-
-\item{mat}{a distance matrix (road distance, travel time...) between x units. 
-Row and column names must fit xid identifiers. (optional)}
-
-\item{xid}{identifier field in x (to be used for importing a personal distance matrix). Default to the first column.}
+\item{sdevrel}{name of the spatial relative deviation variable in x.}
 
 \item{threshold}{defined to build the typology (100 is considered as the average).}
 
-\item{superior}{if TRUE, deviation values must be greater than threshold. If FALSE, 
-deviation values must be lower than threshold.}
+\item{superior}{if TRUE, deviation values must be greater than threshold. If FALSE, deviation values must be lower than threshold.}
 }
 \value{
-A dataframe including the ratio (var1/var2), the 3 relative 
-deviations (G, T and S) and the resulting ordered typology (0 to 7). 
+a vector in x including the mst typology. Values are classified in 
+8 classes following their respective position above/under the threshold:
 \itemize{Typology (which deviation is above/under the threshold):
 \item{0: none}
 \item{1: G }
@@ -55,18 +39,21 @@ deviations (general: G, territorial: T and spatial: S). The elementary units are
 in eight classes according to their three relative positions.
 }
 \examples{
+# mst synthesis on general, territorial and spatial deviations (income data)
 # load data
 data("GrandParisMetropole")
-# Multiscalar typology - Wealthiest territories  
-row.names(com) <- com$LIBCOM
-synthesis <- mst(x = com, var1 = "INC", var2 = "TH", key = "EPT",
-                 order = 1, threshold = 125, superior = TRUE)
-# Territories avbove 125\% for the 3 deviations 
-synthesis[synthesis$mst == 7, ]
+# Prerequisite  - Compute the 3 deviations
+com$gdev <- gdev(x = com, var1 = "INC", var2 = "TH")
+com$tdev <- tdev(x = com, var1 = "INC", var2 = "TH", key = "EPT")
+com$sdev <- sdev(x = com, var1 = "INC", var2 = "TH", order = 1)
 
-# Multiscalar typology - Poorest territories
-synthesis <- mst (x = com, var1 = "INC", var2 = "TH", key = "EPT",
-                  order = 1, threshold = 75, superior = FALSE)
-# Territories below 75 \% for the three deviations
-synthesis[synthesis$mst == 7, ]
+# Multiscalar typology - wealthiest territorial units
+# Compute mst
+com$mstW <- mst(x = com, gdevrel = "gdev", tdevrel = "tdev", sdevrel = "sdev", 
+                threshold = 125, superior = TRUE)
+
+#Multiscalar typology - lagging territorial units
+# Compute mst
+com$mstP <- mst(x = com, gdevrel = "gdev", tdevrel = "tdev", sdevrel = "sdev", 
+                threshold = 75, superior = FALSE)
 }

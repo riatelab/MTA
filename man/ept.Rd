@@ -4,10 +4,12 @@
 \name{ept}
 \alias{ept}
 \title{Grand Paris Metropole EPTs}
-\format{\describe{
+\format{
+\describe{
 \item{EPT}{EPT identifiers}
 \item{LIBEPT}{EPT names}
-}}
+}
+}
 \source{
 Atelier parisien d'urbanisme, Grand Paris communal composition (2015-12-17):\cr
 \url{http://www.apur.org/article/composition-12-territoires-metropole-grand-paris}

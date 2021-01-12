@@ -4,31 +4,18 @@
 \alias{mas}
 \title{Multiscalar Absolute Synthesis}
 \usage{
-mas(x, xid, var1, var2, ref, key, order, dist, mat)
+mas(x, gdevabs, tdevabs, sdevabs, num)
 }
 \arguments{
-\item{x}{an sf object or a SpatialPolygonsDataFrame including var1 and var2.}
+\item{x}{a sf object or a dataframe including gdevabs, tdevabs, sdevabs and num columns.}
 
-\item{xid}{identifier field in x (to be used for importing a personal distance 
-matrix). Default to the first column.}
+\item{gdevabs}{name of the general absolute deviation variable in x.}
 
-\item{var1}{name of the numerator variable in x.}
+\item{tdevabs}{name of the territorial absolute deviation variable in x.}
 
-\item{var2}{name of the denominator variable in x.}
+\item{sdevabs}{name of the spatial absolute deviation variable in x.}
 
-\item{ref}{ratio of reference; if missing, the ratio of reference is the one of 
-the whole study area (\code{sum(var1) / sum(var2)}).}
-
-\item{key}{aggregation key field for measuring the deviation (intermediate territorial level).}
-
-\item{order}{contiguity order.}
-
-\item{dist}{distance threshold defining the contiguity. The cartesian 
-distance between units centroids is used by default 
-(see \code{\link{st_distance}}); use mat to apply different metrics.}
-
-\item{mat}{a distance matrix (road distance, travel time...) between x units. 
-Row and column names must fit xid identifiers. (optional)}
+\item{num}{name of the numerator used for computing the 3 absolute deviations in x.}
 }
 \value{
 A dataframe including the mass of numerator to redistribue to reach a perfect equilibrium 
@@ -40,6 +27,21 @@ deviations (global, territorial, spatial).
 }
 \examples{
 data("GrandParisMetropole")
-redistr <- mas(x = com, var1 = "INC", var2 = "TH", dist = 5000, key = "EPT")
-redistr
+# general absolute deviation 
+com$gdevabs <- gdev(x = com, var1 = "INC",var2 = "TH", type = "abs")
+
+# Territorial absolute deviation calculation
+com$mdevabs <- tdev(x = com,  var1 = "INC", var2 = "TH", type = "abs",
+                    key = "LIBEPT")
+
+# Local absolute deviation calculation redistribution 
+com$ldevabs <- sdev(x = com, xid = "DEPCOM", var1 = "INC", var2 = "TH",
+                    order = 1, type = "abs")
+
+# Compute the synthesis DataFrame (absolute deviations)
+mas(x = com, 
+    gdevabs = "gdevabs", 
+    tdevabs = "mdevabs",
+    sdevabs = "ldevabs",
+    num = "INC") 
 }

@@ -3,7 +3,6 @@
 \docType{package}
 \name{MTA}
 \alias{MTA}
-\alias{MTA-package}
 \title{Multiscalar Territorial Analysis}
 \description{
 Build multiscalar territorial analysis based on various contexts for a given ratio defined by a numerator and a denominator.\cr
@@ -15,10 +14,16 @@ to all the study area (or a reference value).}
 to an intermediate territorial level of reference.}
 \item{\code{\link{sdev}}}: spatial deviation of each territorial unit as regards  
 to its geographical neighborhood.
-\item{\code{\link{mst}}}: multiscalar typology based on the three deviations.
+#' \item{\code{\link{bidev}}}: multiscalar typology based on 2 deviations.
+\item{\code{\link{mst}}}: multiscalar typology based on the 3 deviations.
 \item{\code{\link{mas}}}: multiscalar absolute synthesis, total amount of 
 redistributions based on the three deviations. 
-\item{\code{\link{mapmst}}}: multiscalar typology map. 
+\item{\code{\link{map_bidev}}}: creating bidev and parameters for producing 
+a map based on it. 
+\item{\code{\link{map_mst}}}: creating mst and parameters for producing 
+a map based on it.
+\item{\code{\link{plot_bidev}}}: creating a plot for visualizing bidev results. 
+\item{\code{\link{plot_mst}}}: creating a plot adapted for visualzing mst results.
 }
 }
 \references{

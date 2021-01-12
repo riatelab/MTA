@@ -4,7 +4,8 @@
 \name{com}
 \alias{com}
 \title{Grand Paris Metropole Communes Data}
-\format{A data frame with 150 rows and 10 variables:
+\format{
+A data frame with 150 rows and 10 variables:
 \describe{
 \item{DEPCOM}{Commune identifiers}
 \item{LIBCOM}{Commune names}
@@ -14,7 +15,8 @@
 \item{INC}{Amount of income tax reference (in euros)}
 \item{TH}{Number of tax households}
 \item{geometry}{Commune geometry}
-}}
+}
+}
 \source{
 Direction générale des finances publiques, income tax 2014 (2013 incomes):\cr
 \url{http://www.impots.gouv.fr/portal/dgi/public/statistiques.impot?espId=-4&pageId=stat_donnees_detaillees&sfid=4503}\cr

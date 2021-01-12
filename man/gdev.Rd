@@ -7,8 +7,7 @@
 gdev(x, var1, var2, type = "rel", ref)
 }
 \arguments{
-\item{x}{a data.frame, an sf object or a SpatialPolygonsDataFrame, including 
-var1 and var2.}
+\item{x}{a data.frame or a sf object including var1 and var2.}
 
 \item{var1}{name of the numerator variable in x.}
 
@@ -46,33 +45,40 @@ com$gdevabs <- gdev(x = com, var1 = "INC", var2 = "TH", type = "abs")
 # compute relative global deviation
 com$gdevrel <- gdev(x = com, var1 = "INC", var2 = "TH", type = "rel")
 
-# Deviations maps
-# set graphical parameters
+# relative deviation map
 par(mar = c(0,0,1.2,0))
 # set breaks
-bks <- c(min(com$gdevrel),50,75,100,125,150,max(com$gdevrel))
-# set color palette
-cols <- carto.pal(pal1 = "blue.pal", n1 = 3,
-                  pal2 = "wine.pal", n2 = 3)
+bks <- c(min(com$gdevrel), 50, 75, 100, 125, 150, max(com$gdevrel))
 # plot a choropleth map of the relative global deviation
-choroLayer(x = com, var = "gdevrel",
-           legend.pos = "topleft",
-           legend.title.txt = "Relative Deviation\\n(100 = general average)",
-           breaks = bks, border = NA,
-           col = cols)
-# add symbols proportional to the absolute general deviation
-com$sign <- ifelse(test = com$gdevabs<0, yes = "negative", no = "positive")
-propSymbolsTypoLayer(x = com, var = "gdevabs",var2 = "sign",
-                     legend.var.pos = "left",legend.values.rnd = -2,
-                     legend.var2.values.order = c("positive", "negative"),
-                     legend.var.title.txt = "Absolute Deviation\\n(Income redistribution)",
-                     col = c("#ff000050","#0000ff50"),legend.var2.pos = "n",
-                     legend.var.style = "e", inches = 0.2)
+choroLayer(x = com, var = "gdevrel", legend.pos = "topleft",
+           legend.title.txt = "Relative Deviation\n(100 = general average)",
+           breaks = bks, border = NA, 
+           col = carto.pal(pal1 = "blue.pal", n1 = 3, pal2 = "wine.pal", n2 = 3))
+
 # add EPT boundaries
-plot(st_geometry(ept), add=TRUE)
-# add a layout
+plot(st_geometry(ept), add = TRUE)
+
+# layout
 layoutLayer(title = "General Deviation (reference: Grand Paris Metropole)",
-            sources = "GEOFLA® 2015 v2.1, Apur, impots.gouv.fr",
-            north = TRUE, scale = 5, tabtitle = TRUE, frame = FALSE, theme = "red.pal",
-            author = "MTA")
+            sources = "GEOFLAÂ® 2015 v2.1, Apur, impots.gouv.fr",
+            scale = 5, frame = FALSE, author = "MTA", col = "white", 
+            coltitle = "black")
+
+
+# absolute deviation map
+com$sign <- ifelse(test = com$gdevabs < 0, yes = "Under-Income", no = "Over-Income")
+plot(st_geometry(ept))
+
+propSymbolsTypoLayer(x = com, var = "gdevabs", var2 = "sign", inches = 0.2,
+                     legend.var.title.txt = "Absolute Deviation\n(Income redistribution, euros)",
+                     legend.var.pos = "topleft",legend.values.rnd = -2, legend.var.style = "e",
+                     legend.var2.title.txt = "Redistribution direction",
+                     legend.var2.values.order = c("Under-Income", "Over-Income"),
+                     legend.var2.pos = "topright", col = c("#ff0000","#0000ff"))
+
+# layout
+layoutLayer(title = "General Deviation (reference: Grand Paris Metropole)",
+            sources = "GEOFLAÂ® 2015 v2.1, Apur, impots.gouv.fr",
+            scale = 5, frame = FALSE,  author = "MTA", col = "white", 
+            coltitle = "black")
 }

@@ -1,5 +1,5 @@
 ---
-title: "Multiscalar Territorial Analysis - Historical and Conceptual Background"
+title: "Historical and Conceptual Background"
 author: "Ronan Ysebaert"
 date: '`r Sys.Date()`'
 output:
@@ -24,13 +24,13 @@ img <- readPNG("./img/figure_MTA1.png")
 grid.raster(img)
 ```
 
-The first in-depth thought on regional inequalities from a geographical point of view in Europe came between the declaration of Schuman the 9th May 1950, which launch the European Coal and Steel Community; and the Rome treaty, which gives rise to the Economic European Union le 25th March 1957: in 1954 the *Commission économique pour l'Europe des Nations Unies (UNECE)* launched a study on economic inequalities within several countries of Europe [1]. Led by its Secretary General, the future Nobel Prize G. Myrdal, this report foreshadows the future policies of the European Union and forthcoming regional analysis of OECD: lagging regions are identified and the reasons of the development gaps tried to be explained. Thus, "winning factors" were specified: distance to population or production centers, geographical situation of regions (peripheral or not), modernity and productivity of economic structures, demographic dynamics, etc. 
+The first in-depth thought on regional inequalities from a geographical point of view in Europe came between the declaration of Schuman the 9th May 1950, which launch the European Coal and Steel Community; and the Rome treaty, which gives rise to the Economic European Union le 25th March 1957: in 1954 the *Commission économique pour l'Europe des Nations Unies (UNECE)* launched a study *[Nations Unies, 1954]* on economic inequalities within several countries of Europe [1]. Led by its Secretary General, the future Nobel Prize G. Myrdal, this report foreshadows the future policies of the European Union and forthcoming regional analysis of OECD: lagging regions are identified and the reasons of the development gaps tried to be explained. Thus, "winning factors" were specified: distance to population or production centers, geographical situation of regions (peripheral or not), modernity and productivity of economic structures, demographic dynamics, etc. 
 
 It is interesting to note that the statistic criteria used to measure territorial inequalities was in this study the deviation of each region to its country of belonging, and not to the overall study area (European Union in this case). The solution proposed to solve inequalities was consequently not to identify federalist actions of solidarity at continental level. It was more directly to propose some tools for coordinating national policies and developing a comparative framework on causes and effects of territorial inequalities. Then, it is dependent to the sovereign countries to draw conclusions for implementing support policies for lagging territories. This approach is in fact very close to the issues raised in 1948 for managing the funds of the Marshall Plan. And it is not surprising to remark that the emergence of the main national policies in spatial planning started during the same period in France (creation of the DATAR in 1963), in Italy _(Casa del Mezzogiorno_, 1950) or in Germany (creation of the _Bundesministerium für Wohnungswesen, Städtebau une Raumordnung_ in 1961). In all these cases, data availability, adapted statistics and maps were and remind especially useful to support and foresee spatial planning policies. 
 
-On the opposite of the pioneer map of Myrdal (map on the left), which supported a research on the causes of income inequalities and the possibilities existing to reduce them in a Keynesian framework of internal redistribution, the map proposed by the European Commission in 2014 (map on the right) is totally driven by the regional policy reglementation of the European Union [2]. This maps leads the allocation of the main funds of the EU regional policy: The statistics criteria used to measure territorial inequalities is the Gross Domestic Product in PPS at NUTS2 level. This indicator is chosen to define eligible regions to the EU cohesion policy (GDP per capita under 75 % of the average of the European Union). In this case and in a very normative aspect, the measure of the deviation to a territorial context of reference (the European Union) is used to apply European policies and deliver a significant amount of funds (182 billion Euros dedicated to "less developed regions", e.g. under 75 % of the EU average).
+On the opposite of the pioneer map of Myrdal (map on the left), which supported a research on the causes of income inequalities and the possibilities existing to reduce them in a Keynesian framework of internal redistribution, the map proposed by the European Commission in 2014 (map on the right) is totally driven by the regional policy reglementation of the European Union *[European Commission, 2014]*. This maps leads the allocation of the main funds of the EU regional policy: The statistics criteria used to measure territorial inequalities is the Gross Domestic Product in PPS at NUTS2 level. This indicator is chosen to define eligible regions to the EU cohesion policy (GDP per capita under 75 % of the average of the European Union). In this case and in a very normative aspect, the measure of the deviation to a territorial context of reference (the European Union) is used to apply European policies and deliver a significant amount of funds (182 billion Euros dedicated to "less developed regions", e.g. under 75 % of the EU average).
 
-The analysis of these two maps reveals several possibilities for measuring territorial inequalities and display it on maps. It highlights also the important need - whatever the period considered - to define an adapted methodology to measure regional inequalities [3], [4], [5]. 
+The analysis of these two maps reveals several possibilities for measuring territorial inequalities and display it on maps. It highlights also the important need - whatever the period considered - to define an adapted methodology to measure regional inequalities *[Böhm, 2004 ; Grasland, 2004 ; Gloersen, 2007]*. 
 
 Nowadays, the need to measure territorial disparities at lower scales become more and more important. The historical planning issues managed at national level is in a large extent transferred to regions and local authorities. To act locally, these new territories of governance requires statistical evidences to understand the structure and the dynamics of their territories. As displayed below, a lot of urban agencies and experts financed by public funds were recently created to provide local pictures of local dynamics (Metropole du Grand Paris, Metropole du Grand Lyon, Greater London, etc.). Here again, the need of territorial information is high.  
 
@@ -41,11 +41,11 @@ grid.raster(img)
 
 
 ## Conceptualization of the MTA analysis in this context 
-The MTA methodology has been set up in this context during the years 2000's [6]. It has been initiated by the HyperCarte research group, which associate 4 research teams in geography and computer science (cf below). A major output coming from this research group was HyperAtlas, a Java application for the multiscalar territorial analysis (MTA). This tool has been developed with the support of several European institutions within research projects (DG REGIO, ESPON, European Environmental Agency, European Parliament).   
+The MTA methodology has been set up in this context during the years 2000's *[Grasland, 1997 ; Grasland et al., 2005]*. It has been initiated by the HyperCarte research group, which associate 4 research teams in geography and computer science (cf below). A major output coming from this research group was HyperAtlas, a Java application for the multiscalar territorial analysis (MTA). This tool has been developed by engineers in informatics *[Martin, 2004 ; Thomas, 2008 ; Le Rubrus, 2011]* with the support of several European institutions within research projects (DG REGIO, ESPON, European Environmental Agency, European Parliament).   
 
 The basic idea behind the HyperAtlas and the MTA concept is that there is never a single and objective way to display a social phenomena on maps, but an infinity. It depends on the hypothesis made by the analyst regarding the contacts that can exist between individuals across the space and the time, regarding the influence of institutions within their territory of authority or for monitoring territorial impacts of policy measures. 
 
-MTA methods have been developed in order to highlight in a simple way such situation for hierarchical territorial divisions [7]. Territorial hierarchy is considered as a strict nesting of territories, for instance:
+MTA methods have been developed in order to highlight in a simple way such situation for hierarchical territorial divisions *[Ysebaert et al., 2011]*. Territorial hierarchy is considered as a strict nesting of territories, for instance:
 
 * In Europe: NUTS3 regions (basic territorial units) can be merged in NUTS2, NUTS1 or NUTS0 regions (possible territorial contexts), and merged for the all European Union (global context, study area).
 * In France: Municipalities (basic territorial units) can be merged in _zones d'emploi_, _départements_ or _régions_ (possible territorial contexts), and merged for France as a whole (global context, study area).
@@ -62,9 +62,9 @@ The originality of the methodology proposed by the HyperCarte research group is 
 
 
 ## Teams involved in the HyperCarte Research Group
-The HyperCarte Research Group was founded in 1996 and has provided the main conceptual outputs proposed in this MTA package. It groups 4 research teams from Paris (RIATE and Géographie-cités) and Grenoble (STeamer and Mescal):
+The HyperCarte Research Group was founded in 1996 and has provided the main conceptual outputs proposed in this MTA package. It grouped in the period 1996-2015 four research teams from Paris (RIATE and Géographie-cités) and Grenoble (STeamer and Mescal):
 
-* **[UMS RIATE (UMS 2414)](http://riate.cnrs.fr "UMS RIATE Website")**: a team of engineers/geographers specialized in spatial analysis, cartography, tools development and database processing in the thematic field of European spatial planning. It is the team who as created the MTA package and is in charge of its maintenance. 
+* **[UMS RIATE (UMS 2414)](http://riate.cnrs.fr "UMS RIATE Website")**: a team of engineers/geographers specialized in spatial analysis, cartography, tools development and database processing. It is the team who as created the MTA package and is in charge of its maintenance. 
 
 * **[UMR Géographie-cités (UMR 8504)](http://www.parisgeo.cnrs.fr/ "Geographie-cités Website")**: a team of researchers/geographers in the field of spatial analysis in the field of social phenomena.
 
@@ -87,18 +87,25 @@ The HyperAtlas solution is one way to access to multiscalar inequalities. The ai
 
 # References
 
-[1] NATIONS UNIES, 1954, Etude sur la situation économique de l’Europe en 1954, *Commission Économique des Nations Unies pour l’Europe*, pp. 154-194. 
+BÖHM, K., SCHÖN (coords.) P. (coords.), 2004. *ESPON 3.1 - Integrated Tools for European Spatial Development*, ESPON.
 
-[2] EUROPEAN COMMISSION, 2014, Investment for jobs and growth, promoting development and good governance in EU Regions and cities, 6th Cohesion Report on economic, social and territorial cohesion, Regional and Urban Policy. 
+EUROPEAN COMMISSION, 2014, *Investment for jobs and growth, promoting development and good governance in EU Regions and cities*, 6th Cohesion Report on economic, social and territorial cohesion, Regional and Urban Policy. 
 
-[3] YSEBAERT R. (et al.), 2011, HyperAtlas, un outil scientifique au service du débat politique - Application à la politique de cohésion de l'Union Européenne, congrès CIST, Collège International des Sciences du Territoire (Paris).
+GLOERSEN E., DUBOIS A. (coord.), 2007, *Regional disparities and cohesion: What Strategies for the future?*, DG-IPOL – European Parliament, chapter 4.  
 
-[4] GLOERSEN E., DUBOIS A. (coord.), 2007, Regional disparities and cohesion: What Strategies for the future?, DG-IPOL – European Parliament, chapter 4.  
+GRASLAND C., 2004, *Les inégalités régionales dans une Europe élargie » dans Chavance B. dir.*, Les incertitudes du grand élargissement, L’Harmattan, Paris, pp. 181-214.
 
-[5] GRASLAND C., 2004, « Les inégalités régionales dans une Europe élargie » dans Chavance B. dir., Les incertitudes du grand élargissement, L’Harmattan, Paris, pp. 181-214.
+GRASLAND C., MARTIN H., VINCENT J-M., GENSEL J., MATHIAN H., CUENOT O., EULOGE E., LIZZI L., 2005,  *Le projet HyperCarte : analyse spatiale et cartographie interactive*,  in : Josselin D., Libourel T. (Eds.), Actes de SAGEO’2005, Colloque International de Géomatique et d’Analyse Spatiale, Avignon, France, 21-23 juin, SAGEO, CD-ROM.  
 
-[6] GRASLAND C., MARTIN H., VINCENT J-M., GENSEL J., MATHIAN H., CUENOT O., EULOGE E., LIZZI L., 2005,  Le projet HyperCarte : analyse spatiale et cartographie interactive,  in : Josselin D., Libourel T. (Eds.), Actes de SAGEO’2005, Colloque International de Géomatique et d’Analyse Spatiale, Avignon, France, 21-23 juin, SAGEO, CD-ROM.  
+GRASLAND C., 1997, *A la recherche d'un cadre théorique et méthodologique pour l'étude des maillages territoriaux*, "Les découpages du territoire ", Lyon, 8-10 Décembre 1997. Communication présentée aux Entretiens Jacques Cartier. Séance : " De l’aire au réseau "
 
-[7] GRASLAND 1997, A la recherche d'un cadre théorique et méthodologique pour l'étude des maillages territoriaux, "Les découpages du territoire ", Lyon, 8-10 Décembre 1997. Communication présentée aux Entretiens Jacques Cartier. Séance : " De l’aire au réseau "
+LE RUBRUS B., 2011, *Cartographie et analyse territoriale multiscalaire. Réingénierie des logiciels HyperAtlas et HyperAdmi*, Master’s thesis, Conservatoire National des Arts et Métiers, Mémoire CNAM
 
+MARTIN P., 2004, *Interface cartographique pour l’analyse territoriale multiscalaire de phénomènes sociaux*, Master’s thesis, Conservatoire National des Arts et Métiers, Mémoire CNAM.
+
+NATIONS UNIES, 1954, *Etude sur la situation économique de l’Europe en 1954*, Commission Économique des Nations Unies pour l’Europe, pp. 154-194. 
+
+THOMAS R., 2008, *Evolutions d’outils dédiés à l’analyse territoriale et à l’analyse spatiale dans le cadre du projet HyperCarte*, Master’s thesis, Conservatoire National des Arts et Métiers, Mémoire CNAM.
+
+YSEBAERT R. (et al.), 2011, *HyperAtlas, un outil scientifique au service du débat politique - Application à la politique de cohésion de l'Union Européenne*, colloque CIST, Collège International des Sciences du Territoire (Paris).
 

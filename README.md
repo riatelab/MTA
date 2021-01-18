@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/riatelab/MTA.svg?branch=master)](https://travis-ci.org/riatelab/MTA)
+[![R-CMD-check](https://github.com/riatelab/MTA/workflows/R-CMD-check/badge.svg)](https://github.com/riatelab/MTA/actions)
 
 # Multiscalar Territorial Analysis
 

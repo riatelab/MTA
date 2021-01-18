@@ -60,7 +60,7 @@ plot(st_geometry(ept), add = TRUE)
 
 # layout
 layoutLayer(title = "General Deviation (reference: Grand Paris Metropole)",
-            sources = "GEOFLAÂ® 2015 v2.1, Apur, impots.gouv.fr",
+            sources = "GEOFLA® 2015 v2.1, Apur, impots.gouv.fr",
             scale = 5, frame = FALSE, author = "MTA", col = "white", 
             coltitle = "black")
 
@@ -78,7 +78,7 @@ propSymbolsTypoLayer(x = com, var = "gdevabs", var2 = "sign", inches = 0.2,
 
 # layout
 layoutLayer(title = "General Deviation (reference: Grand Paris Metropole)",
-            sources = "GEOFLAÂ® 2015 v2.1, Apur, impots.gouv.fr",
+            sources = "GEOFLA® 2015 v2.1, Apur, impots.gouv.fr",
             scale = 5, frame = FALSE,  author = "MTA", col = "white", 
             coltitle = "black")
 }

@@ -19,9 +19,9 @@ A data frame with 150 rows and 10 variables:
 }
 \source{
 Direction générale des finances publiques, income tax 2014 (2013 incomes):\cr
-\url{http://www.impots.gouv.fr/portal/dgi/public/statistiques.impot?espId=-4&pageId=stat_donnees_detaillees&sfid=4503}\cr
+\url{https://www.impots.gouv.fr/portail/statistiques}\cr
 Atelier parisien d'urbanisme, Grand Paris communal composition (2015-12-17):\cr
-\url{http://www.apur.org/article/composition-12-territoires-metropole-grand-paris}
+\url{https://www.apur.org/fr/nos-travaux/composition-12-territoires-metropole-grand-paris}
 }
 \description{
 Data on the Grand Paris Metropole communes, included in a sf object.

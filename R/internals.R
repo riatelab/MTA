@@ -20,7 +20,7 @@ contiguityMat <- function(x, xid){
 #' @name distanceMat 
 #' @description This function compute a distance matrix from a 
 #' sf object.
-#' @param spdf a sf object.
+#' @param x a sf object.
 #' @return A distance matrix is returned.
 #' @noRd
 distanceMat <- function(x, xid){

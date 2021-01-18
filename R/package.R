@@ -41,7 +41,7 @@ NULL
 #' }
 #' @source
 #' Atelier parisien d'urbanisme, Grand Paris communal composition (2015-12-17):\cr
-#' \url{http://www.apur.org/article/composition-12-territoires-metropole-grand-paris}
+#' \url{https://www.apur.org/fr/nos-travaux/composition-12-territoires-metropole-grand-paris}
 #' @docType data
 #' @examples
 #' library(sf)
@@ -65,9 +65,9 @@ NULL
 #' }
 #' @source
 #' Direction générale des finances publiques, income tax 2014 (2013 incomes):\cr
-#' \url{http://www.impots.gouv.fr/portal/dgi/public/statistiques.impot?espId=-4&pageId=stat_donnees_detaillees&sfid=4503}\cr
+#' \url{https://www.impots.gouv.fr/portail/statistiques}\cr
 #' Atelier parisien d'urbanisme, Grand Paris communal composition (2015-12-17):\cr
-#' \url{http://www.apur.org/article/composition-12-territoires-metropole-grand-paris}
+#' \url{https://www.apur.org/fr/nos-travaux/composition-12-territoires-metropole-grand-paris}
 #' @docType data
 #' @examples
 #' data(GrandParisMetropole)

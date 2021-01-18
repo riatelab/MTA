@@ -82,7 +82,7 @@ plot(st_geometry(ept), add = TRUE)
 
 # layout
 layoutLayer(title = "Spatial Deviation (neighborhood : 10 minutes by car)",
-            sources = "GEOFLAÂ® 2015 v2.1, Apur, impots.gouv.fr",
+            sources = "GEOFLA® 2015 v2.1, Apur, impots.gouv.fr",
             scale = 5, frame = FALSE, author = "MTA", col = "white", 
             coltitle = "black")
 }

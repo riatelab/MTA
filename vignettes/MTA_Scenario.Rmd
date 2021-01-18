@@ -329,8 +329,7 @@ The code below add some additional graphical parameters to ease the interpretati
 ````{r lorenz_plot, fig.width=7, fig.height=5, warning = FALSE, cache = FALSE, fig.align = 'center'}
 library(ineq)
 # Gini index
-ind_gini <- Gini(com$INC, com$TH)
-
+ind_gini <- Gini(com$INC)
 #  Concentration of X as regards to concentration of Y
 Lc.p <- Lc(com$INC, com$TH)
 Lp <- data.frame(cumX = 100 * Lc.p$L, cumY = 100 * Lc.p$p)

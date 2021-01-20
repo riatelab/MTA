@@ -328,8 +328,6 @@ The code below add some additional graphical parameters to ease the interpretati
 
 ````{r lorenz_plot, fig.width=7, fig.height=5, warning = FALSE, cache = FALSE, fig.align = 'center'}
 library(ineq)
-# Gini index
-ind_gini <- Gini(com$INC)
 #  Concentration of X as regards to concentration of Y
 Lc.p <- Lc(com$INC, com$TH)
 Lp <- data.frame(cumX = 100 * Lc.p$L, cumY = 100 * Lc.p$p)
@@ -369,11 +367,6 @@ text(y = xy[,"cumX"],
      pos = 2,
      cex = 0.6)
 
-text(y = 95, 
-     x = 2,
-     label = paste0("Gini index = ", round(ind_gini,3)),  
-     pos = 4,
-     cex = 0.8, font = 2)
 ````
 
 The curve depicts on its horizontal axis a defined population – e.g., all households – broken down into deciles and ordered from left to right on the horizontal axis (from the lower tax income per household to the higher).
@@ -383,8 +376,6 @@ The reading of the plot reveals these following configurations :
 
 * 50 % of the households earns less than 16 % of the total income.
 * 50 % of the total income is held by less than 20 % of households. 
-
-The analysis of Gini and variation coefficient give a global overview of the degree of inequality. The Gini index is comprised between 0 (equidistribution) and 1 (maximal concentration). But more interesting is analysis of the evolution of these indexes over the time (more equality? less inequality?)
 
 
 ## 2.2 Territorial deviation

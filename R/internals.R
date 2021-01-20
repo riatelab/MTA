@@ -24,7 +24,7 @@ contiguityMat <- function(x, xid){
 #' @return A distance matrix is returned.
 #' @noRd
 distanceMat <- function(x, xid){
-  st_agr(x) = "constant"
+  st_agr(x) <- "constant"
   x.pt <- sf::st_centroid(x, of_largest_polygon = TRUE)
   x <- sf::st_distance(x.pt, by_element = FALSE)
   colnames(x) <- x.pt[[xid]]

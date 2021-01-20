@@ -39,7 +39,7 @@ plot_mst <- function (x, gdevrel, tdevrel, sdevrel, legend.lab = NULL,
   
   # Convert sf object in dataframe
   if(class(x)[1] == "sf"){
-    x <- st_set_geometry(x, NULL)
+    x <- sf::st_set_geometry(x, NULL)
   }  
   
   # Select values of interest

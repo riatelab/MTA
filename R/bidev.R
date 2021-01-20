@@ -35,6 +35,7 @@
 #' \item{D3: Below the average for dev1 and above for dev2, distance to the
 #'  avarage : +++}
 #' }
+#' @import sf
 #' @examples
 #' # bidev synthesis on general and territorial deviation (income data)
 #' # load data
@@ -111,11 +112,11 @@ bidev <- function (x, dev1, dev2, breaks = c(25, 50, 100), xid = NULL) {
   quad2 <- data.frame(bidev = c("ZZ", "A1", "A2", "A3", "B1", "B2", "B3", "C1", "C2", 
                                 "C3", "D1", "D2", "D3"), stringsAsFactors = FALSE)
   quad <- st_sf(quad, quad2)
-  st_agr(quad) = "constant"
+  st_agr(quad) <- "constant"
   
   # Position of observations according to quadrants
   pt <- st_as_sf(pt, coords = c(dev1, dev2))
-  st_agr(pt) = "constant"
+  st_agr(pt) <- "constant"
   pt <- st_intersection(pt, quad)
   
   # Delete legend and colors labels out of the quadrants 

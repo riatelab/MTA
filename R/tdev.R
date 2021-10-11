@@ -22,7 +22,7 @@
 #' @import sf
 #' @examples
 #' library(sf)
-#' library(cartography)
+#' library(mapsf)
 #' # load data
 #' data("GrandParisMetropole")
 #' 

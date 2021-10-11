@@ -20,7 +20,7 @@
 #' @import sf
 #' @examples
 #' library(sf)
-#' library(cartography)
+#' library(mapsf)
 #' # load data
 #' data("GrandParisMetropole")
 #' 
@@ -34,38 +34,36 @@
 #' # set breaks
 #' bks <- c(min(com$gdevrel), 50, 75, 100, 125, 150, max(com$gdevrel))
 #' # plot a choropleth map of the relative global deviation
-#' choroLayer(x = com, var = "gdevrel", legend.pos = "topleft",
-#'            legend.title.txt = "Relative Deviation\n(100 = general average)",
-#'            breaks = bks, border = NA, 
-#'            col = carto.pal(pal1 = "blue.pal", n1 = 3, pal2 = "wine.pal", n2 = 3))
+#' mf_map(x = com, var = "gdevrel", type = "choro", leg_pos = "topleft",
+#'        leg_title = "Relative Deviation\n(100 = general average)",
+#'        breaks = bks, border = NA,
+#'        pal = c("#4575B4", "#91BFDB", "#E0F3F8", "#FEE090", "#FC8D59", "#D73027"))
 #' 
 #' # add EPT boundaries
-#' plot(st_geometry(ept), add = TRUE)
+#' mf_map(x = ept, col = NA, add = TRUE)
 #' 
 #' # layout
-#' layoutLayer(title = "General Deviation (reference: Grand Paris Metropole)",
-#'             sources = "GEOFLA® 2015 v2.1, Apur, impots.gouv.fr",
-#'             scale = 5, frame = FALSE, author = "MTA", col = "white", 
-#'             coltitle = "black")
-#' 
+#' mf_layout(title = "General Deviation (reference: Grand Paris Metropole)",
+#'           credits = paste0("Sources: GEOFLA® 2015 v2.1, Apur, impots.gouv.fr",
+#'                            "\nMTA", packageVersion("MTA")),
+#'           arrow = FALSE)
 #' 
 #' # absolute deviation map
 #' com$sign <- ifelse(test = com$gdevabs < 0, yes = "Under-Income", no = "Over-Income")
-#' plot(st_geometry(ept))
+#' mf_map(ept)
 #' 
-#' propSymbolsTypoLayer(x = com, var = "gdevabs", var2 = "sign", inches = 0.2,
-#'                      legend.var.title.txt = "Absolute Deviation\n(Income redistribution, euros)",
-#'                      legend.var.pos = "topleft",legend.values.rnd = -2, legend.var.style = "e",
-#'                      legend.var2.title.txt = "Redistribution direction",
-#'                      legend.var2.values.order = c("Under-Income", "Over-Income"),
-#'                      legend.var2.pos = "topright", col = c("#ff0000","#0000ff"))
+#' mf_map(x = com, var = c("gdevabs", "sign"), type = "prop_typo", inches = 0.2,
+#'        leg_title = c("Absolute Deviation\n(Income redistribution, euros)",
+#'                      "Redistribution direction"), 
+#'        leg_pos = c("topleft", "topright"), leg_val_rnd = -2,
+#'        val_order = c("Under-Income", "Over-Income"),
+#'        pal =  c("#ff0000","#0000ff"), add = TRUE)
 #' 
 #' # layout
-#' layoutLayer(title = "General Deviation (reference: Grand Paris Metropole)",
-#'             sources = "GEOFLA® 2015 v2.1, Apur, impots.gouv.fr",
-#'             scale = 5, frame = FALSE,  author = "MTA", col = "white", 
-#'             coltitle = "black")
-
+#' mf_layout(title = "General Deviation (reference: Grand Paris Metropole)",
+#'           credits = paste0("Sources: GEOFLA® 2015 v2.1, Apur, impots.gouv.fr",
+#'                            "\nMTA", packageVersion("MTA")),
+#'           arrow = FALSE)
 #' @export
 gdev <- function(x, var1, var2, type = "rel", ref){
   

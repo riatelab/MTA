@@ -41,21 +41,23 @@
 #' leg_val <- mst$leg_val
 #' 
 #' # Cartography
-#' library(cartography)
+#' library(mapsf)
 #' par(mar = c(0,0,1.2,0))
-#' typoLayer(x = com, var = "mst", border = "grey50",
-#' col = cols, lwd = 0.2, legend.pos = "n")
-#' plot(ept$geometry, col = NA, lwd = 1, add = TRUE)
+#' mf_map(x = com, var = "mst", type = "typo", border = "white", lwd = 0.2,
+#'        pal = cols, val_order = unique(com$mst), leg_pos = "n")
+#' mf_map(ept, col = NA, border = "black", lwd = 1, add = TRUE)
 #' 
-#' legendTypo(col = cols, categ = leg_val,
-#'            title.txt = "Situation on General (G)\nTerrorial (T) and\nSpatial (S) contexts",
-#'            nodata = FALSE, pos = "topleft")
+#' mf_legend(type = "typo", val = leg_val, pal = cols, 
+#'           title = "Situation on General (G)\nTerrorial (T) and\nSpatial (S) contexts",
+#'           pos = "topleft")
 #' 
-#' labelLayer(x = com[com$mst == 7,], txt = "LIBCOM",
-#'            cex = 0.6, halo = TRUE, overlap = FALSE)
+#' mf_label(x = com[com$mst == 7,], var = "LIBCOM",
+#'          cex = 0.6, halo = TRUE, overlap = FALSE)
 #' 
-#' layoutLayer(title = "3-Deviations synthesis : Territorial units above index 125",
-#'             author = "MTA, 2020", scale = 5, col = "white", coltitle = "black")
+#' mf_layout(title = "3-Deviations synthesis : Territorial units above index 125",
+#'           credits = paste0("Sources: GEOFLA® 2015 v2.1, Apur, impots.gouv.fr",
+#'                            "\nMTA", packageVersion("MTA")),
+#'           arrow = FALSE)
 #' 
 #' 
 #' # Example 2 - Lagging territorial units
@@ -70,20 +72,22 @@
 #' 
 #' # Cartography
 #' par(mar = c(0,0,1.2,0))
-#' typoLayer(x = com, var = "mst", border = "grey50",
-#'           col = cols, lwd = 0.2, legend.pos = "n")
+#' mf_map(x = com, var = "mst", type = "typo", border = "white", lwd = 0.2,
+#'        pal = cols, val_order = unique(com$mst), leg_pos = "n")
+#' mf_map(ept, col = NA, border = "black", lwd = 1, add = TRUE)
 #' 
-#' plot(ept$geometry, col = NA, lwd = 1, add = TRUE)
+#' mf_legend(type = "typo", val = leg_val, pal = cols, 
+#'           title = "Situation on General (G)\nTerrorial (T) and\nSpatial (S) contexts",
+#'           pos = "topleft")
 #' 
-#' legendTypo(col = cols, categ = leg_val,
-#'            title.txt = "Situation on General (G)\nTerrorial (T) and\nSpatial (S) contexts",
-#'            nodata = FALSE, pos = "topleft")
+#' mf_label(x = com[com$mst == 7,], var = "LIBCOM",
+#'          cex = 0.6, halo = TRUE, overlap = FALSE)
 #' 
-#' labelLayer(x = com[com$mst == 7,], txt = "LIBCOM",
-#'            cex = 0.6, halo = TRUE, overlap = FALSE)
+#' mf_layout(title = "3-Deviations synthesis : Territorial units below index 75",
+#'           credits = paste0("Sources: GEOFLA® 2015 v2.1, Apur, impots.gouv.fr",
+#'                            "\nMTA", packageVersion("MTA")),
+#'           arrow = FALSE)
 #' 
-#' layoutLayer(title = "3-Deviations synthesis : Territorial units below index 75",
-#'             author = "MTA, 2020", scale = 5, col = "white", coltitle = "black")
 #' 
 #' @importFrom cartography typoLayer legendTypo
 #' @export

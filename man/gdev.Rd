@@ -45,11 +45,12 @@ com$gdevabs <- gdev(x = com, var1 = "INC", var2 = "TH", type = "abs")
 com$gdevrel <- gdev(x = com, var1 = "INC", var2 = "TH", type = "rel")
 
 # relative deviation map
+library(mapsf)
 par(mar = c(0,0,1.2,0))
 # set breaks
 bks <- c(min(com$gdevrel), 50, 75, 100, 125, 150, max(com$gdevrel))
 # plot a choropleth map of the relative global deviation
-mf_map(x = com, var = "gdevrel", type = "choro", leg_pos = "topleft",
+mapsf::mf_map(x = com, var = "gdevrel", type = "choro", leg_pos = "topleft",
        leg_title = "Relative Deviation\n(100 = general average)",
        breaks = bks, border = NA,
        pal = c("#4575B4", "#91BFDB", "#E0F3F8", "#FEE090", "#FC8D59", "#D73027"))

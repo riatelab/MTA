@@ -66,7 +66,7 @@ bidev <- map_bidev(x = com, dev1 = "gdev", dev2 = "tdev", breaks = c(50, 100, 20
 com <- bidev$geom
 cols <- bidev$cols
 
-Visualization
+#Visualization
 library(mapsf)
 library(sf)
 

@@ -50,7 +50,7 @@
 #' com <- bidev$geom
 #' cols <- bidev$cols
 #' 
-#'Visualization
+#'#Visualization
 #'library(mapsf)
 #'library(sf)
 #'

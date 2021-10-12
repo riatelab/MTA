@@ -29,7 +29,9 @@
 #' # Load data
 #' com <- sf::st_read(system.file("metroparis.gpkg", package = "MTA"), layer = "com", quiet = TRUE)
 #' ept <- sf::st_read(system.file("metroparis.gpkg", package = "MTA"), layer = "ept", quiet = TRUE)
-#' cardist <- read.csv(file = system.file("cardist.txt", package = "MTA"))
+#' cardist <- read.table(system.file("cardist.txt", package = "MTA"))
+#' cardist <- as.matrix(cardist)
+#' colnames(cardist) <- row.names(cardist)
 #' 
 #' # compute absolute spatial deviation in a neighborhood defined by a contiguity
 #' # order of 1.
@@ -48,6 +50,7 @@
 #' com$scardevrel <- sdev(x = com, var1 = "INC", var2 = "TH", type = "rel", dist = 10, mat = cardist)
 #' 
 #' # relative deviation map
+#' library(mapsf)
 #' par(mar = c(0,0,1.2,0))
 #' # set breaks
 #' bks <- c(min(com$scardevrel), 75, 100, 125, 150, max(com$scardevrel))

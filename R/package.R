@@ -83,6 +83,6 @@ NULL
 #' 
 #' @docType data
 #' @examples
-#' cardist <- read.csv(file = system.file("cardist.txt", package = "MTA"))
+#' cardist <- read.table(system.file("cardist.txt", package = "MTA"))
 #' cardist[1:10, 1:10]
 NULL

@@ -29,7 +29,7 @@
 #' # Load data
 #' com <- sf::st_read(system.file("metroparis.gpkg", package = "MTA"), layer = "com", quiet = TRUE)
 #' ept <- sf::st_read(system.file("metroparis.gpkg", package = "MTA"), layer = "ept", quiet = TRUE)
-#' cardist <- read.table(system.file("cardist.txt"))
+#' cardist <- read.csv(file = system.file("cardist.txt", package = "MTA"))
 #' 
 #' # compute absolute spatial deviation in a neighborhood defined by a contiguity
 #' # order of 1.

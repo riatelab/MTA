@@ -43,8 +43,9 @@ Compute the multiscalar typology (3 deviations) and propose
 labels and colours for mapping the results.
 }
 \examples{
-# load data
-mta_get_data()
+# Load data
+com <- sf::st_read(system.file("metroparis.gpkg", package = "MTA"), layer = "com", quiet = TRUE)
+ept <- sf::st_read(system.file("metroparis.gpkg", package = "MTA"), layer = "ept", quiet = TRUE)
 
 # Prerequisites - Compute the 3 deviations
 com$gdev <- gdev(x = com, var1 = "INC", var2 = "TH")

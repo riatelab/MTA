@@ -35,8 +35,9 @@
 #' }
 #' @examples
 #' # Focus on exceptional values (50, 100 and 200 % above-under the average)
-#' # load data
-#' mta_get_data()
+#' # Load data
+#' com <- sf::st_read(system.file("metroparis.gpkg", package = "MTA"), layer = "com", quiet = TRUE)
+#' ept <- sf::st_read(system.file("metroparis.gpkg", package = "MTA"), layer = "ept", quiet = TRUE)
 #' 
 #' # Prerequisite  - Compute 2 deviations
 #' com$gdev <- gdev(x = com, var1 = "INC", var2 = "TH")
@@ -76,7 +77,6 @@
 #'           breaks = c(50, 100, 200),
 #'           lib.var = "LIBCOM", lib.val = "Clichy-sous-Bois", cex.lab = 0.8)
 #'
-#' @importFrom cartography typoLayer legendTypo
 #' @import sf
 #' @export
 map_bidev <- function(x, dev1, dev2, breaks = c(25, 50, 100), xid = NULL){

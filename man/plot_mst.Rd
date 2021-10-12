@@ -52,8 +52,8 @@ being index 80).
 Vizualizing mst for selected territorial units.
 }
 \examples{
-# load data
-mta_get_data()
+# Load data
+com <- sf::st_read(system.file("metroparis.gpkg", package = "MTA"), layer = "com", quiet = TRUE)
 
 # Prerequisite  - Compute the 3 relative deviations
 com$gdev <- gdev(x = com, var1 = "INC", var2 = "TH")

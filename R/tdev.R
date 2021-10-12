@@ -21,10 +21,9 @@
 #' @return A vector is returned.
 #' @import sf
 #' @examples
-#' library(sf)
-#' library(mapsf)
-#' # load data
-#' mta_get_data()
+#' # Load data
+#' com <- st_read(system.file("metroparis.gpkg", package = "MTA"), layer = "com", quiet = TRUE)
+#' ept <- st_read(system.file("metroparis.gpkg", package = "MTA"), layer = "ept", quiet = TRUE)
 #' 
 #' # compute absolute territorial deviation
 #' com$tdevabs <- tdev(x = com, var1 = "INC", var2 = "TH", key = "EPT", 

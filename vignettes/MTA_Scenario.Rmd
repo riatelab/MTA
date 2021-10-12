@@ -58,7 +58,9 @@ library(ineq)
 library(sf)
 
 # load dataset
-mta_get_data()
+com <- st_read(system.file("metroparis.gpkg", package = "MTA"), layer = "com", quiet = TRUE)
+ept <- st_read(system.file("metroparis.gpkg", package = "MTA"), layer = "ept", quiet = TRUE)
+
 # set row names to municipalities names
 row.names(com) <- com$LIBCOM
 ````
@@ -231,7 +233,7 @@ In this vignette, color palette proposed for displaying on map the relative devi
 
 Absolute deviations are highlighted using proportional circles on maps. It examines which amount of the numerator should be moved to the poorest municipalities to reach equidistribution. Circles displayed in a red means that the territorial unit have to contribute a given amount of numerator to achieve the equilibrium in a given context; and reciprocally blue circles means that the territorial unit have to receive frmo the others. 
 
-It is quite easy to reproduce or adapt these maps using the functions proposed by the `cartography` package.
+It is quite easy to reproduce or adapt these maps using the functions proposed by the `mapsf` package.
 
 
 ### 1.4.4 Synthesis 
@@ -396,7 +398,7 @@ df$EPT <- with(df, reorder(EPT, gdevrel, mean, na.rm = TRUE))
 # Colors management
 col <- aggregate(x = df[,"gdevrel"], by = list(LIBEPT = df$LIBEPT),
                  FUN = mean)
-col <- merge(col, colEpt, by = "LIBEPT", by.y = "epts")
+col <- merge(col, colEpt, by = "LIBEPT")
 col <- col[order(col$x),]
 cols <- as.vector(col$cols)
 

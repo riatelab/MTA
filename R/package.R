@@ -44,10 +44,7 @@ NULL
 #' \url{https://www.apur.org/fr/nos-travaux/composition-12-territoires-metropole-grand-paris}
 #' @docType data
 #' @examples
-#' library(sf)
-#' # load data
-#' mta_get_data()
-#' mf_map(ept)
+#' ept <- sf::st_read(system.file("metroparis.gpkg", package = "MTA"), layer = "ept", quiet = TRUE)
 NULL
 
 #' @title Grand Paris Metropole Communes Data
@@ -71,8 +68,7 @@ NULL
 #' \url{https://www.apur.org/fr/nos-travaux/composition-12-territoires-metropole-grand-paris}
 #' @docType data
 #' @examples
-#' mta_get_data()
-#' mf_map(com)
+#' com <- sf::st_read(system.file("metroparis.gpkg", package = "MTA"), layer = "com", quiet = TRUE)
 NULL
 
 
@@ -87,11 +83,6 @@ NULL
 #' 
 #' @docType data
 #' @examples
-#' mta_get_data()
-#' cardist[1:10,1:10]
+#' cardist <- read.table(system.file("cardist.txt"))
+#' cardist[1:10, 1:10]
 NULL
-
-
-
-
-

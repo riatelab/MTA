@@ -22,9 +22,9 @@
 #' \item{7: G, T and S}
 #' }
 #' @examples
-#' # mst synthesis on general, territorial and spatial deviations (income data)
-#' # load data
-#' mta_get_data()
+#' # Load data
+#' com <- sf::st_read(system.file("metroparis.gpkg", package = "MTA"), layer = "com", quiet = TRUE)
+#' 
 #' # Prerequisite  - Compute the 3 deviations
 #' com$gdev <- gdev(x = com, var1 = "INC", var2 = "TH")
 #' com$tdev <- tdev(x = com, var1 = "INC", var2 = "TH", key = "EPT")

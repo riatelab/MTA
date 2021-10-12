@@ -35,10 +35,9 @@ The absolute global deviation is the amount of numerator that could be moved
 to obtain the ratio of reference on all units. (\code{(var1 - (ref * var2)}).
 }
 \examples{
-library(sf)
-library(mapsf)
-# load data
-mta_get_data()
+# Load data
+com <- sf::st_read(system.file("metroparis.gpkg", package = "MTA"), layer = "com", quiet = TRUE)
+ept <- sf::st_read(system.file("metroparis.gpkg", package = "MTA"), layer = "ept", quiet = TRUE)
 
 # compute absolute global deviation
 com$gdevabs <- gdev(x = com, var1 = "INC", var2 = "TH", type = "abs")

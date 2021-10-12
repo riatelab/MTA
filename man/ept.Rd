@@ -19,8 +19,5 @@ sf object. Grand Paris Metropole EPTs.
 EPTs (Etablissements Publics Territoriaux) are groups of communes.\cr
 }
 \examples{
-library(sf)
-# load data
-mta_get_data()
-mf_map(ept)
+ept <- sf::st_read(system.file("metroparis.gpkg", package = "MTA"), layer = "ept", quiet = TRUE)
 }

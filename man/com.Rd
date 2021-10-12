@@ -27,6 +27,6 @@ Atelier parisien d'urbanisme, Grand Paris communal composition (2015-12-17):\cr
 Data on the Grand Paris Metropole communes, included in a sf object.
 }
 \examples{
-data(GrandParisMetropole)
-head(com)
+mta_get_data()
+mf_map(com)
 }

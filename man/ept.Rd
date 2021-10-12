@@ -20,6 +20,7 @@ EPTs (Etablissements Publics Territoriaux) are groups of communes.\cr
 }
 \examples{
 library(sf)
-data(GrandParisMetropole)
-plot(st_geometry(ept))
+# load data
+mta_get_data()
+mf_map(ept)
 }

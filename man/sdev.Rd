@@ -46,10 +46,8 @@ The absolute spatial deviation is the amount of numerator that could be
 moved to obtain the same ratio in all units of its neighborhood.
 }
 \examples{
-library(sf)
-library(cartography)
 # load data
-data("GrandParisMetropole")
+mta_get_data()
 
 # compute absolute spatial deviation in a neighborhood defined by a contiguity
 # order of 1.
@@ -72,17 +70,18 @@ par(mar = c(0,0,1.2,0))
 # set breaks
 bks <- c(min(com$scardevrel), 75, 100, 125, 150, max(com$scardevrel))
 # plot a choropleth map of the relative spatial deviation
-choroLayer(x = com, var = "scardevrel", legend.pos = "topleft",
-           legend.title.txt = "Relative Deviation\n(100 = spatial average)",
-           breaks = bks, border = NA, 
-           col = carto.pal(pal1 = "blue.pal", n1 = 2, pal2 = "wine.pal", n2 = 3))
+mf_map(x = com, var = "scardevrel", type = "choro", leg_pos = "topleft",
+       leg_title = "Relative Deviation\n(100 = spatial average)",
+       breaks = bks, border = NA,
+       pal = c("#91BFDB", "#E0F3F8", "#FEE090", "#FC8D59", "#D73027"))
 
 # add EPT boundaries
-plot(st_geometry(ept), add = TRUE)
+mf_map(x = ept, col = NA, add = TRUE)
 
 # layout
-layoutLayer(title = "Spatial Deviation (neighborhood : 10 minutes by car)",
-            sources = "GEOFLA® 2015 v2.1, Apur, impots.gouv.fr",
-            scale = 5, frame = FALSE, author = "MTA", col = "white", 
-            coltitle = "black")
+mf_layout(title = "Spatial Deviation (neighborhood : 10 minutes by car)",
+          credits = paste0("Sources: GEOFLAÂ® 2015 v2.1, Apur, impots.gouv.fr",
+                           "\nMTA", packageVersion("MTA")),
+          arrow = FALSE)
+
 }

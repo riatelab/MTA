@@ -58,7 +58,7 @@ library(ineq)
 library(sf)
 
 # load dataset
-data("GrandParisMetropole", package = "MTA")
+mta_get_data()
 # set row names to municipalities names
 row.names(com) <- com$LIBCOM
 ````

@@ -92,8 +92,8 @@ in dark blue}
 Vizualizing bidev and select some territorial units on it.
 }
 \examples{
-# Load data
-data("GrandParisMetropole")
+# load data
+mta_get_data()
 
 # Prerequisite  - Compute 2 deviations
 com$gdev <- gdev(x = com, var1 = "INC", var2 = "TH")

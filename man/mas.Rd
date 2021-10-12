@@ -26,7 +26,9 @@ This function sums the total amount of redistributions according to the three ab
 deviations (global, territorial, spatial).
 }
 \examples{
-data("GrandParisMetropole")
+# load data
+mta_get_data()
+
 # general absolute deviation 
 com$gdevabs <- gdev(x = com, var1 = "INC",var2 = "TH", type = "abs")
 

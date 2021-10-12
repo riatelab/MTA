@@ -52,8 +52,8 @@ being index 80).
 Vizualizing mst for selected territorial units.
 }
 \examples{
-# Load data
-data("GrandParisMetropole")
+# load data
+mta_get_data()
 
 # Prerequisite  - Compute the 3 relative deviations
 com$gdev <- gdev(x = com, var1 = "INC", var2 = "TH")

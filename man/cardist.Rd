@@ -14,6 +14,6 @@ Travel time between Grand Paris Metropole communes' centroids by car, in minutes
 Row names and column names match the DEPCOM field in \link{com}.
 }
 \examples{
-data(GrandParisMetropole)
+mta_get_data()
 cardist[1:10,1:10]
 }

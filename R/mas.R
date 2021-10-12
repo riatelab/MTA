@@ -11,7 +11,9 @@
 #' according to the 3 contexts, expressed in numerator measure unit and as a share of the numerator mass.
 #' @export
 #' @examples
-#' data("GrandParisMetropole")
+#' # load data
+#' mta_get_data()
+#' 
 #' # general absolute deviation 
 #' com$gdevabs <- gdev(x = com, var1 = "INC",var2 = "TH", type = "abs")
 #' 

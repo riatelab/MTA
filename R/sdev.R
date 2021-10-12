@@ -27,10 +27,8 @@
 #' @return A vector is returned.
 #' @import sf
 #' @examples
-#' library(sf)
-#' library(mapsf)
 #' # load data
-#' data("GrandParisMetropole")
+#' mta_get_data()
 #' 
 #' # compute absolute spatial deviation in a neighborhood defined by a contiguity
 #' # order of 1.

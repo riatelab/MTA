@@ -20,8 +20,8 @@
 #' (25 % above the average corresponding to index 125 and 25 % below the average
 #' being index 80).
 #' @examples
-#' # Load data
-#' data("GrandParisMetropole")
+#' # load data
+#' mta_get_data()
 #' 
 #' # Prerequisite  - Compute the 3 relative deviations
 #' com$gdev <- gdev(x = com, var1 = "INC", var2 = "TH")

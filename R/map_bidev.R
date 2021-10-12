@@ -36,7 +36,7 @@
 #' @examples
 #' # Focus on exceptional values (50, 100 and 200 % above-under the average)
 #' # load data
-#' data("GrandParisMetropole")
+#' mta_get_data()
 #' 
 #' # Prerequisite  - Compute 2 deviations
 #' com$gdev <- gdev(x = com, var1 = "INC", var2 = "TH")

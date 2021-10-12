@@ -24,7 +24,7 @@
 #' library(sf)
 #' library(mapsf)
 #' # load data
-#' data("GrandParisMetropole")
+#' mta_get_data()
 #' 
 #' # compute absolute territorial deviation
 #' com$tdevabs <- tdev(x = com, var1 = "INC", var2 = "TH", key = "EPT", 

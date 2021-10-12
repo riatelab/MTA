@@ -25,6 +25,9 @@
 #' \item{G-T-S: all deviations (mst value = 7)}
 #' }
 #' @examples
+#' # load data
+#' mta_get_data()
+#' 
 #' # Prerequisites - Compute the 3 deviations
 #' com$gdev <- gdev(x = com, var1 = "INC", var2 = "TH")
 #' com$tdev <- tdev(x = com, var1 = "INC", var2 = "TH", key = "EPT")

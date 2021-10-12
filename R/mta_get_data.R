@@ -10,4 +10,6 @@
 mta_get_data <- function() {
   com <- st_read(system.file("metroparis.gpkg", package = "MTA"), layer = "com", quiet = TRUE)
   ept <- st_read(system.file("metroparis.gpkg", package = "MTA"), layer = "ept", quiet = TRUE)
+  cardist <- cardist <- read.table(system.file("cardist.txt"))
+  colnames(cardist) <- row.names(cardist)
 }

@@ -22,7 +22,7 @@
 #' library(sf)
 #' library(mapsf)
 #' # load data
-#' data("GrandParisMetropole")
+#' mta_get_data()
 #' 
 #' # compute absolute global deviation
 #' com$gdevabs <- gdev(x = com, var1 = "INC", var2 = "TH", type = "abs")

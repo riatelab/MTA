@@ -24,7 +24,7 @@
 #' @examples
 #' # mst synthesis on general, territorial and spatial deviations (income data)
 #' # load data
-#' data("GrandParisMetropole")
+#' mta_get_data()
 #' # Prerequisite  - Compute the 3 deviations
 #' com$gdev <- gdev(x = com, var1 = "INC", var2 = "TH")
 #' com$tdev <- tdev(x = com, var1 = "INC", var2 = "TH", key = "EPT")

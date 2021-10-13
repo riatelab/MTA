@@ -501,6 +501,9 @@ eq <- paste("Spatial Deviation =", round(lm$coefficients["gdevrel","Estimate"], 
                                             digits = 3))
 rsq <-paste("R-Squared =", round(summary(lm(sdevrel ~ gdevrel, com ))$r.squared, digits = 2))
 
+# Color management
+df <- merge(df, colEpt, by = "LIBEPT")
+
 # Plot spatial autocorrelation
 plot(df$gdevrel, df$sdevrel,
      ylab = "Local deviation",

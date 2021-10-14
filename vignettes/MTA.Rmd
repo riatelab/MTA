@@ -85,7 +85,7 @@ In 2021, The ESPON Programme launched the update of the [ESPON HyperAtlas 3.0](h
 
 The HyperAtlas solution is one way to access to multiscalar inequalities. The aim of the MTA package consists in proposing to the community **the main functionalities proposed by HyperAtlas in a R language**.  
 
-To understand how to use `MTA` functions and results, you are invited to consult the [R Package vignette](https://cran.r-project.org/web/packages/MTA/vignettes/MTA_Scenario.html), on income inequalities ; or the [Rzine publication]((https://rysebaert.github.io/mta_rzine/) on employment inequalities. 
+To understand how to use `MTA` functions and results, you are invited to consult the [R Package vignette](https://CRAN.R-project.org/package=MTA/vignettes/MTA_Scenario.html), on income inequalities ; or the [Rzine publication]((https://rysebaert.github.io/mta_rzine/) on employment inequalities. 
 
 # References
 

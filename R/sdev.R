@@ -27,8 +27,9 @@
 #' @return A vector is returned.
 #' @examples
 #' # Load data
-#' com <- sf::st_read(system.file("metroparis.gpkg", package = "MTA"), layer = "com", quiet = TRUE)
-#' ept <- sf::st_read(system.file("metroparis.gpkg", package = "MTA"), layer = "ept", quiet = TRUE)
+#' library(mapsf)
+#' com <- st_read(system.file("metroparis.gpkg", package = "MTA"), layer = "com", quiet = TRUE)
+#' ept <- st_read(system.file("metroparis.gpkg", package = "MTA"), layer = "ept", quiet = TRUE)
 #' cardist <- read.table(system.file("cardist.txt", package = "MTA"), check.names = FALSE)
 #' cardist <- as.matrix(cardist)
 #' 
@@ -49,7 +50,6 @@
 #' com$scardevrel <- sdev(x = com, var1 = "INC", var2 = "TH", type = "rel", dist = 10, mat = cardist)
 #' 
 #' # relative deviation map
-#' library(mapsf)
 #' # set breaks
 #' bks <- c(min(com$scardevrel), 75, 100, 125, 150, max(com$scardevrel))
 #' # plot a choropleth map of the relative spatial deviation

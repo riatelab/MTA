@@ -39,7 +39,8 @@
 #' @examples
 #' # bidev synthesis on general and territorial deviation (income data)
 #' # Load data
-#' com <- sf::st_read(system.file("metroparis.gpkg", package = "MTA"), layer = "com", quiet = TRUE)
+#' library(sf)
+#' com <- st_read(system.file("metroparis.gpkg", package = "MTA"), layer = "com", quiet = TRUE)
 #' 
 #' # Prerequisite  - Compute 2 deviations
 #' com$gdev <- gdev(x = com, var1 = "INC", var2 = "TH")

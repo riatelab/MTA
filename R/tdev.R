@@ -22,8 +22,9 @@
 #' @import sf
 #' @examples
 #' # Load data
-#' com <- sf::st_read(system.file("metroparis.gpkg", package = "MTA"), layer = "com", quiet = TRUE)
-#' ept <- sf::st_read(system.file("metroparis.gpkg", package = "MTA"), layer = "ept", quiet = TRUE)
+#' library(mapsf)
+#' com <- st_read(system.file("metroparis.gpkg", package = "MTA"), layer = "com", quiet = TRUE)
+#' ept <- st_read(system.file("metroparis.gpkg", package = "MTA"), layer = "ept", quiet = TRUE)
 #' 
 #' # compute absolute territorial deviation
 #' com$tdevabs <- tdev(x = com, var1 = "INC", var2 = "TH", key = "EPT", 
@@ -33,7 +34,6 @@
 #'                     type = "rel")
 #' 
 #' # relative deviation map
-#' library(mapsf)
 #' # set breaks
 #' bks <- c(min(com$tdevrel), 80, 91, 100, 110, 125, max(com$tdevrel))
 #' # plot a choropleth map of the relative territorial deviation

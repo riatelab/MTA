@@ -21,7 +21,8 @@
 #' being index 80).
 #' @examples
 #' # Load data
-#' com <- sf::st_read(system.file("metroparis.gpkg", package = "MTA"), layer = "com", quiet = TRUE)
+#' library(sf)
+#' com <- st_read(system.file("metroparis.gpkg", package = "MTA"), layer = "com", quiet = TRUE)
 #' 
 #' # Prerequisite  - Compute the 3 relative deviations
 #' com$gdev <- gdev(x = com, var1 = "INC", var2 = "TH")

@@ -17,7 +17,7 @@ vignette: >
 
 It is impossible to understand the origin of the implementation of the MTA package without taking into account the specificities of spatial planning in Europe and the **need of monitoring tools and methods for measuring inequalities in Europe**: Early the question of measurement of territorial inequalities has been raised by planners and policy makers. Without being exhaustive, let us remind from a political point of view some usages of statistics and cartography regarding the measure of territorial inequalities in a European context.
 
-```{r fig.width=7,echo=FALSE}
+```{r, fig.width=7, fig.height = 4.7,echo=FALSE}
 library(png)
 library(grid)
 img <- readPNG("./img/figure_MTA1.png")
@@ -34,7 +34,7 @@ The analysis of these two maps reveals several possibilities for measuring terri
 
 Nowadays, the need to measure territorial disparities at lower scales become more and more important. The historical planning issues managed at national level is in a large extent transferred to regions and local authorities. To act locally, these new territories of governance requires statistical evidences to understand the structure and the dynamics of their territories. As displayed below, a lot of urban agencies and experts financed by public funds were recently created to provide local pictures of local dynamics (Metropole du Grand Paris, Metropole du Grand Lyon, Greater London, etc.). Here again, the need of territorial information is high.  
 
-```{r fig.width=7,echo=FALSE}
+```{r,  fig.width=7, fig.height = 4.8,echo=FALSE}
 img <- readPNG("./img/figure_MTA2.png")
 grid.raster(img)
 ```
@@ -53,7 +53,7 @@ MTA methods have been developed in order to highlight in a simple way such situa
 
 The central hypothesis behind the MTA consists to consider that the meaning of a statistical indicator always depends on territorial context of reference. Taking a concrete example, knowing that the Gross Domestic Product in 2008 of Nord-Pas-de-Calais is 24 700 euros per capita provides few information itself. It is rather interesting to understand how this region stands as regard to the European Union average (22 800 euros, + 7,7 %), to its country of belonging (France, 30 400 euros, - 18 %) or as compared to its neighboring regions (24 950 euros, - 1 %). The combination of these deviation measures allows to highlight regions in favorable situations, lagging regions and also to depict contradictory situations (e.g. a rich region in a poor country, and vice-versa).
 
-```{r fig.width=7,echo=FALSE}
+```{r,  fig.width=7, fig.height = 6,echo=FALSE}
 img <- readPNG("./img/figure_MTA3.png")
 grid.raster(img)
 ```

@@ -1,9 +1,10 @@
 # Version : 0.4.0
 
 - suggest the use of [`mapsf`](https://riatelab.github.io/mapsf/) instead of [`cartography`](https://cran.r-project.org/web/packages/cartography/index.html) for mapping results (functions examples, vignette) 
-- the `mta` package does not import cartography and reshape2 anymore. 
+- the `MTA` package does not import cartography and reshape2 anymore. 
 - Update of the vignette on conceptual background (new references).
 - Update of the input data (geopackage instead of .RData).
+- Use raw data instead of RData files 
 
 
 

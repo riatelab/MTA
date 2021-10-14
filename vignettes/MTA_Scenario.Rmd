@@ -753,7 +753,7 @@ The `map_bidev` function delivers a list of 3 objects useful to map the results:
 For mapping the results, it is recommended to share the plot in two columns : one side for the map, and one side displaying the bidev plot to understand correctly the colors displayed on the map.  
 
 ````{r bidev_map, fig.width=7, fig.height=5,  fig.show='hold'}
-opar <- par(mfrow = c(1,2), mar = c(0,4,0,0))
+opar <- par(mfrow = c(1,2))
 
 bidev <- map_bidev(x = com, dev1 = "gdev", dev2 = "tdev",
                    breaks = c(50, 100, 200))

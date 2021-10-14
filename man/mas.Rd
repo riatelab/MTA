@@ -27,7 +27,7 @@ deviations (global, territorial, spatial).
 }
 \examples{
 # Load data
-librar(sf)
+library(sf)
 com <- st_read(system.file("metroparis.gpkg", package = "MTA"), layer = "com", quiet = TRUE)
 
 # general absolute deviation 

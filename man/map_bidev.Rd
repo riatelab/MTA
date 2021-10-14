@@ -52,8 +52,9 @@ colors for mapping the results.
 \examples{
 # Focus on exceptional values (50, 100 and 200 \% above-under the average)
 # Load data
-com <- sf::st_read(system.file("metroparis.gpkg", package = "MTA"), layer = "com", quiet = TRUE)
-ept <- sf::st_read(system.file("metroparis.gpkg", package = "MTA"), layer = "ept", quiet = TRUE)
+library(mapsf)
+com <- st_read(system.file("metroparis.gpkg", package = "MTA"), layer = "com", quiet = TRUE)
+ept <- st_read(system.file("metroparis.gpkg", package = "MTA"), layer = "ept", quiet = TRUE)
 
 # Prerequisite  - Compute 2 deviations
 com$gdev <- gdev(x = com, var1 = "INC", var2 = "TH")
@@ -67,9 +68,6 @@ com <- bidev$geom
 cols <- bidev$cols
 
 #Visualization
-library(mapsf)
-library(sf)
-
 # One side for the map, another for the plot
 opar <- par(mfrow = c(1,2), mar = c(0,4,0,0))
 

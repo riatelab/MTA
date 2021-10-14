@@ -44,8 +44,9 @@ labels and colours for mapping the results.
 }
 \examples{
 # Load data
-com <- sf::st_read(system.file("metroparis.gpkg", package = "MTA"), layer = "com", quiet = TRUE)
-ept <- sf::st_read(system.file("metroparis.gpkg", package = "MTA"), layer = "ept", quiet = TRUE)
+library(mapsf)
+com <- st_read(system.file("metroparis.gpkg", package = "MTA"), layer = "com", quiet = TRUE)
+ept <- st_read(system.file("metroparis.gpkg", package = "MTA"), layer = "ept", quiet = TRUE)
 
 # Prerequisites - Compute the 3 deviations
 com$gdev <- gdev(x = com, var1 = "INC", var2 = "TH")
@@ -63,7 +64,6 @@ cols <- mst$cols
 leg_val <- mst$leg_val
 
 # Cartography
-library(mapsf)
 mf_map(x = com, var = "mst", type = "typo", border = "white", lwd = 0.2,
        pal = cols, val_order = unique(com$mst), leg_pos = "n")
 mf_map(ept, col = NA, border = "black", lwd = 1, add = TRUE)

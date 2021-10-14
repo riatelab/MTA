@@ -36,8 +36,9 @@ to obtain the ratio of reference on all units. (\code{(var1 - (ref * var2)}).
 }
 \examples{
 # Load data
-com <- sf::st_read(system.file("metroparis.gpkg", package = "MTA"), layer = "com", quiet = TRUE)
-ept <- sf::st_read(system.file("metroparis.gpkg", package = "MTA"), layer = "ept", quiet = TRUE)
+library(mapsf)
+com <- st_read(system.file("metroparis.gpkg", package = "MTA"), layer = "com", quiet = TRUE)
+ept <- st_read(system.file("metroparis.gpkg", package = "MTA"), layer = "ept", quiet = TRUE)
 
 # compute absolute global deviation
 com$gdevabs <- gdev(x = com, var1 = "INC", var2 = "TH", type = "abs")
@@ -45,11 +46,10 @@ com$gdevabs <- gdev(x = com, var1 = "INC", var2 = "TH", type = "abs")
 com$gdevrel <- gdev(x = com, var1 = "INC", var2 = "TH", type = "rel")
 
 # relative deviation map
-library(mapsf)
 # set breaks
 bks <- c(min(com$gdevrel), 50, 75, 100, 125, 150, max(com$gdevrel))
 # plot a choropleth map of the relative global deviation
-mapsf::mf_map(x = com, var = "gdevrel", type = "choro", leg_pos = "topleft",
+mf_map(x = com, var = "gdevrel", type = "choro", leg_pos = "topleft",
        leg_title = "Relative Deviation\n(100 = general average)",
        breaks = bks, border = NA,
        pal = c("#4575B4", "#91BFDB", "#E0F3F8", "#FEE090", "#FC8D59", "#D73027"))

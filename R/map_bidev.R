@@ -55,7 +55,7 @@
 #'library(sf)
 #'
 #'# One side for the map, another for the plot
-#'par(mfrow = c(1,2), mar = c(0,4,0,0))
+#'opar <- par(mfrow = c(1,2), mar = c(0,4,0,0))
 #'
 #'# Cartography
 #'mf_map(x = com, var = "bidev", type = "typo", val_order = unique(com$bidev), 
@@ -76,7 +76,7 @@
 #'           dev2.lab = "Territorial deviation (EPT of belonging)",
 #'           breaks = c(50, 100, 200),
 #'           lib.var = "LIBCOM", lib.val = "Clichy-sous-Bois", cex.lab = 0.8)
-#'
+#'par(opar)
 #' @import sf
 #' @export
 map_bidev <- function(x, dev1, dev2, breaks = c(25, 50, 100), xid = NULL){

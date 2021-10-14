@@ -46,7 +46,6 @@
 #' 
 #' # Cartography
 #' library(mapsf)
-#' par(mar = c(0,0,1.2,0))
 #' mf_map(x = com, var = "mst", type = "typo", border = "white", lwd = 0.2,
 #'        pal = cols, val_order = unique(com$mst), leg_pos = "n")
 #' mf_map(ept, col = NA, border = "black", lwd = 1, add = TRUE)
@@ -75,7 +74,6 @@
 #' leg_val <- mst$leg_val
 #' 
 #' # Cartography
-#' par(mar = c(0,0,1.2,0))
 #' mf_map(x = com, var = "mst", type = "typo", border = "white", lwd = 0.2,
 #'        pal = cols, val_order = unique(com$mst), leg_pos = "n")
 #' mf_map(ept, col = NA, border = "black", lwd = 1, add = TRUE)

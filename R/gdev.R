@@ -29,7 +29,6 @@
 #' 
 #' # relative deviation map
 #' library(mapsf)
-#' par(mar = c(0,0,1.2,0))
 #' # set breaks
 #' bks <- c(min(com$gdevrel), 50, 75, 100, 125, 150, max(com$gdevrel))
 #' # plot a choropleth map of the relative global deviation

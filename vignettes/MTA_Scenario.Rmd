@@ -75,9 +75,6 @@ The 150 municipalities of the _MGP_ belongs to 12 intermediate territorial divis
 _Établissements Publics Territoriaux_ (EPT). This territorial zoning follows approximately the delineation of the _départements_ : _Seine-Saint-Denis_ (in blue on the map below); Paris (in purple); _Hauts-de-Seine_ (in green) and _Val-de-Marine (in orange). 
 
 ````{r plot_zonings, fig.width=7, fig.height=5, warning = FALSE, cache = FALSE, fig.align = 'center'}
-# set margins
-par(mar = c(0, 0, 1.2, 0))
-
 # label / colors management
 LIBEPT <- c("Paris", "Est Ensemble", "Grand-Paris Est", "Territoire des aeroports",   
           "Plaine Commune", "Boucle Nord 92", "La Defense","Grand Paris Sud Ouest",   
@@ -113,9 +110,9 @@ mf_layout(title = "Territorial Zoning of the MGP",
 
 The numerator (number of tax households) and the denominator (total amount of income tax references) building the reference ratio (average income per tax households) are firstly plotted.
 
-````{r INCDeINC_plot, fig.width=7, fig.height=5, warning = FALSE, cache = FALSE}
+````{r INCDeINC_plot, fig.width=7, fig.height=5, warning = FALSE, cache = FALSE, fig.show="hold"}
 # layout
-par(mfrow = c(1, 2), mar = c(0, 0, 1.2, 0))
+opar <- par(mfrow = c(1, 2))
 
 # numerator map
 com$INCM <- com$INC / 1000000
@@ -148,6 +145,7 @@ mf_layout(title = "Denominator - Tax households",
           credits = paste0("Sources : GEOFLA® 2015 v2.1, Apur, impots.gouv.fr",
                            "\nRonan Ysebaert, RIATE, 2021"), 
           arrow = FALSE)
+par(opar)
 ````
 
 Without surprise, the highest amounts of tax households and income are located 
@@ -159,8 +157,6 @@ population in Paris suburbs.
 ### 1.3.3  Ratio 
 
 ````{r ratio_plot, fig.width=7, fig.height=5, warning = FALSE, cache = FALSE}
-par(mar = c(0, 0, 1.2, 0), mfrow = c(1,1))
-
 # ratio
 com$ratio <- com$INC / com$TH
 
@@ -263,9 +259,6 @@ com$gdevrel <- gdev(x = com,
                     var2 = "TH", 
                     type = "rel")
 
-# margins
-par(mar = c(0, 0, 1.2, 0))
-
 # Colors for deviations
 devpal <-  c("#4575B4", "#91BFDB", "#E0F3F8", "#FEE090", "#FC8D59", "#D73027")
 
@@ -295,14 +288,14 @@ The `Lc` function takes in entry the numerator and the denominator and returns a
 
 The code below add some additional graphical parameters to ease the interpretation of this plot. 
 
-````{r lorenz_plot, fig.width=7, fig.height=5, warning = FALSE, cache = FALSE, fig.align = 'center'}
+````{r lorenz_plot, fig.width=7, fig.height=5, warning = FALSE, cache = FALSE, fig.align = 'center', fig.show='hold'}
 library(ineq)
 #  Concentration of X as regards to concentration of Y
 Lc.p <- Lc(com$INC, com$TH)
 Lp <- data.frame(cumX = 100 * Lc.p$L, cumY = 100 * Lc.p$p)
 
 # Plot concentrations
-par(mar = c(4,4,1.2,4), xaxs = "i", yaxs = "i", pty = "s")
+opar <- par(mar = c(4,4,1.2,4), xaxs = "i", yaxs = "i", pty = "s")
 plot(Lp$cumY, Lp$cumX,  type = "l", col = "red", lwd = 2,
      panel.first = grid(10,10), xlab = "Households (cumulative percentage)",
      ylab = "Income (cumulative percentage)", 
@@ -327,6 +320,7 @@ text(y = xy[,"cumX"],
      label = paste(round(xy[,"cumX"],0), round(xy[,"cumY"],0), sep = " , "),  
      pos = 2,
      cex = 0.6)
+par(opar)
 ````
 
 The curve depicts on its horizontal axis a defined population – e.g., all households – broken down into deciles and ordered from left to right on the horizontal axis (from the lower tax income per household to the higher).
@@ -353,9 +347,6 @@ com$tdevrel <- tdev(x = com,
                     key = "LIBEPT")
 
 # Cartography
-# Plot layout
-par(mfrow = c(1, 1), mar = c(0, 0, 1.2, 0))
-
 # Territorial deviation mapping
 mf_map(x = com, var = "tdevrel", type = "choro",
        breaks = c(min(com$tdevrel, na.rm = TRUE), 67, 91, 100, 125, 150,
@@ -386,8 +377,8 @@ Another way to explore characteristics of the territorial deviation consists in 
 
 The code below takes in entry the general deviation calculated above and the intermediate levels included in the input dataset. It returns a boxplot displaying the statistical parameters (median, mean, 1st and 3rd quartiles, range, minimum and maximum, extraordinary values) allowing to observe the statistical dispersion existing for each intermediate zoning. To ease the interpretation and the synthesis of the plot, boxplots are ordered by the average of each territorial level. Moreover, the width of the bars are proportional to the number of territorial units included in each intermediate zoning. 
 
-````{r mdev_boxplot, fig.width=7, fig.height=6, warning = FALSE, cache = FALSE, fig.align = 'center'}
-par(mar = c(4, 4, 1.2, 2))
+````{r mdev_boxplot, fig.width=7, fig.height=6, warning = FALSE, cache = FALSE, fig.align = 'center', fig.show='hold'}
+opar <- par(mar = c(4, 4, 1.2, 2))
 
 # Drop geometries
 df <- st_set_geometry(com, NULL)
@@ -420,6 +411,7 @@ points(xi, col = "#7C0000", pch = 19)
 # Legend for the boxplot
 legend("topleft", legend = rev(as.vector(col$LIBEPT)), pch = 15,
        col = rev(as.vector(col$cols)), cex = 0.8, pt.cex = 1.5)
+par(opar)
 ````
 
 This plot highlights the statistical dispersion existing in each EPT. It confirms globally that wealthier the _EPT_ is, larger the statistical differences between the poorest and the wealthiest territorial units are. In that way, _Plaine Commune_ and _Territoire des Aéroports_ (T6 and T7) appear quite homogeneous in a lagging situation. On the opposite, important differences a revealed in  Paris (minimum = 71 and maximum = 290) or in _La Defense_ and _Grand Paris Sud Ouest_. 
@@ -443,9 +435,6 @@ com$sdevrel <- sdev(x = com,
                     type = "rel")
 
 # Cartography
-# Plot layout
-par(mfrow = c(1, 1), mar = c(0, 0, 1.2, 0))
-
 # Territorial deviation (relative and absolute) cartography
 mf_map(x = com, var = "sdevrel", type = "choro",
        breaks = c(min(com$sdevrel, na.rm = TRUE), 67, 91, 100, 125, 150,
@@ -486,8 +475,8 @@ This plot provides interesting inputs for answering to basic questions, such as:
 * Are territorial units in favorable situation in a global context also in the same situation at local level?
 * Is it possible to detect specific situations as regard to the global trend, meaning the existence of "local bastions" in favorable or lagging situations? 
 
-````{r spat_autocorr_plot, fig.width=7, fig.height=5, warning = FALSE, cache = FALSE, fig.align = 'center'}
-par(cex.lab = 1, cex.axis = 0.75, mar = c(4, 4, 1.2, 2))
+````{r spat_autocorr_plot, fig.width=7, fig.height=5, warning = FALSE, cache = FALSE, fig.align = 'center',  fig.show='hold'}
+opar <- par(cex.lab = 1, cex.axis = 0.75, mar = c(4, 4, 1.2, 2))
 
 # Drop geometries
 df <- st_set_geometry(com, NULL)
@@ -527,14 +516,15 @@ abline (v = seq(50,250,50), col = "gray0", lwd = 1, lty = 1)
 # Legend for territorial level
 legend("topleft", legend = rev(as.vector(colEpt$LIBEPT)), pch = 15,
        col = rev(as.vector(colEpt$cols)), cex = 0.6, pt.cex = 1.5)
+par(opar)
 ````
 
 The output of the linear model of spatial autocorrelation reveals that the hypothesis of independence is rejected at a probability below than 0.0001. It means that, "everything is related to everything else, but near things are related than distant things" (Tobler, 1970). However, the R-squared of the relation (0.42) suggests that this statistical relation includes outliers very far from the linear regression.
 
 This chart can be modified for analyzing outliers specifically. The code below computes the statistical residuals of the spatial autocorrelation calculated above. Then the residuals are standardized. Finally, a plot is built to display and label significant residuals. 
 
-````{r spat_autocor_res_plt, fig.width=7, fig.height=5, warning = FALSE, cache = FALSE, fig.align = 'center'}
-par(cex.lab = 1, cex.axis = 0.75, mar = c(4, 4, 2, 2))
+````{r spat_autocor_res_plt, fig.width=7, fig.height=5, warning = FALSE, cache = FALSE, fig.align = 'center',  fig.show='hold'}
+opar <- par(cex.lab = 1, cex.axis = 0.75, mar = c(4, 4, 2, 2))
 
 # Standardized residual calculation
 lm <- lm(sdevrel ~ gdevrel, df)
@@ -574,6 +564,7 @@ abline (v = seq(50, 200, 50), col = "gray0", lwd = 1, lty = 1)
 # Plot the legend (territorial zoning)
 legend("topleft", legend = rev(as.vector(colEpt$LIBEPT)), pch = 15,
        col = rev(as.vector(colEpt$cols)), cex = 0.6, pt.cex = 1.5)
+par(opar)
 ````
 
 Further analysis may be considered in the domain, using for instance Moran indexes et LISA indexes or other distance criteria. This, it is important to remind that the choice of the appropriate threshold or criteria must make sense from a thematic point of view (does a neighborhood of 5 km mean something? Is a distance of 20 minutes by car more appropriated?)
@@ -588,7 +579,7 @@ The meaning of this mathematical calculation is strong in policy term, since it 
 
 The calculation is made for the general and the territorial contexts, using the argument `type = abs`. Two maps are created, displaying the amount of income that should be transfered from the wealthiest to the poorest municipalities. 
 
-````{r redistributions, fig.width=7, fig.height=5}
+````{r redistributions, fig.width=7, fig.height=5,  fig.show='hold'}
 # general absolute deviation 
 com$gdevabs <- gdev(x = com, 
                     var1 = "INC", 
@@ -611,7 +602,7 @@ com$gdevsign <- ifelse(com$gdevabsmil> 0, "Income surplus", "Income deficit")
 com$tdevsign <- ifelse(com$tdevabsmil > 0, "Income surplus", "Income deficit")
 
 # Deviation maps 
-par(mar = c(0, 0, 1.2, 0), mfrow = c(1,2))
+opar <- par(mfrow = c(1,2))
 
 # General deviation
 # Plot territories
@@ -662,6 +653,7 @@ mf_layout(title = "Territorial deviation (EPT of belonging)",
           credits = paste0("Sources : GEOFLA® 2015 v2.1, Apur, impots.gouv.fr",
                            "\nRonan Ysebaert, RIATE, 2021"), 
           arrow = FALSE)
+par(opar)
 ````
 
 In the context of the _MGP_, the *7th Arrondissement of Paris* is the municipality which should contribute the most, all things being equal to its income tax level (1,987 billion Euros of income transfer, 65 % of the total amount of tax income in this municipality). _Neuilly-sur-Seine_ (third position in absolute terms) should transfer 1,9 billion Euros to the lagging municipalities of the _MGP_ area. It corresponds to 62,87% of the total amount of tax income declared in this municipality.
@@ -735,8 +727,8 @@ At this end, it produces a 13 classes-typology, which is the combination of the 
 
 To understand the resulting typology, the `plot_mst` is especially adapted. The X-Y scale is defined in logarithm. Index 200 corresponds to territorial units defined to twice the average ; and index 50 twice below the average. 
 
-````{r bidev_plot, fig.width=7, fig.height=8}
-par(mar = c(0, 0, 0, 0), mfrow = c(1,1))
+````{r bidev_plot, fig.width=7, fig.height=8, fig.show='hold'}
+opar <- par(mar = c(0, 0, 0, 0))
 
 # Prerequisite  - Compute 2 deviations
 com$gdev <- gdev(x = com, var1 = "INC", var2 = "TH")
@@ -751,6 +743,7 @@ plot_bidev(x = com,
            lib.var = "LIBCOM",
            lib.val =  c("Marolles-en-Brie", "Suresnes", 
                         "Clichy-sous-Bois", "Les Lilas"))
+par(opar)
 ````
 
 This plot highlights specific areas of interest. In the red quarter, territorial units above the average for the general and territorial deviations, such as _Marolles-en-Brie_(class A3). Reversely, municipalities appearing in the blue quarter are below the average for the 2 deviations, such as _Clichy-sous-Bois_(class C3). 
@@ -761,8 +754,8 @@ The `map_bidev` function delivers a list of 3 objects useful to map the results:
 
 For mapping the results, it is recommended to share the plot in two columns : one side for the map, and one side displaying the bidev plot to understand correctly the colors displayed on the map.  
 
-````{r bidev_map, fig.width=7, fig.height=5}
-par(mfrow = c(1,2), mar = c(0,4,0,0))
+````{r bidev_map, fig.width=7, fig.height=5,  fig.show='hold'}
+opar <- par(mfrow = c(1,2), mar = c(0,4,0,0))
 
 bidev <- map_bidev(x = com, dev1 = "gdev", dev2 = "tdev",
                    breaks = c(50, 100, 200))
@@ -792,6 +785,7 @@ plot_bidev(x = com,  dev1 = "gdev",  dev2 = "tdev",
            dev1.lab = "General deviation (MGP Area)",
            dev2.lab = "Territorial deviation (EPT of belonging)",
            lib.var = "LIBCOM", lib.val = "Clichy-sous-Bois", cex.lab = 0.8)
+par(opar)
 ````
 
 This map highlights areas in favorable situation for the MGP area and EPT contexts (red), in lagging situation for these two contexts (blue) or in contradictory situations (yellow and green). Darker is the color, stronger are the distance to the average. 
@@ -835,8 +829,6 @@ subset(com, mstW == 7, select = c(ratio, gdev, tdev, sdev, mstW), drop = T)
 The results are afterwards mapped. As `map_bidev` function do, the `map_mst` function takes in entry the 3 pre-calculated deviations and `mst` parameters and returns a list including a `sf` object with the result of the `mst` calculation, and two vectors proposing colors and legend for mapping results.   
 
 ````{r map_mst1, fig.width=7, fig.height=5}
-par(mfrow = c(1, 1), mar = c(0, 0, 1.2, 0))
-
 # Compute mapmst
 mst <- map_mst(x = com, gdevrel = "gdev", tdevrel = "tdev", sdevrel = "sdev", 
                threshold = 125, superior = TRUE)
@@ -877,8 +869,6 @@ More precisely, 11 municipalities are characterized by an index of average incom
 It is also possible to analyze the reverse situation: the municipalities in lagging situation for this indicator. Thus, the `map_mst()` function takes '80' for the threshold argument and 'FALSE' for the superior argument. This typology will specify the municipalities situated below 25 % of the average for the global and/or the territorial and/or the spatial contexts.  
 
 ````{r map_mst2, fig.width=7, fig.height=5}
-par(mfrow = c(1, 1), mar = c(0, 0, 1.2, 0))
-
 # Compute mapmst
 mst <- map_mst(x = com, gdevrel = "gdev", tdevrel = "tdev", sdevrel = "sdev", 
               threshold = 80, superior = FALSE)
@@ -947,12 +937,12 @@ subset(com, mstP == 4 | mstP == 6, select = c(ratio, gdev, tdev, sdev, mstP), dr
 
 The `plot_mst` allows to compare selected territorial units on a barplot. This function takes in entry 3 pre-calculated deviations and returns a barplot which shows the position on the three deviations for one (or more) territorial unit(s).
 
-````{r plot_mst, fig.width = 7, fig.height=6}
-par(mfrow = c(1, 1), mar = c(4, 6, 4, 4))
-
+````{r plot_mst, fig.width = 7, fig.height=6, fig.show='hold'}
+opar <- par(mar = c(4, 6, 4, 4))
 # Synthesis barplot
 plot_mst(x = com, gdevrel = "gdev", tdevrel = "tdev", sdevrel = "sdev", lib.var = "LIBCOM", 
          lib.val = c("Neuilly-sur-Seine", "Clichy-sous-Bois", "Suresnes", "Les Lilas"))
+par(opar)
 ````
 
 The barplot above displays the situation for 4 municipalities of the study area ( _Les Lilas_, _Neuilly-sur-Seine_, _Suresnes_, _Clichy-sous-Bois_) is a good way to propose a visualization for comparing specific territorial units. 

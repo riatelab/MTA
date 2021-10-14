@@ -34,7 +34,6 @@
 #' 
 #' # relative deviation map
 #' library(mapsf)
-#' par(mar = c(0,0,1.2,0))
 #' # set breaks
 #' bks <- c(min(com$tdevrel), 80, 91, 100, 110, 125, max(com$tdevrel))
 #' # plot a choropleth map of the relative territorial deviation

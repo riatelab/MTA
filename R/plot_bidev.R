@@ -111,8 +111,8 @@ plot_bidev <- function (x, dev1, dev2, breaks = c(25, 50, 100),
               "#8ac198","#318c49","#025b15")
   
   # Scatter-plot
-  par(mar = c(4,4,4,4),  pty = "s")  
-  
+  opar <- par(mar = c(4,4,4,4),  pty = "s")  
+  on.exit(par(opar), add = TRUE)
   # Standard scale
   plot((dVal[1] - 0.1) : (dVal[9] + 0.5),
        (dVal[1] - 0.1) : (dVal[9] + 0.5),

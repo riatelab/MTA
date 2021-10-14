@@ -3,6 +3,7 @@
 .RData
 # produced vignettes
 vignettes/*.html
+vignettes/*.R
 vignettes/*.pdf
 inst/doc
 *_cache/

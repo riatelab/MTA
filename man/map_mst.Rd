@@ -64,7 +64,6 @@ leg_val <- mst$leg_val
 
 # Cartography
 library(mapsf)
-par(mar = c(0,0,1.2,0))
 mf_map(x = com, var = "mst", type = "typo", border = "white", lwd = 0.2,
        pal = cols, val_order = unique(com$mst), leg_pos = "n")
 mf_map(ept, col = NA, border = "black", lwd = 1, add = TRUE)
@@ -77,7 +76,7 @@ mf_label(x = com[com$mst == 7,], var = "LIBCOM",
          cex = 0.6, halo = TRUE, overlap = FALSE)
 
 mf_layout(title = "3-Deviations synthesis : Territorial units above index 125",
-          credits = paste0("Sources: GEOFLAÂ® 2015 v2.1, Apur, impots.gouv.fr",
+          credits = paste0("Sources: GEOFLA® 2015 v2.1, Apur, impots.gouv.fr",
                            "\nMTA", packageVersion("MTA")),
           arrow = FALSE)
 
@@ -93,7 +92,6 @@ cols <- mst$cols
 leg_val <- mst$leg_val
 
 # Cartography
-par(mar = c(0,0,1.2,0))
 mf_map(x = com, var = "mst", type = "typo", border = "white", lwd = 0.2,
        pal = cols, val_order = unique(com$mst), leg_pos = "n")
 mf_map(ept, col = NA, border = "black", lwd = 1, add = TRUE)
@@ -106,7 +104,7 @@ mf_label(x = com[com$mst == 7,], var = "LIBCOM",
          cex = 0.6, halo = TRUE, overlap = FALSE)
 
 mf_layout(title = "3-Deviations synthesis : Territorial units below index 75",
-          credits = paste0("Sources: GEOFLAÂ® 2015 v2.1, Apur, impots.gouv.fr",
+          credits = paste0("Sources: GEOFLA® 2015 v2.1, Apur, impots.gouv.fr",
                            "\nMTA", packageVersion("MTA")),
           arrow = FALSE)
 

@@ -71,7 +71,7 @@ library(mapsf)
 library(sf)
 
 # One side for the map, another for the plot
-par(mfrow = c(1,2), mar = c(0,4,0,0))
+opar <- par(mfrow = c(1,2), mar = c(0,4,0,0))
 
 # Cartography
 mf_map(x = com, var = "bidev", type = "typo", val_order = unique(com$bidev), 
@@ -82,7 +82,7 @@ mf_map(ept, col = NA, add = TRUE)
 mf_label(x = com[com$bidev == "C3",], var = "LIBCOM", halo = TRUE)
 
 mf_layout(title = "2-Deviations synthesis : general and territorial contexts",
-         credits = paste0("Sources: GEOFLAÂ® 2015 v2.1, Apur, impots.gouv.fr",
+         credits = paste0("Sources: GEOFLA® 2015 v2.1, Apur, impots.gouv.fr",
                           "\nMTA", packageVersion("MTA")),
          arrow = FALSE)
 
@@ -92,5 +92,5 @@ plot_bidev(x = com,  dev1 = "gdev",  dev2 = "tdev",
           dev2.lab = "Territorial deviation (EPT of belonging)",
           breaks = c(50, 100, 200),
           lib.var = "LIBCOM", lib.val = "Clichy-sous-Bois", cex.lab = 0.8)
-
+par(opar)
 }

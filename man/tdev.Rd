@@ -50,7 +50,6 @@ com$tdevrel <- tdev(x = com, var1 = "INC", var2 = "TH", key = "EPT",
 
 # relative deviation map
 library(mapsf)
-par(mar = c(0,0,1.2,0))
 # set breaks
 bks <- c(min(com$tdevrel), 80, 91, 100, 110, 125, max(com$tdevrel))
 # plot a choropleth map of the relative territorial deviation
@@ -64,7 +63,7 @@ mf_map(x = ept, col = NA, add = TRUE)
 
 # layout
 mf_layout(title = "Territorial Deviation (reference: EPT of belonging)",
-         credits = paste0("Sources: GEOFLAÂ® 2015 v2.1, Apur, impots.gouv.fr",
+         credits = paste0("Sources: GEOFLA® 2015 v2.1, Apur, impots.gouv.fr",
                           "\nMTA", packageVersion("MTA")),
          arrow = FALSE)
 
@@ -82,7 +81,7 @@ mf_map(x = com, var = c("tdevabs", "sign"), type = "prop_typo", inches = 0.2,
 
 # layout
 mf_layout(title = "Territorial Deviation (reference: EPT of belonging)",
-         credits = paste0("Sources: GEOFLAÂ® 2015 v2.1, Apur, impots.gouv.fr",
+         credits = paste0("Sources: GEOFLA® 2015 v2.1, Apur, impots.gouv.fr",
                           "\nMTA", packageVersion("MTA")),
          arrow = FALSE)
 

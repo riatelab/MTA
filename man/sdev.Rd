@@ -49,9 +49,8 @@ moved to obtain the same ratio in all units of its neighborhood.
 # Load data
 com <- sf::st_read(system.file("metroparis.gpkg", package = "MTA"), layer = "com", quiet = TRUE)
 ept <- sf::st_read(system.file("metroparis.gpkg", package = "MTA"), layer = "ept", quiet = TRUE)
-cardist <- read.table(system.file("cardist.txt", package = "MTA"))
+cardist <- read.table(system.file("cardist.txt", package = "MTA"), check.names = FALSE)
 cardist <- as.matrix(cardist)
-colnames(cardist) <- row.names(cardist)
 
 # compute absolute spatial deviation in a neighborhood defined by a contiguity
 # order of 1.
@@ -71,7 +70,6 @@ com$scardevrel <- sdev(x = com, var1 = "INC", var2 = "TH", type = "rel", dist = 
 
 # relative deviation map
 library(mapsf)
-par(mar = c(0,0,1.2,0))
 # set breaks
 bks <- c(min(com$scardevrel), 75, 100, 125, 150, max(com$scardevrel))
 # plot a choropleth map of the relative spatial deviation
@@ -85,7 +83,7 @@ mf_map(x = ept, col = NA, add = TRUE)
 
 # layout
 mf_layout(title = "Spatial Deviation (neighborhood : 10 minutes by car)",
-          credits = paste0("Sources: GEOFLAÂ® 2015 v2.1, Apur, impots.gouv.fr",
+          credits = paste0("Sources: GEOFLA® 2015 v2.1, Apur, impots.gouv.fr",
                            "\nMTA", packageVersion("MTA")),
           arrow = FALSE)
 

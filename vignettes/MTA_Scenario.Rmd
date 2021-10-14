@@ -55,7 +55,6 @@ Two additional packages are used: [`mapsf`](https://riatelab.github.io/mapsf/) f
 library(MTA)
 library(mapsf)
 library(ineq)
-library(sf)
 
 # load dataset
 com <- st_read(system.file("metroparis.gpkg", package = "MTA"), layer = "com", quiet = TRUE)
@@ -173,9 +172,9 @@ mf_map(ept, col = NA, border = "black", add = TRUE)
 
 # Label min and max
 mf_label(x = com[which.min(com$ratio),], var = "LIBCOM", cex = 0.6, font = 2,
-         halo = TRUE, r = 0.05)
+         halo = TRUE)
 mf_label(x = com[which.max(com$ratio),], var = "LIBCOM", cex = 0.6, font = 2,
-         halo = TRUE, r = 0.05)
+         halo = TRUE)
 
 # layout 
 mf_layout(title = "Ratio - Income per tax households, 2013",
@@ -362,7 +361,7 @@ mf_map(ept, col = NA, border = "#1A1A19", lwd = 1, add = TRUE)
 # Labels to ease comment location
 mf_label(x = com[com$LIBCOM %in% c("Le Raincy", "Rungis", "Sceaux",
                                    "Marnes-la-Coquette") ,],
-         var = "LIBCOM", cex = 0.6, font = 2, halo = TRUE, r = 0.05)
+         var = "LIBCOM", cex = 0.6, font = 2, halo = TRUE)
 
 # layout 
 mf_layout(title = "Territorial deviation - Tax income per households, 2013",
@@ -452,8 +451,7 @@ mf_label(x = com[com$LIBCOM %in% c("Le Raincy", "Vaucresson", "Sceaux", "Bagneux
                                    "Marnes-la-Coquette", "Saint-Maur-des-Fosses",
                                    "Puteaux", "Saint-Ouen", "Clichy-sous-Bois", 
                                    "Clichy"),],
-         var = "LIBCOM", cex = 0.6, font = 2, halo = TRUE, , r = 0.05,
-         overlap = FALSE)
+         var = "LIBCOM", cex = 0.6, font = 2, halo = TRUE, overlap = FALSE)
 
 # layout 
 mf_layout(title = "Spatial deviation - Tax income per households, 2013",
@@ -579,7 +577,7 @@ The meaning of this mathematical calculation is strong in policy term, since it 
 
 The calculation is made for the general and the territorial contexts, using the argument `type = abs`. Two maps are created, displaying the amount of income that should be transfered from the wealthiest to the poorest municipalities. 
 
-````{r redistributions, fig.width=7, fig.height=5,  fig.show='hold'}
+````{r redistributions, fig.width=7, fig.height=5.5,  fig.show='hold'}
 # general absolute deviation 
 com$gdevabs <- gdev(x = com, 
                     var1 = "INC", 
@@ -614,14 +612,14 @@ mf_map(x = com, var = c("gdevabsmil", "gdevsign"), type = "prop_typo",
                     "Redistribution direction"),
        leg_pos = c("topleft", "n"), leg_val_rnd = -2,
        val_order = c("Income deficit", "Income surplus"),
-       pal =  c("#ff0000","#0000ff"), add = TRUE)
-       
+       pal =  c("#ff0000","#0000ff"), border = "grey70", 
+       add = TRUE)
        
 # Labels to ease comment location
 mf_label(x = com[com$LIBCOM %in% c("Paris 7e Arrondissement",
                                    "Neuilly-sur-Seine", "Aubervilliers") ,],
          var = "LIBCOM", cex = 0.6, font = 2,
-         halo = TRUE, r = 0.05, overlap = FALSE)
+         halo = TRUE, overlap = FALSE)
 
 # Layout map 1
 mf_layout(title = "General deviation (Metrople du Grand Paris)",
@@ -639,14 +637,14 @@ mf_map(x = com, var = c("tdevabsmil", "tdevsign"), type = "prop_typo",
        leg_pos = c("n", "topleft"), leg_val_rnd = -2,
        val_order = c("Income deficit", "Income surplus"),
        val_max = max(abs(com$gdevabsmil)),
-       pal =  c("#ff0000","#0000ff"), add = TRUE)
+       pal =  c("#ff0000","#0000ff"), border = "grey70", 
+       add = TRUE)
        
-
 # Labels to ease comment location
 mf_label(x = com[com$LIBCOM %in% c("Marnes-la-Coquette",
                                    "Nanterre", "Clichy-sous-Bois") ,],
          var = "LIBCOM", cex = 0.6, font = 2,
-         halo = TRUE, r = 0.05, overlap = FALSE)
+         halo = TRUE, overlap = FALSE)
 
 # Layout map 2
 mf_layout(title = "Territorial deviation (EPT of belonging)",
@@ -775,10 +773,12 @@ mf_map(ept, col = NA, border = "#1A1A19", lwd = 1, add = TRUE)
 mf_label(com[com$bidev == "C3",],
          var = "LIBCOM", halo = TRUE)
 
-mf_layout(title = "2-Deviations synthesis: General and territorial contexts",
+mf_title( "2-Deviations synthesis:", tab=FALSE)
+mf_layout(title = "",
           credits = paste0("Sources : GEOFLA® 2015 v2.1, Apur, impots.gouv.fr",
                            "\nRonan Ysebaert, RIATE, 2021"), 
           arrow = FALSE)
+mf_title("general and territorial contexts", tab = FALSE, inner = T)
 
 #Associated plot
 plot_bidev(x = com,  dev1 = "gdev",  dev2 = "tdev", 

@@ -83,6 +83,7 @@ NULL
 #' 
 #' @docType data
 #' @examples
-#' cardist <- read.table(system.file("cardist.txt", package = "MTA"))
+#' cardist <- read.table(system.file("cardist.txt", package = "MTA"), check.names = FALSE)
+#' cardist <- as.matrix(cardist)
 #' cardist[1:10, 1:10]
 NULL

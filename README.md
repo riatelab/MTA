@@ -1,6 +1,9 @@
+# Multiscalar Territorial Analysis <img src="man/figures/logo.png" align="right" width="140"/>
+
+
 [![R-CMD-check](https://github.com/riatelab/MTA/workflows/R-CMD-check/badge.svg)](https://github.com/riatelab/MTA/actions)
 
-# Multiscalar Territorial Analysis
+
 
 *Multiscalar territorial analysis based on various contexts.*   
 

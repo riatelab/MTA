@@ -52,7 +52,7 @@ colors for mapping the results.
 \examples{
 # Focus on exceptional values (50, 100 and 200 \% above-under the average)
 # Load data
-library(mapsf)
+library(sf)
 com <- st_read(system.file("metroparis.gpkg", package = "MTA"), layer = "com", quiet = TRUE)
 ept <- st_read(system.file("metroparis.gpkg", package = "MTA"), layer = "ept", quiet = TRUE)
 
@@ -71,9 +71,10 @@ cols <- bidev$cols
 # One side for the map, another for the plot
 opar <- par(mfrow = c(1,2), mar = c(0,4,0,0))
 
+if(require(mapsf)){
 # Cartography
 mf_map(x = com, var = "bidev", type = "typo", val_order = unique(com$bidev), 
-      border = "grey50", pal = cols, lwd = 0.2, leg_pos = "n")
+       border = "grey50", pal = cols, lwd = 0.2, leg_pos = "n")
 mf_map(ept, col = NA, add = TRUE)
 
 # Label territories in the C3 category
@@ -91,4 +92,5 @@ plot_bidev(x = com,  dev1 = "gdev",  dev2 = "tdev",
           breaks = c(50, 100, 200),
           lib.var = "LIBCOM", lib.val = "Clichy-sous-Bois", cex.lab = 0.8)
 par(opar)
+}
 }

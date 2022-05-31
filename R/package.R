@@ -64,7 +64,7 @@ NULL
 #' }
 #' @source
 #' Direction générale des finances publiques, income tax 2014 (2013 incomes):\cr
-#' \url{https://www.impots.gouv.fr/portail/statistiques}\cr
+#' \url{https://www.impots.gouv.fr/statistiques}\cr
 #' Atelier parisien d'urbanisme, Grand Paris communal composition (2015-12-17):\cr
 #' \url{https://www.apur.org/fr/nos-travaux/composition-12-territoires-metropole-grand-paris}
 #' @docType data

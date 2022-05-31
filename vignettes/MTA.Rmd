@@ -76,8 +76,9 @@ The HyperCarte Research Group was founded in 1996 and has provided the main conc
 # Resources
 One of the major outputs of the HyperCarte Group was the development of [HyperAtlas](http://hypercarte.imag.fr/hyperatlas.html "The HyperAtlas Tool Web page") - A Java application proposing a path of investigation for exploring MTA inequalities. 
 
-HyperAtlas has been used many times by the past, for [pedagogical purpose](https://www.ac-paris.fr/portail/jcms/p1_986484/enseigner-les-disparites-socio-spatiales-au-sein-de-l-ue-avec-hyperatlas-1ere "Enseigner les disparités socio-spatiales au sein de l'UE avec Hyperatlas. 1ère") or research activities in [European Union](https://hal.archives-ouvertes.fr/hal-00954933 "A paper on HyperAtlas use in a policy context at EU level"). 
-The MTA methodology proposed by HyperAtlas has also been developed for decision making and monitoring in a policy context at EU (ESPON Program, [European Parliament](https://www.europarl.europa.eu/thinktank/en/document.html?reference=IPOL-REGI_ET(2007)379205 "Web page for this European Parliament study and HyperAtlas") ) and national levels (Romania, Tunisia, Belgium, Cameroon, Nordic countries, France etc.).
+HyperAtlas has been used many times by the past, for [pedagogical purpose](https://hal.archives-ouvertes.fr/hal-01950206 "Enseigner les disparités socio-spatiales au sein de l'UE avec Hyperatlas. 1ère")
+or research activities in [European Union](https://hal.archives-ouvertes.fr/hal-00954933 "A paper on HyperAtlas use in a policy context at EU level"). 
+The MTA methodology proposed by HyperAtlas has also been developed for decision making and monitoring in a policy context at EU (ESPON Program, [European Parliament](https://www.europarl.europa.eu/RegData/etudes/etudes/join/2007/379205/IPOL-REGI_ET(2007)379205_EN.pdf "Web page for this European Parliament study and HyperAtlas")) and national levels (Romania, Tunisia, Belgium, Cameroon, Nordic countries, France etc.).
 
 The MTA methodology has been also followed for analyzing intra-urban voting geography at polling station level in [Paris](http://mappemonde.mgm.fr/num42/articles/art14201.html "A paper on intra-urban voting geography in Paris").
 
@@ -114,4 +115,6 @@ THOMAS R., 2008, *Evolutions d’outils dédiés à l’analyse territoriale et 
 YSEBAERT R. (et al.), 2011, *HyperAtlas, un outil scientifique au service du débat politique - Application à la politique de cohésion de l'Union Européenne*, colloque CIST, Collège International des Sciences du Territoire (Paris).
 
 YSEBAERT R., GRASLAND C., 2021, *Analyse Territoriale Multiscalaire. Application à la concentration de l'emploi dans la Métropole du Grand Paris*, collection Rzine.
+
+// Maria Pigaki, Caroline Leininger-Frézal. Enseigner les disparités socio-spatiales avec HyperAtlas: le cas de l’Union Européenne. Didáctica geográfica, Instituto de Ciencias de la Educación y Departamento de Geografía de la Facultad de Filosofía y Letras, Universidad de Murcia, 2014. 
 

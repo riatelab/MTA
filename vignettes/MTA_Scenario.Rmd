@@ -52,6 +52,7 @@ Two additional packages are used: [`mapsf`](https://riatelab.github.io/mapsf/) f
 
 ````{r input, warning = FALSE, cache = FALSE}
 # load packages
+library(sf)
 library(MTA)
 library(mapsf)
 library(ineq)

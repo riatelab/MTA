@@ -26,7 +26,7 @@
 #' }
 #' @examples
 #' # Load data
-#'library(mapsf)
+#' library(sf)
 #' com <- st_read(system.file("metroparis.gpkg", package = "MTA"), layer = "com", quiet = TRUE)
 #' ept <- st_read(system.file("metroparis.gpkg", package = "MTA"), layer = "ept", quiet = TRUE)
 #' 
@@ -45,6 +45,7 @@
 #' cols <- mst$cols
 #' leg_val <- mst$leg_val
 #' 
+#' if(require(mapsf)){
 #' # Cartography
 #' mf_map(x = com, var = "mst", type = "typo", border = "white", lwd = 0.2,
 #'        pal = cols, val_order = unique(com$mst), leg_pos = "n")
@@ -61,6 +62,7 @@
 #'           credits = paste0("Sources: GEOFLA® 2015 v2.1, Apur, impots.gouv.fr",
 #'                            "\nMTA", packageVersion("MTA")),
 #'           arrow = FALSE)
+#' }
 #' 
 #' 
 #' # Example 2 - Lagging territorial units
@@ -73,6 +75,7 @@
 #' cols <- mst$cols
 #' leg_val <- mst$leg_val
 #' 
+#' if(require(mapsf)){
 #' # Cartography
 #' mf_map(x = com, var = "mst", type = "typo", border = "white", lwd = 0.2,
 #'        pal = cols, val_order = unique(com$mst), leg_pos = "n")
@@ -90,7 +93,7 @@
 #'                            "\nMTA", packageVersion("MTA")),
 #'           arrow = FALSE)
 #' 
-#' 
+#' }
 #' @export
 map_mst <- function(x, gdevrel, tdevrel, sdevrel, threshold, superior = FALSE, xid = NULL){
   

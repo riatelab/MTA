@@ -47,7 +47,7 @@ moved to obtain the same ratio in all units of its neighborhood.
 }
 \examples{
 # Load data
-library(mapsf)
+library(sf)
 com <- st_read(system.file("metroparis.gpkg", package = "MTA"), layer = "com", quiet = TRUE)
 ept <- st_read(system.file("metroparis.gpkg", package = "MTA"), layer = "ept", quiet = TRUE)
 cardist <- read.table(system.file("cardist.txt", package = "MTA"), check.names = FALSE)
@@ -69,6 +69,7 @@ com$scardevabs <- sdev(x = com, var1 = "INC", var2 = "TH", type = "abs", dist = 
 # travel time of 10 minutes by car
 com$scardevrel <- sdev(x = com, var1 = "INC", var2 = "TH", type = "rel", dist = 10, mat = cardist)
 
+if(require(mapsf)){
 # relative deviation map
 # set breaks
 bks <- c(min(com$scardevrel), 75, 100, 125, 150, max(com$scardevrel))
@@ -86,5 +87,5 @@ mf_layout(title = "Spatial Deviation (neighborhood : 10 minutes by car)",
           credits = paste0("Sources: GEOFLA® 2015 v2.1, Apur, impots.gouv.fr",
                            "\nMTA", packageVersion("MTA")),
           arrow = FALSE)
-
+}
 }

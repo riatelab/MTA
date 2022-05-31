@@ -36,10 +36,11 @@ to obtain the ratio of reference on all units. (\code{(var1 - (ref * var2)}).
 }
 \examples{
 # Load data
-library(mapsf)
+library(sf)
 com <- st_read(system.file("metroparis.gpkg", package = "MTA"), layer = "com", quiet = TRUE)
 ept <- st_read(system.file("metroparis.gpkg", package = "MTA"), layer = "ept", quiet = TRUE)
 
+if(require(mapsf)){
 # compute absolute global deviation
 com$gdevabs <- gdev(x = com, var1 = "INC", var2 = "TH", type = "abs")
 # compute relative global deviation
@@ -79,4 +80,5 @@ mf_layout(title = "General Deviation (reference: Grand Paris Metropole)",
           credits = paste0("Sources: GEOFLA® 2015 v2.1, Apur, impots.gouv.fr",
                            "\nMTA", packageVersion("MTA")),
           arrow = FALSE)
+}
 }

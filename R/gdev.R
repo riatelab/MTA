@@ -19,10 +19,11 @@
 #' @return A vector is returned.
 #' @examples
 #' # Load data
-#' library(mapsf)
+#' library(sf)
 #' com <- st_read(system.file("metroparis.gpkg", package = "MTA"), layer = "com", quiet = TRUE)
 #' ept <- st_read(system.file("metroparis.gpkg", package = "MTA"), layer = "ept", quiet = TRUE)
 #' 
+#' if(require(mapsf)){
 #' # compute absolute global deviation
 #' com$gdevabs <- gdev(x = com, var1 = "INC", var2 = "TH", type = "abs")
 #' # compute relative global deviation
@@ -62,6 +63,7 @@
 #'           credits = paste0("Sources: GEOFLA® 2015 v2.1, Apur, impots.gouv.fr",
 #'                            "\nMTA", packageVersion("MTA")),
 #'           arrow = FALSE)
+#' }
 #' @export
 gdev <- function(x, var1, var2, type = "rel", ref){
   

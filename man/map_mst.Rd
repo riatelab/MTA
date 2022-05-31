@@ -44,7 +44,7 @@ labels and colours for mapping the results.
 }
 \examples{
 # Load data
-library(mapsf)
+library(sf)
 com <- st_read(system.file("metroparis.gpkg", package = "MTA"), layer = "com", quiet = TRUE)
 ept <- st_read(system.file("metroparis.gpkg", package = "MTA"), layer = "ept", quiet = TRUE)
 
@@ -63,6 +63,7 @@ com <- mst$geom
 cols <- mst$cols
 leg_val <- mst$leg_val
 
+if(require(mapsf)){
 # Cartography
 mf_map(x = com, var = "mst", type = "typo", border = "white", lwd = 0.2,
        pal = cols, val_order = unique(com$mst), leg_pos = "n")
@@ -79,6 +80,7 @@ mf_layout(title = "3-Deviations synthesis : Territorial units above index 125",
           credits = paste0("Sources: GEOFLA® 2015 v2.1, Apur, impots.gouv.fr",
                            "\nMTA", packageVersion("MTA")),
           arrow = FALSE)
+}
 
 
 # Example 2 - Lagging territorial units
@@ -91,6 +93,7 @@ com <- mst$geom
 cols <- mst$cols
 leg_val <- mst$leg_val
 
+if(require(mapsf)){
 # Cartography
 mf_map(x = com, var = "mst", type = "typo", border = "white", lwd = 0.2,
        pal = cols, val_order = unique(com$mst), leg_pos = "n")
@@ -108,5 +111,5 @@ mf_layout(title = "3-Deviations synthesis : Territorial units below index 75",
                            "\nMTA", packageVersion("MTA")),
           arrow = FALSE)
 
-
+}
 }

@@ -36,7 +36,7 @@
 #' @examples
 #' # Focus on exceptional values (50, 100 and 200 % above-under the average)
 #' # Load data
-#' library(mapsf)
+#' library(sf)
 #' com <- st_read(system.file("metroparis.gpkg", package = "MTA"), layer = "com", quiet = TRUE)
 #' ept <- st_read(system.file("metroparis.gpkg", package = "MTA"), layer = "ept", quiet = TRUE)
 #' 
@@ -45,36 +45,38 @@
 #' com$tdev <- tdev(x = com, var1 = "INC", var2 = "TH", key = "EPT")
 #' 
 #' # Compute map_bidev
-#'bidev <- map_bidev(x = com, dev1 = "gdev", dev2 = "tdev", breaks = c(50, 100, 200))
+#' bidev <- map_bidev(x = com, dev1 = "gdev", dev2 = "tdev", breaks = c(50, 100, 200))
 #' 
 #' # Unlist resulting function
 #' com <- bidev$geom
 #' cols <- bidev$cols
 #' 
-#'#Visualization
-#'# One side for the map, another for the plot
-#'opar <- par(mfrow = c(1,2), mar = c(0,4,0,0))
+#' #Visualization
+#' # One side for the map, another for the plot
+#' opar <- par(mfrow = c(1,2), mar = c(0,4,0,0))
+#' 
+#' if(require(mapsf)){
+#' # Cartography
+#' mf_map(x = com, var = "bidev", type = "typo", val_order = unique(com$bidev), 
+#'        border = "grey50", pal = cols, lwd = 0.2, leg_pos = "n")
+#' mf_map(ept, col = NA, add = TRUE)
 #'
-#'# Cartography
-#'mf_map(x = com, var = "bidev", type = "typo", val_order = unique(com$bidev), 
-#'       border = "grey50", pal = cols, lwd = 0.2, leg_pos = "n")
-#'mf_map(ept, col = NA, add = TRUE)
+#' # Label territories in the C3 category
+#' mf_label(x = com[com$bidev == "C3",], var = "LIBCOM", halo = TRUE)
 #'
-#'# Label territories in the C3 category
-#'mf_label(x = com[com$bidev == "C3",], var = "LIBCOM", halo = TRUE)
-#'
-#'mf_layout(title = "2-Deviations synthesis : general and territorial contexts",
+#' mf_layout(title = "2-Deviations synthesis : general and territorial contexts",
 #'          credits = paste0("Sources: GEOFLA® 2015 v2.1, Apur, impots.gouv.fr",
 #'                           "\nMTA", packageVersion("MTA")),
 #'          arrow = FALSE)
 #'
-#'# Add plot_bidev on the right side of the map
-#'plot_bidev(x = com,  dev1 = "gdev",  dev2 = "tdev",
+#' # Add plot_bidev on the right side of the map
+#' plot_bidev(x = com,  dev1 = "gdev",  dev2 = "tdev",
 #'           dev1.lab = "General deviation (MGP Area)",
 #'           dev2.lab = "Territorial deviation (EPT of belonging)",
 #'           breaks = c(50, 100, 200),
 #'           lib.var = "LIBCOM", lib.val = "Clichy-sous-Bois", cex.lab = 0.8)
-#'par(opar)
+#' par(opar)
+#' }
 #' @import sf
 #' @export
 map_bidev <- function(x, dev1, dev2, breaks = c(25, 50, 100), xid = NULL){

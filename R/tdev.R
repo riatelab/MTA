@@ -22,7 +22,7 @@
 #' @import sf
 #' @examples
 #' # Load data
-#' library(mapsf)
+#' library(sf)
 #' com <- st_read(system.file("metroparis.gpkg", package = "MTA"), layer = "com", quiet = TRUE)
 #' ept <- st_read(system.file("metroparis.gpkg", package = "MTA"), layer = "ept", quiet = TRUE)
 #' 
@@ -32,15 +32,15 @@
 #' # compute relative territorial deviation
 #' com$tdevrel <- tdev(x = com, var1 = "INC", var2 = "TH", key = "EPT", 
 #'                     type = "rel")
-#' 
+#' if(require(mapsf)){
 #' # relative deviation map
 #' # set breaks
 #' bks <- c(min(com$tdevrel), 80, 91, 100, 110, 125, max(com$tdevrel))
 #' # plot a choropleth map of the relative territorial deviation
-#'mf_map(x = com, var = "tdevrel", type = "choro", leg_pos = "topleft",
-#'       leg_title = "Relative Deviation\n(100 = general average)",
-#'       breaks = bks, border = NA,
-#'       pal = c("#4575B4", "#91BFDB", "#E0F3F8", "#FEE090", "#FC8D59", "#D73027"))
+#' mf_map(x = com, var = "tdevrel", type = "choro", leg_pos = "topleft",
+#'        leg_title = "Relative Deviation\n(100 = general average)",
+#'        breaks = bks, border = NA,
+#'        pal = c("#4575B4", "#91BFDB", "#E0F3F8", "#FEE090", "#FC8D59", "#D73027"))
 #'
 #'# add EPT boundaries
 #'mf_map(x = ept, col = NA, add = TRUE)
@@ -68,7 +68,7 @@
 #'          credits = paste0("Sources: GEOFLA® 2015 v2.1, Apur, impots.gouv.fr",
 #'                           "\nMTA", packageVersion("MTA")),
 #'          arrow = FALSE)
-#'
+#' }
 #' @export
 tdev <- function(x, var1, var2, type = "rel", key){
   

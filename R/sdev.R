@@ -27,7 +27,7 @@
 #' @return A vector is returned.
 #' @examples
 #' # Load data
-#' library(mapsf)
+#' library(sf)
 #' com <- st_read(system.file("metroparis.gpkg", package = "MTA"), layer = "com", quiet = TRUE)
 #' ept <- st_read(system.file("metroparis.gpkg", package = "MTA"), layer = "ept", quiet = TRUE)
 #' cardist <- read.table(system.file("cardist.txt", package = "MTA"), check.names = FALSE)
@@ -49,6 +49,7 @@
 #' # travel time of 10 minutes by car
 #' com$scardevrel <- sdev(x = com, var1 = "INC", var2 = "TH", type = "rel", dist = 10, mat = cardist)
 #' 
+#' if(require(mapsf)){
 #' # relative deviation map
 #' # set breaks
 #' bks <- c(min(com$scardevrel), 75, 100, 125, 150, max(com$scardevrel))
@@ -66,7 +67,7 @@
 #'           credits = paste0("Sources: GEOFLA® 2015 v2.1, Apur, impots.gouv.fr",
 #'                            "\nMTA", packageVersion("MTA")),
 #'           arrow = FALSE)
-#' 
+#' }
 #' @export
 sdev <- function(x, var1, var2, type = "rel", xid,  
                  order, dist, mat){

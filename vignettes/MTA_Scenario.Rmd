@@ -2,9 +2,14 @@
 title: "MTA Use Case"
 author: "Ronan Ysebaert"
 date: "`r Sys.Date()`"
-output:
-  rmarkdown::html_vignette: 
+output: 
+  rmarkdown::html_vignette:
+    css: styles.css
     toc: yes
+    toc_depth: 2
+css: styles.css
+bibliography: mta.bib
+link-citations: yes
 vignette: >
   %\VignetteIndexEntry{MTA Use Case} 
   %\VignetteEncoding{UTF-8}
@@ -26,13 +31,13 @@ This vignette describes a typical use case of the `MTA` package with a concrete 
 Beginning in the MTA conceptual framework, several issues must be considered: the study area, the territorial hierarchy and the selected indicator.
 
 * **Metropolis of Greater Paris (_MGP_) : a study area making sense in a political context**.    
-The _MGP_ has been created the 1st January 2016 after a preparatory mission and aims at finding solutions to improve and develop the potential of the Paris metropolitan area to be more present at international level (following the initiatives that took place in London, New-York or Tokyo). The [official website](https://www.metropolegrandparis.fr/fr "Métropole du Grand Paris - Mission de préfiguration") (last visit: 2020-12) of this infrastructure provides all the details of this new level of governance. Namely, this spatial planning project proposes to _"develop a stronger solidarity between territories, reduce territorial inequalities and propose a rebalancing in term of access to household, employment, training, services and amenities"_. For this emerging zoning of spatial planning, the need for indicators and analysis of territorial inequalities is high. The MTA methodology seems to be particularly adapted to propose territorial evidences in this context.
+The _MGP_ has been created the 1st January 2016 after a preparatory mission and aims at finding solutions to improve and develop the potential of the Paris metropolitan area to be more present at international level (following the initiatives that took place in London, New-York or Tokyo). The [official website](https://www.metropolegrandparis.fr/fr "Métropole du Grand Paris - Mission de préfiguration") (last visit: 2022-06) of this infrastructure provides all the details of this new level of governance. Namely, this spatial planning project proposes to _"develop a stronger solidarity between territories, reduce territorial inequalities and propose a rebalancing in term of access to household, employment, training, services and amenities"_. For this emerging zoning of spatial planning, the need for indicators and analysis of territorial inequalities is high. The MTA methodology seems to be particularly adapted to propose territorial evidences in this context.
 
 * **From the IRIS to the _MGP_, a lot of hierarchical territorial divisions are available**.   
-The lowest territorial level existing in France associated with public statistical information is _IRIS_ _(Ilots Regroupés pour l'Information Statistique)_. The reference size targeted for each IRIS is [2000 inhabitants](https://www.insee.fr/fr/metadonnees/definition/c1523 "IRIS definition, INSEE") (last visit: 2020-12). Each municipality over 10 000 inhabitants and a high proportion of municipalities between 5 000 and 10 000 inhabitants are split in IRIS. It is possible to merge these IRIS in _municipalities_ (36 000 territorial units in France). These municipalities can also be aggregated in _Établissements Publics Territoriaux_(equivalent to _Établissement de Coopération intercommunale, EPCI)_ or in _départements_. Each territorial context has specific competences in spatial planning term. Thus, the _MGP_ is constituted by a large number of territorial divisions. It allows the calculation of a high number of deviations according to these territorial contexts. **This analysis is mainly focused on *municipalities* and *Établissements Publics Territoriaux (_EPT_)* ** but could be extended to other territorial levels. 
+The lowest territorial level existing in France associated with public statistical information is _IRIS_ _(Ilots Regroupés pour l'Information Statistique)_. The reference size targeted for each IRIS is [2000 inhabitants](https://www.insee.fr/fr/metadonnees/definition/c1523 "IRIS definition, INSEE") (last visit: 2022-06). Each municipality over 10 000 inhabitants and a high proportion of municipalities between 5 000 and 10 000 inhabitants are split in IRIS. It is possible to merge these IRIS in _municipalities_ (36 000 territorial units in France). These municipalities can also be aggregated in _Établissements Publics Territoriaux_(equivalent to _Établissement de Coopération intercommunale, EPCI)_ or in _départements_. Each territorial context has specific competences in spatial planning term. Thus, the _MGP_ is constituted by a large number of territorial divisions. It allows the calculation of a high number of deviations according to these territorial contexts. **This analysis is mainly focused on *municipalities* and *Établissements Publics Territoriaux (_EPT_)* ** but could be extended to other territorial levels. 
 
 * **Indicators relevant at this scale of analysis**.  
-The chosen indicator (average income tax reference per households) is one of the key drivers of spatial planning policies at local level in France. It is one of the indicators considered relevant for city policy ([_Politique de la Ville_](https://www.insee.fr/fr/statistiques/2500477 "Key indicators of the French urban policy"), last visit: 2019-10).  
+The chosen indicator (average income tax reference per households) is one of the key drivers of spatial planning policies at local level in France. It is one of the indicators considered relevant for city policy ([_Politique de la Ville_](https://www.insee.fr/fr/statistiques/2500477 "Key indicators of the French urban policy"), last visit: 2022-06).  
 
 This vignette proposes some concrete outputs for improving the knowledge on income inequalities and proposing solutions for a better geographical distribution of wealth in the _MGP_ area. Relevant statistics will be computed using MTA functionalities and plotted on graphics and maps.  
 
@@ -58,8 +63,10 @@ library(mapsf)
 library(ineq)
 
 # load dataset
-com <- st_read(system.file("metroparis.gpkg", package = "MTA"), layer = "com", quiet = TRUE)
-ept <- st_read(system.file("metroparis.gpkg", package = "MTA"), layer = "ept", quiet = TRUE)
+com <- st_read(system.file("metroparis.gpkg", package = "MTA"),
+               layer = "com", quiet = TRUE)
+ept <- st_read(system.file("metroparis.gpkg", package = "MTA"), 
+               layer = "ept", quiet = TRUE)
 
 # set row names to municipalities names
 row.names(com) <- com$LIBCOM
@@ -76,11 +83,12 @@ _Établissements Publics Territoriaux_ (EPT). This territorial zoning follows ap
 
 ````{r plot_zonings, fig.width=7, fig.height=5, warning = FALSE, cache = FALSE, fig.align = 'center'}
 # label / colors management
-LIBEPT <- c("Paris", "Est Ensemble", "Grand-Paris Est", "Territoire des aeroports",   
-          "Plaine Commune", "Boucle Nord 92", "La Defense","Grand Paris Sud Ouest",   
-          "Sud Hauts-de-Seine", "Val de Bievres - Seine Amond - Grand Orly",
-          "Plaine Centrale - Haut Val-de-Marne - Plateau Briard",
-          "Association des Communes de l'Est Parisien")
+LIBEPT <- c("Paris", "Est Ensemble", "Grand-Paris Est", 
+            "Territoire des aeroports", "Plaine Commune", "Boucle Nord 92", 
+            "La Defense","Grand Paris Sud Ouest", "Sud Hauts-de-Seine", 
+            "Val de Bievres - Seine Amond - Grand Orly",
+            "Plaine Centrale - Haut Val-de-Marne - Plateau Briard",
+            "Association des Communes de l'Est Parisien")
 
 # colors
 cols <- c("#cfcfcf", # Grey(Paris)
@@ -162,11 +170,13 @@ com$ratio <- com$INC / com$TH
 
 # ratio map
 mf_map(x = com, var = "ratio", type = "choro",
-       breaks = c(min(com$ratio, na.rm = TRUE), 20000, 30000, 40000, 50000, 60000,
-                      max(com$ratio, na.rm = TRUE)),
+       breaks = c(min(com$ratio, na.rm = TRUE), 
+                  20000, 30000, 40000, 50000, 60000, 
+                  max(com$ratio, na.rm = TRUE)),
        pal = c("#FCDACA", "#F6A599", "#F07168", "#E92B28", "#C70003", "#7C000C"),
        border = "white", lwd = 0.2, leg_pos = "topleft", leg_val_rnd = 0,
-       leg_title = "Average amount of income tax\nreference per households\n(in euros)") 
+       leg_title = paste0("Average amount of income tax",
+                          "\nreference per households\n(in euros)")) 
 
 # EPT borders
 mf_map(ept, col = NA, border = "black", add = TRUE)
@@ -442,7 +452,8 @@ mf_map(x = com, var = "sdevrel", type = "choro",
        pal = devpal, border = "white", lwd = 0.2, 
        leg_pos = "topleft", leg_val_rnd = 0,
        leg_title = paste0("Deviation to the spatial context",
-                          "\n(100 = average of the contiguous territorial units - order 1)")) 
+                          "\n(100 = average of the contiguous",
+                          " territorial units - order 1)")) 
 
 # Plot EPT
 mf_map(ept, col = NA, border = "#1A1A19",lwd = 1, add = T)
@@ -484,10 +495,12 @@ df <- st_set_geometry(com, NULL)
 lm <- summary.lm(lm(sdevrel ~ gdevrel, df))
 
 # Equation 
-eq <- paste("Spatial Deviation =", round(lm$coefficients["gdevrel","Estimate"], digits = 3),
-            "* (Global Deviation) +", round(lm$coefficients["(Intercept)","Estimate"], 
-                                            digits = 3))
-rsq <-paste("R-Squared =", round(summary(lm(sdevrel ~ gdevrel, com ))$r.squared, digits = 2))
+eq <- paste("Spatial Deviation =", 
+            round(lm$coefficients["gdevrel","Estimate"], digits = 3),
+            "* (Global Deviation) +", 
+            round(lm$coefficients["(Intercept)","Estimate"], digits = 3))
+rsq <-paste("R-Squared =", 
+            round(summary(lm(sdevrel ~ gdevrel, com ))$r.squared, digits = 2))
 
 # Color management
 df <- merge(df, colEpt, by = "LIBEPT")
@@ -503,7 +516,7 @@ plot(df$gdevrel, df$sdevrel,
      asp = 1)
 abline((lm(df$sdevrel ~ df$gdevrel)), col = "red", lwd =1)
 
-# Specify linear regression formula and R-Squared of the spatial autocorrelation on the plot
+# Specify linear regression formula and R-Squared of the spatial autocorrelation
 text(110,60, pos = 4, cex = 0.7, labels = eq)
 text(110,55, pos = 4, cex = 0.7, labels = rsq)
 
@@ -688,12 +701,14 @@ From the other side of the redistribution, _Nanterre_, _Clichy-sous-Bois_ and th
 df <- st_set_geometry(com, NULL)
 row.names(df) <- df$LIBCOM
 
-# Territorial deviation - Top 10 of the potential contributors as regards to their total amount of income
+# Territorial deviation - Top 10 of the potential contributors
+# as regards to their total amount of income
 df$tdevabsPerc <- df$tdevabs / df$INC * 100
 df <- df[order(df$tdevabsPerc, decreasing = TRUE), ]
 df[1:10, c("tdevabsmil", "tdevabsPerc")]
 
-# Territorial deviation - Top 10 of the potential receivers as regards to their total amount of income
+# Territorial deviation - Top 10 of the potential receivers 
+# as regards to their total amount of income
 df <- df[order(df$tdevabsPerc, decreasing = FALSE), ]
 df[1:10, c("tdevabsmil", "tdevabsPerc")]
 ````
@@ -845,7 +860,9 @@ mf_map(x = com, var = "mst", type = "typo",
        pal = cols, val_order = unique(com$mst), leg_pos = "n")
 mf_map(ept, col = NA, border = "black", lwd = 1, add = TRUE)
 mf_legend(type = "typo", pos = "topleft", val = leg_val, pal = cols, 
-          title = "Situation on General (G)\nTerrorial (T) and\nSpatial (S) contexts",)
+          title = paste0("Situation on General (G)\n",
+                         "Terrorial (T) and \n",
+                         "Spatial (S) contexts"))
 mf_layout(title = "3-Deviations synthesis: Territorial units above index 125",
           credits = paste0("Sources : GEOFLA® 2015 v2.1, Apur, impots.gouv.fr",
                            "\nRonan Ysebaert, RIATE, 2021"), 
@@ -885,7 +902,9 @@ mf_map(x = com, var = "mst", type = "typo",
        pal = cols, val_order = unique(com$mst), leg_pos = "n")
 mf_map(ept, col = NA, border = "black", lwd = 1, add = TRUE)
 mf_legend(type = "typo", pos = "topleft", val = leg_val, pal = cols, 
-          title = "Situation on General (G)\nTerrorial (T) and\nSpatial (S) contexts",)
+          title = paste0("Situation on General (G)\n",
+                         "Terrorial (T) and\n",
+                         "Spatial (S) contexts"))
 mf_layout(title = "3-Deviations synthesis: Territorial units under index 80",
           credits = paste0("Sources : GEOFLA® 2015 v2.1, Apur, impots.gouv.fr",
                            "\nRonan Ysebaert, RIATE, 2021"), 
@@ -924,9 +943,11 @@ Municipalities characterized by class 3 in the mst synthesis are lagging as rega
 
 ````{r synthesis80_class3}
 # municipalities in lagging situation in the global and territorial contexts
-subset(com, mstP == 3, select = c(ratio, gdev, tdev, sdev, mstP), drop = T)
+subset(com, mstP == 3, 
+       select = c(ratio, gdev, tdev, sdev, mstP), drop = T)
 # municipalities in favorable situation in a spatial context or in a spatial and a territorial context 
-subset(com, mstP == 4 | mstP == 6, select = c(ratio, gdev, tdev, sdev, mstP), drop = T)
+subset(com, mstP == 4 | mstP == 6, 
+       select = c(ratio, gdev, tdev, sdev, mstP), drop = T)
 ````
 
 4 municipalities are characterized by low indexes in a local context, but not in a global one. It corresponds to the municipalities located in the immediate neighborhood of the wealthiest municipalities of the MGP (classes 4 and 6, in green and yellow): _Paris 15e Arrondissement_, _Suresnes_, _Puteaux_ and in a lesser extent _Malakoff_.
@@ -941,8 +962,11 @@ The `plot_mst` allows to compare selected territorial units on a barplot. This f
 ````{r plot_mst, fig.width = 7, fig.height=6, fig.show='hold'}
 opar <- par(mar = c(4, 6, 4, 4))
 # Synthesis barplot
-plot_mst(x = com, gdevrel = "gdev", tdevrel = "tdev", sdevrel = "sdev", lib.var = "LIBCOM", 
-         lib.val = c("Neuilly-sur-Seine", "Clichy-sous-Bois", "Suresnes", "Les Lilas"))
+plot_mst(x = com, 
+         gdevrel = "gdev", tdevrel = "tdev", sdevrel = "sdev", 
+         lib.var = "LIBCOM", 
+         lib.val = c("Neuilly-sur-Seine", "Clichy-sous-Bois", 
+                     "Suresnes", "Les Lilas"))
 par(opar)
 ````
 

@@ -1,6 +1,6 @@
 Package: MTA
 Title: Multiscalar Territorial Analysis
-Version: 0.5.0.0
+Version: 0.4.1
 Authors@R: c(person("Ronan", "Ysebaert", 
       email = "ronan.ysebaert@cnrs.fr", role = c("aut")),
       person("Nicolas", "Lambert", 

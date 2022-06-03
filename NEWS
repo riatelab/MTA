@@ -1,6 +1,10 @@
-# Version : 0.5.0
+# Version : 0.4.1
 
-- Optimize package imports.
+## Fix
+- Use mapsf conditionally
+- declare sf when needed
+
+## Feat
 - Add .bib for managing references.
 - Customize css to improve readability of vignettes. 
 

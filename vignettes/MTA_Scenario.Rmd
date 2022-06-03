@@ -1006,7 +1006,7 @@ It is also important to remind that the aim of this vignette is not to provide a
 * Thematic dimension: Integrating other indicators useful to monitor well-being at local level to this analysis (share of household owners, mean area of the households, structure of households)
 * Geographical dimension: Extending the analysis at lower territorial level, such as the IRIS one. It could be useful to discuss on internal inequalities existing in the municipalities of the *Métropole du Grand Paris*. 
 
-That being said, MTA analysis provide a useful methodological base to explore several dimensions of territorial inequalities measures (Ysebaert, 2012) and applications within a policy context:
+That being said, MTA analysis provide a useful methodological base to explore several dimensions of territorial inequalities measures and applications within a policy context:
 
 * Simulation of policy options: it is quite frequent that indicators constitute a basis for implementing policy measures to reduce territorial disparities. The case of the regional policy of the EU is a good example taking into account that most of the funding goes to regions below the statistical threshold of 75 % of the average of the European Union for the GDP per capita criteria at NUTS2 level. The functionalities of the `MTA` package allow in that perspective to simulate quickly the consequences of the use of several alternatives for guiding the funds allocation.
 

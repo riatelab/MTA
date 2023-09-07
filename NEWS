@@ -1,3 +1,14 @@
+# Version : 0.5.0
+
+## Fix
+- Fix some urls 
+- Fix package level doc in roxygen
+
+## Feat
+- add code meta and cff info
+
+
+
 # Version : 0.4.1
 
 ## Fix

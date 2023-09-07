@@ -3,6 +3,7 @@
 \docType{package}
 \name{MTA}
 \alias{MTA}
+\alias{MTA-package}
 \title{Multiscalar Territorial Analysis}
 \description{
 Build multiscalar territorial analysis based on various contexts for a given ratio defined by a numerator and a denominator.\cr
@@ -29,4 +30,22 @@ a map based on it.
 \references{
 GRASLAND C., YSEBAERT R., ZANIN C., LAMBERT N., Spatial disparities in Europe  (Chapter 4)  
 in GLOERSEN E., DUBOIS A. (coord.), 2007, Regional disparities and cohesion: What Strategies for the future?, DG-IPOL – European Parliament.
+}
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/riatelab/MTA/}
+  \item Report bugs at \url{https://github.com/riatelab/MTA/issues/}
+}
+
+}
+\author{
+\strong{Maintainer}: Timothée Giraud \email{timothee.giraud@cnrs.fr}
+
+Authors:
+\itemize{
+  \item Ronan Ysebaert \email{ronan.ysebaert@cnrs.fr}
+  \item Nicolas Lambert \email{nicolas.lambert@cnrs.fr}
+}
+
 }

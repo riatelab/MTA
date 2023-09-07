@@ -26,7 +26,7 @@
 #' in GLOERSEN E., DUBOIS A. (coord.), 2007, Regional disparities and cohesion: What Strategies for the future?, DG-IPOL – European Parliament.
 #' 
 #' @docType package
-NULL
+"_PACKAGE"
 
 
 

@@ -75,7 +75,7 @@ The HyperCarte Research Group was founded in 1996 and has provided the main conc
 
 * **[LIG STeamer (UMR 5217)](http://steamer.imag.fr/ "STeamer Website")**: a team of computer scientists and engineers specialized in the processing of multimedia information with a temporal and spatial reference. The work of this team is validated by the development of operational platforms, web-application and frameworks.  
 
-* **[LIG Mescal (UMR 5132)](http://mescal.imag.fr/ "MESCAL Website")** : a team of computer scientists which aims at to design software solutions for the efficient exploitation of large distributed architectures at metropolitan, national and international levels. 
+* **LIG Mescal (UMR 5132)** : a team of computer scientists which aims at to design software solutions for the efficient exploitation of large distributed architectures at metropolitan, national and international levels. 
 
 
 # Resources

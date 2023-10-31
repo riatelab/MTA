@@ -7,7 +7,7 @@
   "codeRepository": "https://github.com/riatelab/MTA/",
   "issueTracker": "https://github.com/riatelab/MTA/issues/",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -25,19 +25,20 @@
       "@type": "Person",
       "givenName": "Ronan",
       "familyName": "Ysebaert",
-      "email": "ronan.ysebaert@cnrs.fr"
+      "@id": "https://orcid.org/0000-0002-7344-5911"
     },
     {
       "@type": "Person",
       "givenName": "Nicolas",
       "familyName": "Lambert",
-      "email": "nicolas.lambert@cnrs.fr"
+      "@id": "https://orcid.org/0000-0003-4976-6560"
     },
     {
       "@type": "Person",
       "givenName": "Timothée",
       "familyName": "Giraud",
-      "email": "timothee.giraud@cnrs.fr"
+      "email": "timothee.giraud@cnrs.fr",
+      "@id": "https://orcid.org/0000-0002-1932-3323"
     }
   ],
   "maintainer": [
@@ -45,7 +46,8 @@
       "@type": "Person",
       "givenName": "Timothée",
       "familyName": "Giraud",
-      "email": "timothee.giraud@cnrs.fr"
+      "email": "timothee.giraud@cnrs.fr",
+      "@id": "https://orcid.org/0000-0002-1932-3323"
     }
   ],
   "softwareSuggestions": [
@@ -158,5 +160,5 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "2938.105KB"
+  "fileSize": "5533.333KB"
 }

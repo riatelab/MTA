@@ -1,3 +1,11 @@
+# Version : 0.6.0
+
+## Fix
+- Fix some urls
+- Use correct syntax to display no legends in mf_map() calls
+- Update authors info
+
+
 # Version : 0.5.0
 
 ## Fix

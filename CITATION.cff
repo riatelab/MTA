@@ -8,18 +8,19 @@ message: 'To cite package "MTA" in publications use:'
 type: software
 license: GPL-3.0-only
 title: 'MTA: Multiscalar Territorial Analysis'
-version: 0.5.0
+version: 0.6.0
 abstract: Build multiscalar territorial analysis based on various contexts.
 authors:
 - family-names: Ysebaert
   given-names: Ronan
-  email: ronan.ysebaert@cnrs.fr
+  orcid: https://orcid.org/0000-0002-7344-5911
 - family-names: Lambert
   given-names: Nicolas
-  email: nicolas.lambert@cnrs.fr
+  orcid: https://orcid.org/0000-0003-4976-6560
 - family-names: Giraud
   given-names: Timothée
   email: timothee.giraud@cnrs.fr
+  orcid: https://orcid.org/0000-0002-1932-3323
 repository: https://CRAN.R-project.org/package=MTA
 repository-code: https://github.com/riatelab/MTA/issues/
 url: https://github.com/riatelab/MTA/
@@ -27,6 +28,7 @@ contact:
 - family-names: Giraud
   given-names: Timothée
   email: timothee.giraud@cnrs.fr
+  orcid: https://orcid.org/0000-0002-1932-3323
 references:
 - type: software
   title: 'R: A Language and Environment for Statistical Computing'

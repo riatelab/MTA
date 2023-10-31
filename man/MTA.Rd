@@ -40,12 +40,12 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Timothée Giraud \email{timothee.giraud@cnrs.fr}
+\strong{Maintainer}: Timothée Giraud \email{timothee.giraud@cnrs.fr} (\href{https://orcid.org/0000-0002-1932-3323}{ORCID})
 
 Authors:
 \itemize{
-  \item Ronan Ysebaert \email{ronan.ysebaert@cnrs.fr}
-  \item Nicolas Lambert \email{nicolas.lambert@cnrs.fr}
+  \item Ronan Ysebaert (\href{https://orcid.org/0000-0002-7344-5911}{ORCID})
+  \item Nicolas Lambert (\href{https://orcid.org/0000-0003-4976-6560}{ORCID})
 }
 
 }

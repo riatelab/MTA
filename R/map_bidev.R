@@ -58,7 +58,7 @@
 #' if(require(mapsf)){
 #' # Cartography
 #' mf_map(x = com, var = "bidev", type = "typo", val_order = unique(com$bidev), 
-#'        border = "grey50", pal = cols, lwd = 0.2, leg_pos = "n")
+#'        border = "grey50", pal = cols, lwd = 0.2, leg_pos = NA)
 #' mf_map(ept, col = NA, add = TRUE)
 #'
 #' # Label territories in the C3 category

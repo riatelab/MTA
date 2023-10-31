@@ -624,7 +624,7 @@ mf_map(ept, col = NA, border = "#1A1A19", lwd = 1, add = TRUE)
 mf_map(x = com, var = c("gdevabsmil", "gdevsign"), type = "prop_typo",
        leg_title = c("Absolute Deviation\n(Income redistribution, euros)",
                     "Redistribution direction"),
-       leg_pos = c("topleft", "n"), leg_val_rnd = -2,
+       leg_pos = c("topleft", NA), leg_val_rnd = -2,
        val_order = c("Income deficit", "Income surplus"),
        pal =  c("#ff0000","#0000ff"), border = "grey70", 
        add = TRUE)
@@ -648,7 +648,7 @@ mf_map(ept, col = NA, border = "#1A1A19", lwd = 1, add = TRUE)
 mf_map(x = com, var = c("tdevabsmil", "tdevsign"), type = "prop_typo",
        leg_title = c("Absolute Deviation\n(Income redistribution, euros)",
                     "Redistribution direction"),
-       leg_pos = c("n", "topleft"), leg_val_rnd = -2,
+       leg_pos = c(NA, "topleft"), leg_val_rnd = -2,
        val_order = c("Income deficit", "Income surplus"),
        val_max = max(abs(com$gdevabsmil)),
        pal =  c("#ff0000","#0000ff"), border = "grey70", 
@@ -780,7 +780,7 @@ cols <- bidev$cols
 
 # Cartography
 mf_map(x = com, var = "bidev", type = "typo", 
-       pal = cols, lwd = 0.2, border = "white", leg_pos = "n",
+       pal = cols, lwd = 0.2, border = "white", leg_pos = NA,
        val_order = unique(com$bidev))
 
 mf_map(ept, col = NA, border = "#1A1A19", lwd = 1, add = TRUE)
@@ -857,7 +857,7 @@ leg_val <- mst$leg_val
 # Cartography
 mf_map(x = com, var = "mst", type = "typo", 
        border = "white", lwd = 0.2,
-       pal = cols, val_order = unique(com$mst), leg_pos = "n")
+       pal = cols, val_order = unique(com$mst), leg_pos = NA)
 mf_map(ept, col = NA, border = "black", lwd = 1, add = TRUE)
 mf_legend(type = "typo", pos = "topleft", val = leg_val, pal = cols, 
           title = paste0("Situation on General (G)\n",
@@ -899,7 +899,7 @@ leg_val <- mst$leg_val
 # Cartography
 mf_map(x = com, var = "mst", type = "typo", 
        border = "white", lwd = 0.2,
-       pal = cols, val_order = unique(com$mst), leg_pos = "n")
+       pal = cols, val_order = unique(com$mst), leg_pos = NA)
 mf_map(ept, col = NA, border = "black", lwd = 1, add = TRUE)
 mf_legend(type = "typo", pos = "topleft", val = leg_val, pal = cols, 
           title = paste0("Situation on General (G)\n",

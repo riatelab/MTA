@@ -66,7 +66,7 @@ leg_val <- mst$leg_val
 if(require(mapsf)){
 # Cartography
 mf_map(x = com, var = "mst", type = "typo", border = "white", lwd = 0.2,
-       pal = cols, val_order = unique(com$mst), leg_pos = "n")
+       pal = cols, val_order = unique(com$mst), leg_pos = NA)
 mf_map(ept, col = NA, border = "black", lwd = 1, add = TRUE)
 
 mf_legend(type = "typo", val = leg_val, pal = cols, 
@@ -96,7 +96,7 @@ leg_val <- mst$leg_val
 if(require(mapsf)){
 # Cartography
 mf_map(x = com, var = "mst", type = "typo", border = "white", lwd = 0.2,
-       pal = cols, val_order = unique(com$mst), leg_pos = "n")
+       pal = cols, val_order = unique(com$mst), leg_pos = NA)
 mf_map(ept, col = NA, border = "black", lwd = 1, add = TRUE)
 
 mf_legend(type = "typo", val = leg_val, pal = cols, 

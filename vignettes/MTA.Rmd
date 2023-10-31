@@ -69,11 +69,11 @@ The originality of the methodology proposed by the HyperCarte research group is 
 ## Teams involved in the HyperCarte Research Group
 The HyperCarte Research Group was founded in 1996 and has provided the main conceptual outputs proposed in this MTA package. It grouped in the period 1996-2015 four research teams from Paris (RIATE and Géographie-cités) and Grenoble (STeamer and Mescal):
 
-* **[UAR RIATE (UAR 2414)](http://riate.cnrs.fr "UAR RIATE Website")**: a team of engineers/geographers specialized in spatial analysis, cartography, tools development and database processing. It is the team who as created the MTA package and is in charge of its maintenance. 
+* **UAR RIATE (UAR 2414)**: a team of engineers/geographers specialized in spatial analysis, cartography, tools development and database processing. It is the team who as created the MTA package and is in charge of its maintenance. 
 
-* **[UMR Géographie-cités (UMR 8504)](http://www.parisgeo.cnrs.fr/ "Geographie-cités Website")**: a team of researchers/geographers in the field of spatial analysis in the field of social phenomena.
+* **UMR Géographie-cités (UMR 8504)**: a team of researchers/geographers in the field of spatial analysis in the field of social phenomena.
 
-* **[LIG STeamer (UMR 5217)](http://steamer.imag.fr/ "STeamer Website")**: a team of computer scientists and engineers specialized in the processing of multimedia information with a temporal and spatial reference. The work of this team is validated by the development of operational platforms, web-application and frameworks.  
+* **LIG STeamer (UMR 5217)**: a team of computer scientists and engineers specialized in the processing of multimedia information with a temporal and spatial reference. The work of this team is validated by the development of operational platforms, web-application and frameworks.  
 
 * **LIG Mescal (UMR 5132)** : a team of computer scientists which aims at to design software solutions for the efficient exploitation of large distributed architectures at metropolitan, national and international levels. 
 

@@ -225,11 +225,17 @@ For this case-study, the contiguity criteria (order 1) will be used for the calc
 In MTA, two methods are implemented to measure statistical differences to a given context of reference: **a relative deviation** and an **absolute deviation**. In `MTA`, each indicator is considered as a ratio defined by a numerator (GDP for instance) divided by a denominator (population for instance). 
 
 The **relative deviation** states the position of each region as regards to a reference context. It is based on the following calculation:
-Relative deviation (Region i) = 100 * ((Numerator(Region i)/Denominator(Region i)) /(reference ratio))
+$$
+\text{Relative deviation (Region i)} = 100 \times \left( \frac{\text{Numerator (Region i)}}{\text{Denominator (Region i)}} \middle/ \text{reference ratio} \right)
+$$
+
 Territorial units characterized by a context of reference below index 100 are under the average of a given reference context, and reciprocally. 
 
 The **absolute deviation** specifies which process of redistribution should be realized in absolute terms to achieve a perfect equilibrium for the ratio of reference in the global, the territorial or the spatial context. It is calculated as below:
-Absolute deviation (Region i) = Numerator (Region i) - (reference ratio * denominator (Region i))
+$$
+\text{Absolute deviation (Region i)} = \text{Numerator (Region i)} - (\text{reference ratio} \times \text{Denominator (Region i)})
+$$
+
 In concrete terms, it examines how much amount of the numerator should be moved in order to reach equidistribution, for each territorial unit, taking into account as a reference the selected deviation context value.
 More generally, absolute deviation must be considered as a statistical tool to discuss on the amplitude of existing territorial inequalities. It is obvious that reaching a perfect equilibrium between territorial units is highly sensitive and is scarcely a policy objective itself. It is nevertheless interesting to consider the amount of money or population affected by the inequality to have in hand a concrete material for leading discussions on this delicate spatial planning issue. 
 

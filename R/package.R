@@ -22,8 +22,8 @@
 #' \item{\code{\link{plot_mst}}}: creating a plot adapted for visualzing mst results.
 #' }
 #' 
-#' @references GRASLAND C., YSEBAERT R., ZANIN C., LAMBERT N., Spatial disparities in Europe  (Chapter 4)  
-#' in GLOERSEN E., DUBOIS A. (coord.), 2007, Regional disparities and cohesion: What Strategies for the future?, DG-IPOL – European Parliament.
+#' @references Ysebaert R., Grasland C., 2021, Analyse territoriale multiscalaire. Rzine. 
+#' https://doi.org/10.48645/HJVQ-YP94.
 #' 
 #' @docType package
 "_PACKAGE"

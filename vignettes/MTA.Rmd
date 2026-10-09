@@ -79,14 +79,14 @@ The HyperCarte Research Group was founded in 1996 and has provided the main conc
 
 
 # Resources
-One of the major outputs of the HyperCarte Group was the development of [HyperAtlas](http://hypercarte.imag.fr/hyperatlas.html "The HyperAtlas Tool Web page") - A Java application proposing a path of investigation for exploring MTA inequalities. 
+One of the major outputs of the HyperCarte Group was the development of HyperAtlas - A Java application proposing a path of investigation for exploring MTA inequalities. 
 
 HyperAtlas has been used many times by the past, for pedagogical purpose [@pigaki2014] or research activities in European Union [@ysebaert2011]. 
-The MTA methodology proposed by HyperAtlas has also been developed for decision making and monitoring in a policy context at EU : [ESPON Program](https://www.espon.eu/tools-maps/espon-2006-tools-espon-hyperatlas), European Parliament [@ep2007] and national levels (Romania, Tunisia, Belgium, Cameroon, Nordic countries, France etc.).
+The MTA methodology proposed by HyperAtlas has also been developed for decision making and monitoring in a policy context at EU : ESPON Program, European Parliament [@ep2007] and national levels (Romania, Tunisia, Belgium, Cameroon, Nordic countries, France etc.).
 
 The MTA methodology has been also followed for analyzing intra-urban voting geography at polling station level in Paris [@beauguitte2015].
 
-In 2021, The ESPON Programme launched the update of the [ESPON HyperAtlas 3.0](https://www.espon.eu/HyperAtlas-3.0) *that is transparent, has a user-friendly interface with clear examples and storylines on how to use the tool and its resulting maps and graphs*. The resulting tool is called [Regico](https://regico.espon.eu/regico/tool).
+In 2021, The ESPON Programme launched the update of the ESPON HyperAtlas, called [ESPON REGICO](https://archive.espon.eu/regico) *that is transparent, has a user-friendly interface with clear examples and storylines on how to use the tool and its resulting maps and graphs*.
 
 The HyperAtlas solution is one way to access to multiscalar inequalities. The aim of the MTA package consists in proposing to the community **the main functionalities proposed by HyperAtlas in a R language**.  
 

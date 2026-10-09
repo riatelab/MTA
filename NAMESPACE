@@ -11,11 +11,13 @@ export(plot_mst)
 export(sdev)
 export(tdev)
 import(sf)
-importFrom(graphics,abline)
-importFrom(graphics,axis)
-importFrom(graphics,barplot)
-importFrom(graphics,mtext)
-importFrom(graphics,par)
-importFrom(graphics,points)
-importFrom(graphics,polygon)
-importFrom(graphics,text)
+importFrom(graphics,
+  abline,
+  axis,
+  barplot,
+  mtext,
+  par,
+  points,
+  polygon,
+  text
+)

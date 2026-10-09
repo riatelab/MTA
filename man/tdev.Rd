@@ -75,7 +75,7 @@ mf_map(ept)
 mf_map(x = com, var = c("tdevabs", "sign"), type = "prop_typo", inches = 0.2,
       leg_title = c("Absolute Deviation\n(Income redistribution, euros)",
                     "Redistribution direction"), 
-      leg_pos = c("topleft", "topright"), leg_val_rnd = -2,
+      leg_pos = "topleft", leg_val_rnd = -2,
       val_order = c("Under-Income", "Over-Income"),
       pal =  c("#ff0000","#0000ff"), add = TRUE)
 

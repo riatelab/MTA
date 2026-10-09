@@ -2,8 +2,8 @@
 % Please edit documentation in R/package.R
 \docType{package}
 \name{MTA}
-\alias{MTA}
 \alias{MTA-package}
+\alias{MTA}
 \title{Multiscalar Territorial Analysis}
 \description{
 Build multiscalar territorial analysis based on various contexts for a given ratio defined by a numerator and a denominator.\cr
@@ -44,6 +44,7 @@ Useful links:
 
 Authors:
 \itemize{
+  \item Timothée Giraud \email{timothee.giraud@cnrs.fr} (\href{https://orcid.org/0000-0002-1932-3323}{ORCID})
   \item Ronan Ysebaert (\href{https://orcid.org/0000-0002-7344-5911}{ORCID})
   \item Nicolas Lambert (\href{https://orcid.org/0000-0003-4976-6560}{ORCID})
 }

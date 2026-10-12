@@ -11,8 +11,8 @@
 }
 }
 \source{
-Atelier parisien d'urbanisme, Grand Paris communal composition (2015-12-17):\cr
-\url{https://www.apur.org/fr/nos-travaux/composition-12-territoires-metropole-grand-paris}
+Métropole du Grand Paris (2026-10-09):\cr
+\url{https://metropolegrandparis.fr/fr/toutes-les-communes}
 }
 \description{
 sf object. Grand Paris Metropole EPTs. 

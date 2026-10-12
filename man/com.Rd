@@ -20,8 +20,8 @@ A data frame with 150 rows and 10 variables:
 \source{
 Direction générale des finances publiques, income tax 2014 (2013 incomes):\cr
 \url{https://www.impots.gouv.fr/statistiques}\cr
-Atelier parisien d'urbanisme, Grand Paris communal composition (2015-12-17):\cr
-\url{https://www.apur.org/fr/nos-travaux/composition-12-territoires-metropole-grand-paris}
+Métropole du Grand Paris (2026-10-09):\cr
+\url{https://metropolegrandparis.fr/fr/toutes-les-communes}
 }
 \description{
 Data on the Grand Paris Metropole communes, included in a sf object.
